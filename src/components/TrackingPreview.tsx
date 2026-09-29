@@ -11,7 +11,7 @@ const statusSteps = [
 
 export function TrackingPreview() {
   return (
-    <section className="py-24 md:py-32">
+    <section id="tracking" className="py-24 md:py-32">
       <div className="container-shifter grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
         <ScrollReveal>
           <span className="text-xs font-bold tracking-[0.14em] text-orange">LIVE VISIBILITY</span>

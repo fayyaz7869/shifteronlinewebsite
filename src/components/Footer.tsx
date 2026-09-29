@@ -23,7 +23,8 @@ const columns = [
   {
     title: 'Support & Contact',
     links: [
-      { label: '📞 +91 9109114515', href: 'tel:9109114515' },
+      { label: '📞 Helpline: +91 9109114515', href: 'tel:9109114515' },
+      { label: '💬 WhatsApp: +91 9644423533', href: 'https://wa.me/919644423533?text=Hello%20Shifter%20Online' },
       { label: '✉️ support@shifteronline.com', href: 'mailto:support@shifteronline.com' },
       { label: 'Privacy Policy', href: '/privacy-policy.html' },
       { label: 'Terms & Conditions', href: '/terms.html' },

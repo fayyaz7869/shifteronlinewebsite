@@ -11,7 +11,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="py-24 md:py-32">
+    <section id="how-it-works" className="py-24 md:py-32">
       <div className="container-shifter">
         <ScrollReveal className="mx-auto max-w-2xl text-center">
           <span className="text-xs font-bold tracking-[0.14em] text-orange">HOW IT WORKS</span>
