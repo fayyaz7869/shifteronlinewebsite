@@ -6,9 +6,10 @@ const columns = [
     title: 'Company',
     links: [
       { label: 'About Us', href: '#why-us' },
-      { label: 'Services', href: '#services' },
-      { label: 'Contact Us', href: 'mailto:support@shifteronline.com' },
-      { label: 'Helpline', href: 'tel:9109114515' },
+      { label: 'Services & Fleet', href: '#services' },
+      { label: 'Driver Program', href: '#driver-partner' },
+      { label: 'FAQ', href: '#faq' },
+      { label: 'Helpline: 9109114515', href: 'tel:9109114515' },
     ],
   },
   {

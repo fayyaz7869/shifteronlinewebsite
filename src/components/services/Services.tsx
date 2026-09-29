@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { ScrollReveal } from '../ui/ScrollReveal';
 import { ServiceCard } from './ServiceCard';
+import { FleetExplorer } from './FleetExplorer';
 import { VehicleLineupIllustration } from '../illustrations/VehicleLineupIllustration';
 
 const services = [
@@ -86,14 +87,14 @@ export function Services() {
               From a two-wheeler for a single parcel to a mini truck for a full commercial load —
               choose the right vehicle for every shipment.
             </p>
-            <a href="#services" className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-royal">
-              View All Services →
+            <a href="tel:9109114515" className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-royal hover:text-orange transition-colors">
+              Speak to Logistics Expert (9109114515) →
             </a>
 
             <div className="mt-10 hidden rounded-2xl border border-line bg-white p-6 shadow-soft lg:block">
               <VehicleLineupIllustration />
               <p className="mt-3 text-center text-xs font-semibold tracking-wide text-muted">
-                BIKE · THREE-WHEELER · MINI TRUCK
+                BIKE · THREE-WHEELER · MINI TRUCK · PICKUP
               </p>
             </div>
           </ScrollReveal>
@@ -106,6 +107,11 @@ export function Services() {
             ))}
           </div>
         </div>
+
+        {/* Interactive Fleet Explorer with real dimensions, capacity & pricing */}
+        <ScrollReveal delay={0.1}>
+          <FleetExplorer />
+        </ScrollReveal>
 
         <ScrollReveal delay={0.1} className="mt-20 rounded-2xl border border-line bg-offwhite px-6 py-10 sm:px-10">
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
