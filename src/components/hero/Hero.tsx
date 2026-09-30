@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { Smartphone, ShieldCheck, Zap } from 'lucide-react';
 import { Button } from '../ui/Button';
-import { FareEstimatorWidget } from './FareEstimatorWidget';
+import { HeroIllustration } from '../illustrations/HeroIllustration';
+import { FloatingStatsCard } from './FloatingStatsCard';
 
 export function Hero() {
   return (
@@ -9,9 +10,9 @@ export function Hero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#EEF3FC] via-white to-white" />
       <div className="absolute inset-0 -z-10 bg-grid-fade" />
 
-      <div className="container-shifter grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
+      <div className="container-shifter grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-10">
         {/* Left Column: Headline & Value Proposition */}
-        <div className="lg:col-span-6 xl:col-span-7">
+        <div>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -40,7 +41,7 @@ export function Hero() {
             className="mt-5 max-w-lg text-base sm:text-lg text-muted leading-relaxed"
           >
             India&apos;s technology-driven logistics platform connecting you with verified driver
-            partners for fast, affordable and transparent goods transportation.
+            partners for fast, affordable and transparent goods transportation through our mobile apps.
           </motion.p>
 
           {/* Quick Trust Badges */}
@@ -52,7 +53,7 @@ export function Hero() {
           >
             <div className="flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 border border-line shadow-xs">
               <Zap size={14} className="text-orange" />
-              <span>15 Min Pickup Guarantee</span>
+              <span>15 Min Pickup Dispatch</span>
             </div>
             <div className="flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 border border-line shadow-xs">
               <ShieldCheck size={14} className="text-emerald-600" />
@@ -76,14 +77,15 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Right Column: Live Interactive Fare Estimator */}
+        {/* Right Column: Hero Illustration & Stats */}
         <motion.div
-          initial={{ opacity: 0, y: 24, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="lg:col-span-6 xl:col-span-5 w-full max-w-[540px] mx-auto lg:mx-0"
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="relative mx-auto w-full max-w-[560px]"
         >
-          <FareEstimatorWidget />
+          <HeroIllustration />
+          <FloatingStatsCard />
         </motion.div>
       </div>
     </section>

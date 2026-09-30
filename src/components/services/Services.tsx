@@ -25,18 +25,18 @@ const services = [
   {
     icon: CarTaxiFront,
     title: 'Three-Wheeler Transport',
-    description: 'Affordable three-wheeler booking for mid-sized loads and local moves.',
+    description: 'Affordable three-wheeler transport for mid-sized loads and local moves.',
     accent: 'navy' as const,
   },
   {
     icon: Truck,
     title: 'Tata Ace & Mini Truck',
-    description: 'Book a Tata Ace or mini truck for larger commercial shipments.',
+    description: 'Reliable Tata Ace and mini trucks for larger commercial shipments.',
     accent: 'orange' as const,
   },
   {
     icon: TruckElectric,
-    title: 'Pickup Vehicle Booking',
+    title: 'Pickup Vehicle Transport',
     description: 'On-demand pickup vehicles for bulkier household and business loads.',
     accent: 'navy' as const,
   },
@@ -58,7 +58,7 @@ const metrics = [
   { icon: Package, value: '5+', label: 'Vehicle Types to Choose From' },
   { icon: Handshake, value: '100%', label: 'Verified Driver Partners' },
   { icon: MapPin, value: 'Pan-India', label: 'Growing Network' },
-  { icon: Headphones, value: '24/7', label: 'On-Demand Booking' },
+  { icon: Headphones, value: '24/7', label: 'On-Demand Logistics' },
 ];
 
 const industries = [

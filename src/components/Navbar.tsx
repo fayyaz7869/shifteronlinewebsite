@@ -24,7 +24,7 @@ import { useAuth } from '../context/AuthContext';
 
 const USER_APP_URL = 'https://play.google.com/store/apps/details?id=com.shifter.online';
 const DRIVER_APP_URL = 'https://play.google.com/store/apps/details?id=com.shifter.driver';
-const WHATSAPP_URL = 'https://wa.me/919644423533?text=Hello%20Shifter%20Online,%20I%20want%20to%20book%20a%20delivery';
+const WHATSAPP_URL = 'https://wa.me/919644423533?text=Hello%20Shifter%20Online,%20I%20have%20an%20inquiry';
 
 const desktopNavLinks = [
   { label: 'Home', href: '#home' },
@@ -48,7 +48,7 @@ const serviceLinks = [
   { label: 'Bike Goods Delivery', href: '#services' },
   { label: 'Three-Wheeler Transport', href: '#services' },
   { label: 'Tata Ace & Mini Truck', href: '#services' },
-  { label: 'Pickup Vehicle Booking', href: '#services' },
+  { label: 'Pickup Vehicle Transport', href: '#services' },
   { label: 'Household Goods Transport', href: '#services' },
   { label: 'Commercial & Freight Logistics', href: '#services' },
 ];
@@ -363,9 +363,9 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] font-semibold uppercase tracking-wider text-white/70">Customer App</span>
-                      <Package size={14} className="text-orange" />
+                      <Smartphone size={14} className="text-orange" />
                     </div>
-                    <span className="mt-1 text-xs font-extrabold text-white">Book Delivery</span>
+                    <span className="mt-1 text-xs font-extrabold text-white">Get Customer App</span>
                     <span className="text-[10px] text-white/60">Google Play Store →</span>
                   </a>
 
@@ -394,8 +394,8 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                     onClick={() => setMobileOpen(false)}
                     className="w-full !h-12 !text-[15px] font-bold shadow-md"
                   >
-                    <Package size={18} />
-                    Place Order / Book Delivery
+                    <Smartphone size={18} />
+                    Download Customer App
                   </Button>
 
                   {!isLoading && user ? (

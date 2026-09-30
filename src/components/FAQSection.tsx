@@ -5,16 +5,16 @@ import { ScrollReveal } from './ui/ScrollReveal';
 
 const FAQS = [
   {
+    q: 'How do I place an order for delivery?',
+    a: 'Download the Shifter Online Customer App on Android. Enter your pickup and drop location, choose your vehicle, and our system will instantly dispatch the nearest verified driver partner.',
+  },
+  {
     q: 'How is the delivery fare calculated?',
-    a: 'Our fares are 100% transparent and upfront based on the vehicle selected (Bike, 3-Wheeler, Tata Ace, or Pickup) and the exact distance (km) between pickup and drop points. There are no hidden surge fees or surprise surcharges.',
+    a: 'Our fares are 100% transparent and calculated upfront inside the app based on the vehicle selected (Bike, 3-Wheeler, Tata Ace, or Pickup) and the exact distance (km). There are no hidden surge fees or surprise surcharges.',
   },
   {
-    q: 'How fast will a vehicle arrive after booking?',
-    a: 'On average, our smart dispatch algorithm matches and dispatches the nearest verified driver partner within 10 to 15 minutes of booking confirmation across all major city hubs.',
-  },
-  {
-    q: 'Can I book a vehicle directly through WhatsApp?',
-    a: 'Yes! You can message our automated booking helpline at +91 9644423533. Just share your pickup location, drop point, and goods type, and our system will instantly quote the fare and assign a driver.',
+    q: 'How fast will a driver arrive?',
+    a: 'On average, our smart dispatch algorithm matches and dispatches the nearest verified driver partner within 10 to 15 minutes of requesting across all major city hubs.',
   },
   {
     q: 'How do I attach my vehicle as a Driver Partner?',

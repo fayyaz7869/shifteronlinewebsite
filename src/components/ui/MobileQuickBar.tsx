@@ -1,7 +1,7 @@
-import { Phone, MessageSquare, Package } from 'lucide-react';
+import { Phone, MessageSquare, Smartphone } from 'lucide-react';
 
 const USER_APP_URL = 'https://play.google.com/store/apps/details?id=com.shifter.online';
-const WHATSAPP_URL = 'https://wa.me/919644423533?text=Hello%20Shifter%20Online,%20I%20want%20to%20book%20a%20delivery';
+const WHATSAPP_URL = 'https://wa.me/919644423533?text=Hello%20Shifter%20Online,%20I%20have%20an%20inquiry';
 
 export function MobileQuickBar() {
   return (
@@ -33,8 +33,8 @@ export function MobileQuickBar() {
         rel="noopener noreferrer"
         className="flex flex-[1.2] items-center justify-center gap-1.5 rounded-xl bg-orange py-2.5 text-xs font-extrabold text-white shadow-sm transition-all hover:bg-orange-light active:scale-95"
       >
-        <Package size={15} />
-        <span>Book Now</span>
+        <Smartphone size={15} />
+        <span>Get App</span>
       </a>
     </aside>
   );
