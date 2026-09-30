@@ -1,7 +1,6 @@
 import { Truck, Users } from 'lucide-react';
 import { ScrollReveal } from './ui/ScrollReveal';
 import { AppMockup } from './illustrations/AppMockup';
-import { DriverEarningsCalculator } from './DriverEarningsCalculator';
 
 export function AppSection() {
   return (
@@ -65,11 +64,6 @@ export function AppSection() {
             </div>
           </ScrollReveal>
         </div>
-
-        {/* Interactive Driver Partner Earnings Calculator */}
-        <ScrollReveal delay={0.15}>
-          <DriverEarningsCalculator />
-        </ScrollReveal>
       </div>
     </section>
   );

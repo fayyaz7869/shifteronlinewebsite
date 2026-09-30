@@ -9,8 +9,6 @@ interface VehicleFleetItem {
   category: string;
   capacity: string;
   dimensions: string;
-  basePrice: string;
-  perKm: string;
   icon: typeof Bike;
   tag?: string;
   idealFor: string[];
@@ -25,8 +23,6 @@ const FLEET: VehicleFleetItem[] = [
     category: 'Express Delivery',
     capacity: 'Up to 20 kg',
     dimensions: '40 × 40 × 40 cm box',
-    basePrice: '₹49',
-    perKm: '₹9 / km',
     tag: 'Quick Delivery',
     icon: Bike,
     idealFor: [
@@ -44,8 +40,6 @@ const FLEET: VehicleFleetItem[] = [
     category: 'Mid-Sized Freight',
     capacity: 'Up to 500 kg',
     dimensions: '5.5 × 4.5 × 4.0 ft (L × W × H)',
-    basePrice: '₹160',
-    perKm: '₹18 / km',
     icon: Truck,
     idealFor: [
       'Textile Rolls & Cloth Bundles',
@@ -62,8 +56,6 @@ const FLEET: VehicleFleetItem[] = [
     category: 'Commercial & Shifting',
     capacity: 'Up to 750 kg',
     dimensions: '7.0 × 4.8 × 4.8 ft (L × W × H)',
-    basePrice: '₹260',
-    perKm: '₹24 / km',
     tag: 'Most Popular',
     icon: Truck,
     idealFor: [
@@ -81,8 +73,6 @@ const FLEET: VehicleFleetItem[] = [
     category: 'Heavy Logistics',
     capacity: 'Up to 1500 kg (1.5 Ton)',
     dimensions: '8.5 × 5.0 × 5.0 ft (L × W × H)',
-    basePrice: '₹420',
-    perKm: '₹30 / km',
     tag: 'Heavy Haul',
     icon: Truck,
     idealFor: [
@@ -187,31 +177,22 @@ export function FleetShowcase() {
               </h4>
 
               {/* Specs Grid */}
-              <div className="mt-6 grid grid-cols-2 gap-4 rounded-xl border border-line bg-white p-4 sm:grid-cols-3">
+              <div className="mt-6 grid grid-cols-1 gap-4 rounded-xl border border-line bg-white p-4 sm:grid-cols-2">
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-muted">
-                    Max Payload
+                    Max Payload Capacity
                   </span>
                   <p className="mt-0.5 text-base font-extrabold text-navy">
                     {selectedVehicle.capacity}
                   </p>
                 </div>
-                <div>
+                <div className="border-t sm:border-t-0 sm:border-l border-line pt-3 sm:pt-0 sm:pl-4">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-muted">
-                    Cargo Space
+                    Cargo Bed Dimensions
                   </span>
                   <p className="mt-0.5 text-xs sm:text-sm font-bold text-ink">
                     {selectedVehicle.dimensions}
                   </p>
-                </div>
-                <div className="col-span-2 sm:col-span-1 border-t sm:border-t-0 sm:border-l border-line pt-2 sm:pt-0 sm:pl-4">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-muted">
-                    Starting From
-                  </span>
-                  <p className="mt-0.5 text-lg font-extrabold text-orange">
-                    {selectedVehicle.basePrice}
-                  </p>
-                  <span className="text-[10px] text-muted">then {selectedVehicle.perKm}</span>
                 </div>
               </div>
 
