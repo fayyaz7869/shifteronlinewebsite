@@ -40,7 +40,6 @@ const mobileNavLinks = [
   { label: 'Why Choose Us', href: '#why-us', icon: ShieldCheck, desc: 'Verified partners & transparent pricing' },
   { label: 'How It Works', href: '#how-it-works', icon: CheckCircle2, desc: '4 simple steps to delivery' },
   { label: 'Live Tracking', href: '#tracking', icon: Navigation, desc: 'Real-time GPS visibility' },
-  { label: 'Driver Program', href: '#driver-partner', icon: Truck, desc: 'Attach vehicle & earn daily' },
   { label: 'Mobile Apps', href: '#app', icon: Smartphone, desc: 'Customer & Driver apps' },
   { label: 'Contact & Support', href: '#cta', icon: Headphones, desc: '24/7 Helpline & Support' },
 ];
