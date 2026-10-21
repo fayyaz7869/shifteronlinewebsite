@@ -4,29 +4,39 @@ import { AppMockup } from './illustrations/AppMockup';
 
 export function AppSection() {
   return (
-    <section id="app" className="overflow-hidden bg-[#F8FAFD] py-24 md:py-32 relative">
-      <div className="container-shifter">
+    <section id="app" className="overflow-hidden bg-[#050C1A] text-white py-24 md:py-32 relative">
+      {/* Background ambient radial lights */}
+      <div className="pointer-events-none absolute -left-32 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-orange/15 blur-3xl" />
+      <div className="pointer-events-none absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-royal/20 blur-3xl" />
+      <div className="pointer-events-none absolute inset-0 bg-grid-cyber opacity-25" />
+
+      <div className="container-shifter relative z-10">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-20">
           <ScrollReveal className="order-2 lg:order-1">
-            <AppMockup />
+            <div className="relative rounded-3xl p-2 bg-gradient-to-b from-white/10 to-transparent">
+              <AppMockup />
+            </div>
           </ScrollReveal>
 
           <ScrollReveal delay={0.1} className="order-1 lg:order-2">
-            <span className="text-xs font-bold tracking-[0.14em] text-orange uppercase">MOBILE APPS</span>
-            <h2 className="mt-3 text-3xl font-black leading-tight text-ink sm:text-[42px]">
-              Logistics at Your Fingertips.
+            <div className="inline-flex items-center gap-2 rounded-full border border-orange/30 bg-orange/10 px-3.5 py-1 text-xs font-bold text-orange">
+              <span className="h-1.5 w-1.5 rounded-full bg-orange animate-pulse" />
+              <span>MOBILE APPS ECOSYSTEM</span>
+            </div>
+            <h2 className="mt-3 text-3xl font-black leading-tight text-white sm:text-[42px]">
+              Logistics at Your Fingertips
             </h2>
-            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-muted">
-              One ecosystem, built for both sides — customers get instant vehicle booking and live tracking, while driver partners enjoy guaranteed trips and daily earnings.
+            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-slate-300">
+              One ecosystem, built for both sides — customers get instant vehicle booking and live telemetry tracking, while driver partners enjoy guaranteed bookings and daily payouts.
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-2 rounded-2xl border border-line bg-white px-4 py-2 text-xs sm:text-sm font-bold text-navy shadow-2xs">
+              <span className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-2 text-xs sm:text-sm font-bold text-white shadow-soft">
                 <Users size={16} className="text-orange" />
                 Customer App: Book &amp; Track
               </span>
-              <span className="inline-flex items-center gap-2 rounded-2xl border border-line bg-white px-4 py-2 text-xs sm:text-sm font-bold text-navy shadow-2xs">
-                <Truck size={16} className="text-royal" />
+              <span className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-2 text-xs sm:text-sm font-bold text-white shadow-soft">
+                <Truck size={16} className="text-cyan-400" />
                 Driver App: Accept &amp; Earn
               </span>
             </div>
@@ -36,13 +46,13 @@ export function AppSection() {
                 href="https://play.google.com/store/apps/details?id=com.shifter.online"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-14 items-center gap-3.5 rounded-2xl bg-navy px-6 text-white shadow-lift transition-all hover:brightness-110 active:scale-98 border border-white/10"
+                className="flex h-14 items-center gap-3.5 rounded-2xl bg-slate-900/90 px-6 text-white shadow-lift transition-all hover:bg-slate-800 hover:border-orange/40 active:scale-98 border border-white/15"
               >
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.6,9.48l1.84-3.18c0.16-0.31,0.04-0.69-0.26-0.85c-0.29-0.15-0.65-0.06-0.83,0.22l-1.88,3.24 c-2.86-1.21-6.08-1.21-8.94,0L5.65,5.67c-0.19-0.29-0.58-0.38-0.87-0.2C4.5,5.65,4.41,6.01,4.56,6.3L6.4,9.48 C3.3,11.25,1.28,14.44,1,18h22C22.72,14.44,20.7,11.25,17.6,9.48z M7,15.25c-0.69,0-1.25-0.56-1.25-1.25 c0-0.69,0.56-1.25,1.25-1.25S8.25,13.31,8.25,14C8.25,14.69,7.69,15.25,7,15.25z M17,15.25c-0.69,0-1.25-0.56-1.25-1.25 c0-0.69,0.56-1.25,1.25-1.25s1.25,0.56,1.25,1.25C18.25,14.69,17.69,15.25,17,15.25z" />
                 </svg>
                 <span className="text-left leading-tight">
-                  <span className="block text-[10px] text-white/70 font-semibold">CUSTOMER APP</span>
+                  <span className="block text-[10px] text-slate-400 font-semibold">CUSTOMER APP</span>
                   <span className="block text-sm font-black">Google Play</span>
                 </span>
               </a>
@@ -64,14 +74,14 @@ export function AppSection() {
             </div>
 
             {/* Rating pill */}
-            <div className="mt-6 flex items-center gap-2 text-xs font-semibold text-muted">
-              <div className="flex text-amber-500">
+            <div className="mt-6 flex items-center gap-2 text-xs font-semibold text-slate-400">
+              <div className="flex text-amber-400">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} size={14} fill="currentColor" />
                 ))}
               </div>
-              <span className="text-ink font-bold">4.8 / 5 Rating</span>
-              <span className="text-line">·</span>
+              <span className="text-white font-bold">4.8 / 5 Rating</span>
+              <span className="text-white/20">·</span>
               <span>Available on Android</span>
             </div>
           </ScrollReveal>

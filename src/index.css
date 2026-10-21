@@ -3,65 +3,45 @@
 @theme {
   --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  /* Modern Elevated Brand Palette */
-  --color-navy: #061533;
-  --color-navy-dark: #030a1c;
-  --color-navy-light: #0d2350;
-  --color-royal: #1348a8;
-  --color-royal-light: #2563eb;
+  /* Cyber & Modern Tech Palette */
+  --color-navy: #050C1A;
+  --color-navy-dark: #02060F;
+  --color-navy-card: #0A162D;
+  --color-royal: #1E5BE8;
+  --color-royal-light: #3B82F6;
   
-  --color-orange: #ff5412;
-  --color-orange-light: #ff7638;
-  --color-orange-dark: #e04406;
-  --color-amber-accent: #f59e0b;
+  --color-orange: #FF5412;
+  --color-orange-light: #FF7B3D;
+  --color-orange-dark: #E03E00;
+  --color-amber-accent: #F59E0B;
   
-  --color-cyan-accent: #06b6d4;
-  --color-emerald-accent: #10b981;
+  --color-cyan-accent: #06B6D4;
+  --color-emerald-accent: #10B981;
   
-  --color-offwhite: #f5f8fc;
-  --color-surface-subtle: #edf2f9;
-  --color-ink: #07132e;
-  --color-muted: #52637f;
-  --color-line: #e2e9f3;
-  --color-line-dark: #1b2e53;
+  --color-offwhite: #F4F7FC;
+  --color-surface-subtle: #EBF1FA;
+  --color-ink: #07132E;
+  --color-muted: #566885;
+  --color-line: #1E293B;
+  --color-line-dark: #1A2946;
 
-  --shadow-soft: 0 2px 4px rgba(7, 19, 46, 0.03), 0 10px 28px -10px rgba(7, 19, 46, 0.08);
-  --shadow-card: 0 4px 6px -1px rgba(7, 19, 46, 0.04), 0 20px 45px -15px rgba(7, 19, 46, 0.12);
-  --shadow-lift: 0 20px 50px -15px rgba(7, 19, 46, 0.18), 0 0 1px 1px rgba(7, 19, 46, 0.03);
-  --shadow-nav: 0 10px 35px -12px rgba(7, 19, 46, 0.12);
-  --shadow-glow-orange: 0 12px 36px -8px rgba(255, 84, 18, 0.35);
-  --shadow-glow-royal: 0 12px 36px -8px rgba(19, 72, 168, 0.35);
-
-  --animate-marquee: marquee 28s linear infinite;
-  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-float: float 4s ease-in-out infinite;
-
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-8px);
-    }
-  }
+  --shadow-soft: 0 2px 4px rgba(5, 12, 26, 0.04), 0 12px 32px -10px rgba(5, 12, 26, 0.08);
+  --shadow-card: 0 4px 6px -1px rgba(5, 12, 26, 0.05), 0 20px 48px -12px rgba(5, 12, 26, 0.12);
+  --shadow-lift: 0 24px 60px -15px rgba(0, 0, 0, 0.45);
+  --shadow-nav: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+  --shadow-glow-orange: 0 12px 40px -8px rgba(255, 84, 18, 0.45);
+  --shadow-glow-royal: 0 12px 40px -8px rgba(30, 91, 232, 0.45);
+  --shadow-glow-emerald: 0 12px 40px -8px rgba(16, 185, 129, 0.45);
 }
 
 @layer base {
   * {
-    border-color: var(--color-line);
+    border-color: #1E293B;
   }
 
   html {
     scroll-behavior: smooth;
+    color-scheme: dark;
   }
 
   section[id] {
@@ -70,8 +50,8 @@
 
   body {
     margin: 0;
-    background-color: #ffffff;
-    color: var(--color-ink);
+    background-color: #040914;
+    color: #E2E8F0;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -107,40 +87,71 @@
     text-wrap: balance;
   }
 
-  .bg-grid-fade {
+  .bg-grid-cyber {
     background-image:
-      linear-gradient(to bottom, rgba(13, 35, 80, 0.05) 1px, transparent 1px),
-      linear-gradient(to right, rgba(13, 35, 80, 0.05) 1px, transparent 1px);
-    background-size: 48px 48px;
-    -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 35%, black 45%, transparent 95%);
-    mask-image: radial-gradient(ellipse 75% 65% at 50% 35%, black 45%, transparent 95%);
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 44px 44px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 65% at 50% 30%, black 45%, transparent 95%);
+    mask-image: radial-gradient(ellipse 80% 65% at 50% 30%, black 45%, transparent 95%);
   }
 
-  .bg-radial-glow {
-    background-image: radial-gradient(circle at 50% 0%, rgba(255, 84, 18, 0.12) 0%, rgba(19, 72, 168, 0.06) 40%, transparent 75%);
+  .bg-grid-subtle {
+    background-image:
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 
-  .glass-card {
-    background-color: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(226, 233, 243, 0.9);
-  }
-
-  .glass-dark {
-    background-color: rgba(6, 21, 51, 0.92);
+  .glass-card-dark {
+    background-color: rgba(10, 22, 45, 0.85);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.12);
   }
 
+  .glass-card-cyber {
+    background-color: rgba(13, 24, 48, 0.7);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-card-light {
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(226, 232, 243, 0.85);
+  }
+
   .gradient-text-orange {
-    background: linear-gradient(135deg, #ff5412 0%, #ff8345 50%, #f59e0b 100%);
+    background: linear-gradient(135deg, #FF5412 0%, #FF8A4C 50%, #FBBF24 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  .gradient-text-navy {
-    background: linear-gradient(135deg, #061533 0%, #1348a8 80%);
+  .gradient-text-blue {
+    background: linear-gradient(135deg, #38BDF8 0%, #1E5BE8 60%, #818CF8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  .gradient-text-white {
+    background: linear-gradient(180deg, #FFFFFF 0%, #CBD5E1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glow-border-orange {
+    position: relative;
+  }
+  .glow-border-orange::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,84,18,0.6), rgba(30,91,232,0.4), rgba(255,84,18,0.2));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
   }
 }

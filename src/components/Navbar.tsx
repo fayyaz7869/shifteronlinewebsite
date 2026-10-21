@@ -34,7 +34,7 @@ const desktopNavLinks = [
   { label: 'Live Tracking', href: '#tracking' },
   { label: 'Operating Hubs', href: '#coverage' },
   { label: 'Driver Partner', href: '#driver-partner' },
-  { label: 'About Us', href: '#why-us' },
+  { label: 'Why Choose Us', href: '#why-us' },
   { label: 'Contact', href: '#cta' },
 ];
 
@@ -123,27 +123,27 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 px-3 sm:px-4 pt-2 sm:pt-3">
+      <header className="fixed inset-x-0 top-0 z-50 px-3 sm:px-4 pt-2.5 sm:pt-3">
         {/* Top Mini Operational Bar */}
-        <div className="mx-auto max-w-[1400px] mb-2 hidden md:flex items-center justify-between px-3 text-[11px] font-semibold text-muted">
+        <div className="mx-auto max-w-[1400px] mb-2 hidden md:flex items-center justify-between px-3 text-[11px] font-semibold text-slate-300">
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2 py-0.5 text-emerald-700 font-bold">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 px-2.5 py-0.5 text-emerald-300 font-bold border border-emerald-500/30">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
               15-Min Guaranteed Pickup Dispatch
             </span>
-            <span>· Central India: Indore, Pithampur, Bhopal, Dewas, Ujjain</span>
+            <span className="text-slate-400">· Central India: Indore, Pithampur, Bhopal, Dewas, Ujjain</span>
           </div>
-          <div className="flex items-center gap-4 text-ink/75">
+          <div className="flex items-center gap-4 text-slate-300">
             <a href="tel:9109114515" className="hover:text-orange transition-colors flex items-center gap-1 font-bold">
               <Phone size={11} className="text-orange" />
               <span>Helpline: +91 9109114515</span>
             </a>
-            <span className="text-line">|</span>
+            <span className="text-white/20">|</span>
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-emerald-600 transition-colors flex items-center gap-1 font-bold text-emerald-700"
+              className="hover:text-emerald-400 transition-colors flex items-center gap-1 font-bold text-emerald-400"
             >
               <MessageSquare size={11} />
               <span>WhatsApp: 9644423533</span>
@@ -154,18 +154,20 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
         {/* Main Navbar Card */}
         <div
           className={`container-shifter !max-w-[1400px] transition-all duration-300 ${
-            scrolled ? 'shadow-nav bg-white/95' : 'shadow-soft bg-white/90'
-          } rounded-2xl border border-line backdrop-blur-md`}
+            scrolled
+              ? 'shadow-nav bg-[#061226]/95 border-white/15'
+              : 'shadow-soft bg-[#071630]/90 border-white/10'
+          } rounded-2xl border backdrop-blur-xl text-white`}
         >
-          <nav className="flex h-[68px] sm:h-[72px] items-center justify-between px-3 sm:px-6">
-            <SmartLink href="/" className="inline-flex shrink-0 items-center gap-2.5">
+          <nav className="flex h-[66px] sm:h-[72px] items-center justify-between px-3 sm:px-6">
+            <SmartLink href="/" className="inline-flex shrink-0 items-center gap-2.5 group">
               <img
                 src="/shifter-online-icon.png"
                 alt="Shifter Online"
-                className="h-9 w-9 object-contain"
+                className="h-9 w-9 object-contain drop-shadow-[0_0_12px_rgba(255,84,18,0.4)] group-hover:scale-105 transition-transform"
               />
-              <span className="text-[18px] sm:text-[19px] font-black tracking-tight text-ink whitespace-nowrap">
-                <span className="text-orange">Shifter</span> <span className="text-navy">Online</span>
+              <span className="text-[18px] sm:text-[20px] font-black tracking-tight whitespace-nowrap">
+                <span className="text-orange">Shifter</span> <span className="text-white">Online</span>
               </span>
             </SmartLink>
 
@@ -181,11 +183,11 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                   <a
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="group flex items-center gap-1 rounded-xl px-3 py-2 text-[14px] font-bold text-ink/80 hover:text-navy hover:bg-offwhite transition-all whitespace-nowrap"
+                    className="group flex items-center gap-1 rounded-xl px-3 py-2 text-[14px] font-bold text-slate-200 hover:text-white hover:bg-white/10 transition-all whitespace-nowrap"
                   >
                     {link.label}
                     {link.hasDropdown && <ChevronDown size={14} className="opacity-60" />}
-                    <span className="pointer-events-none absolute inset-x-3 -bottom-0.5 h-[2px] scale-x-0 bg-orange transition-transform duration-200 group-hover:scale-x-100" />
+                    <span className="pointer-events-none absolute inset-x-3 -bottom-0.5 h-[2px] scale-x-0 bg-orange transition-transform duration-200 group-hover:scale-x-100 shadow-[0_0_8px_#ff5412]" />
                   </a>
 
                   {link.hasDropdown && (
@@ -196,7 +198,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 8 }}
                           transition={{ duration: 0.15 }}
-                          className="absolute left-0 top-full w-72 rounded-2xl border border-line bg-white p-2.5 shadow-card z-50"
+                          className="absolute left-0 top-full w-72 rounded-2xl border border-white/15 bg-[#09152F] p-2.5 shadow-2xl z-50 text-white backdrop-blur-2xl"
                         >
                           {serviceLinks.map((s) => (
                             <a
@@ -206,12 +208,12 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                                 setServicesOpen(false);
                                 handleNavClick(e, s.href);
                               }}
-                              className="block rounded-xl px-3 py-2 text-left hover:bg-offwhite transition-colors group"
+                              className="block rounded-xl px-3 py-2 text-left hover:bg-white/10 transition-colors group"
                             >
-                              <span className="block text-xs font-bold text-navy group-hover:text-orange">
+                              <span className="block text-xs font-black text-white group-hover:text-orange">
                                 {s.label}
                               </span>
-                              <span className="block text-[11px] text-muted">{s.desc}</span>
+                              <span className="block text-[11px] text-slate-400">{s.desc}</span>
                             </a>
                           ))}
                         </motion.div>
@@ -225,31 +227,31 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
             {/* Desktop CTA & Contact */}
             <div className="hidden lg:flex items-center gap-2.5 shrink-0 whitespace-nowrap">
               <Button
-                variant="secondary"
+                variant="primary"
                 size="md"
                 href={USER_APP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="!h-10 !px-4 text-xs font-bold whitespace-nowrap shrink-0 shadow-2xs"
+                className="!h-10 !px-4 text-xs font-black whitespace-nowrap shrink-0 shadow-glow-orange"
               >
-                <Package size={14} className="text-orange" />
+                <Package size={14} />
                 Book Delivery
               </Button>
 
               {!isLoading && user ? (
                 <>
-                  <span className="text-xs font-bold text-ink/80 whitespace-nowrap">Hi, {user.name.split(' ')[0]}</span>
-                  <Button variant="secondary" size="md" onClick={logout} className="!h-10 !px-3 text-xs whitespace-nowrap shrink-0">
+                  <span className="text-xs font-bold text-slate-300 whitespace-nowrap">Hi, {user.name.split(' ')[0]}</span>
+                  <Button variant="outline-light" size="md" onClick={logout} className="!h-10 !px-3 text-xs whitespace-nowrap shrink-0">
                     <LogOut size={14} />
                     Log out
                   </Button>
                 </>
               ) : (
                 <>
-                  <Button variant="secondary" size="md" onClick={onLoginClick} className="!h-10 !px-3.5 text-xs font-bold whitespace-nowrap shrink-0">
+                  <Button variant="outline-light" size="md" onClick={onLoginClick} className="!h-10 !px-3.5 text-xs font-bold whitespace-nowrap shrink-0 hover:bg-white/15">
                     Login
                   </Button>
-                  <Button variant="primary" size="md" onClick={onGetStartedClick} className="!h-10 !px-4 text-xs font-bold whitespace-nowrap shrink-0 shadow-soft">
+                  <Button variant="secondary" size="md" onClick={onGetStartedClick} className="!h-10 !px-4 text-xs font-black whitespace-nowrap shrink-0 bg-white text-navy hover:bg-white/90">
                     Get Started →
                   </Button>
                 </>
@@ -262,7 +264,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
               aria-label="Toggle navigation menu"
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((v) => !v)}
-              className="grid h-10 w-10 place-items-center rounded-xl bg-offwhite text-navy transition-colors hover:bg-line active:scale-95 lg:hidden"
+              className="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-white transition-colors hover:bg-white/20 active:scale-95 lg:hidden border border-white/10"
             >
               {mobileOpen ? <X size={20} className="text-orange" /> : <Menu size={20} />}
             </button>
@@ -280,7 +282,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={() => setMobileOpen(false)}
-            className="fixed inset-0 z-40 bg-navy/60 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-40 bg-black/80 backdrop-blur-md lg:hidden"
           />
         )}
       </AnimatePresence>
@@ -296,9 +298,9 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="container-shifter fixed inset-x-0 top-3 z-50 !max-w-[1400px] lg:hidden"
           >
-            <div className="overflow-hidden rounded-3xl border border-line bg-white shadow-lift">
+            <div className="overflow-hidden rounded-3xl border border-white/15 bg-[#09152F] text-white shadow-2xl backdrop-blur-2xl">
               {/* Drawer Header */}
-              <div className="flex h-16 items-center justify-between border-b border-line px-5 bg-gradient-to-r from-offwhite to-white">
+              <div className="flex h-16 items-center justify-between border-b border-white/10 px-5 bg-white/5">
                 <a
                   href="#home"
                   onClick={(e) => handleNavClick(e, '#home')}
@@ -309,20 +311,20 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                     alt="Shifter Online"
                     className="h-8 w-8 object-contain"
                   />
-                  <span className="text-[17px] font-black tracking-tight text-ink">
-                    <span className="text-orange">Shifter</span> <span className="text-navy">Online</span>
+                  <span className="text-[17px] font-black tracking-tight text-white">
+                    <span className="text-orange">Shifter</span> Online
                   </span>
                 </a>
 
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/20 px-2 py-0.5 text-[11px] font-bold text-emerald-300 border border-emerald-500/30">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     Central India Hub
                   </span>
                   <button
                     type="button"
                     onClick={() => setMobileOpen(false)}
-                    className="grid h-9 w-9 place-items-center rounded-xl bg-white border border-line text-ink transition-colors hover:bg-offwhite active:scale-95"
+                    className="grid h-9 w-9 place-items-center rounded-xl bg-white/10 border border-white/10 text-white transition-colors hover:bg-white/20 active:scale-95"
                   >
                     <X size={18} />
                   </button>
@@ -335,7 +337,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                 <div className="grid grid-cols-2 gap-2">
                   <a
                     href="tel:9109114515"
-                    className="flex items-center justify-center gap-2 rounded-xl border border-line bg-offwhite py-2.5 px-3 text-xs font-bold text-navy transition-all hover:border-orange active:scale-95 shadow-2xs"
+                    className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 py-2.5 px-3 text-xs font-bold text-white transition-all hover:bg-white/10 active:scale-95"
                   >
                     <Phone size={14} className="text-orange" />
                     <span>Call 9109114515</span>
@@ -344,16 +346,16 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                     href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50/70 py-2.5 px-3 text-xs font-bold text-emerald-800 transition-all hover:bg-emerald-100 active:scale-95 shadow-2xs"
+                    className="flex items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/20 py-2.5 px-3 text-xs font-bold text-emerald-300 transition-all hover:bg-emerald-500/30 active:scale-95"
                   >
-                    <MessageSquare size={14} className="text-emerald-600 fill-emerald-600" />
+                    <MessageSquare size={14} className="text-emerald-400 fill-emerald-400" />
                     <span>WhatsApp 9644423533</span>
                   </a>
                 </div>
 
-                {/* Primary Nav Links with Icons & Arrow */}
-                <nav className="rounded-2xl border border-line bg-white p-2">
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-muted px-3 py-1.5">
+                {/* Primary Nav Links */}
+                <nav className="rounded-2xl border border-white/10 bg-white/5 p-2">
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 px-3 py-1.5">
                     Navigation
                   </div>
                   <ul className="flex flex-col gap-1">
@@ -362,22 +364,22 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                         <a
                           href={href}
                           onClick={(e) => handleNavClick(e, href)}
-                          className="flex items-center justify-between rounded-xl px-3 py-2.5 text-ink transition-colors hover:bg-offwhite active:bg-line/40 group"
+                          className="flex items-center justify-between rounded-xl px-3 py-2.5 text-white transition-colors hover:bg-white/10 active:bg-white/15 group"
                         >
                           <div className="flex items-center gap-3">
-                            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-orange/10 text-orange group-hover:bg-orange group-hover:text-white transition-colors">
+                            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-orange/20 text-orange group-hover:bg-orange group-hover:text-white transition-colors">
                               <Icon size={17} />
                             </span>
                             <div>
-                              <span className="block text-[14px] font-bold text-ink leading-tight">
+                              <span className="block text-[14px] font-bold text-white leading-tight">
                                 {label}
                               </span>
-                              <span className="block text-[11px] text-muted">
+                              <span className="block text-[11px] text-slate-400">
                                 {desc}
                               </span>
                             </div>
                           </div>
-                          <ChevronRight size={16} className="text-muted/60 group-hover:translate-x-0.5 transition-transform" />
+                          <ChevronRight size={16} className="text-slate-500 group-hover:translate-x-0.5 transition-transform" />
                         </a>
                       </li>
                     ))}
@@ -390,40 +392,40 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                     href={USER_APP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col rounded-2xl border border-line bg-navy p-3 text-white transition-transform active:scale-98"
+                    className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-3 text-white transition-transform active:scale-98"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-white/70">Customer App</span>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Customer App</span>
                       <Smartphone size={14} className="text-orange" />
                     </div>
                     <span className="mt-1 text-xs font-black text-white">Get Customer App</span>
-                    <span className="text-[10px] text-white/60">Google Play Store →</span>
+                    <span className="text-[10px] text-orange font-bold">Google Play Store →</span>
                   </a>
 
                   <a
                     href={DRIVER_APP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col rounded-2xl border border-orange/30 bg-orange/10 p-3 text-ink transition-transform active:scale-98"
+                    className="flex flex-col rounded-2xl border border-orange/40 bg-orange/15 p-3 text-white transition-transform active:scale-98"
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] font-semibold uppercase tracking-wider text-orange">Driver App</span>
                       <Truck size={14} className="text-orange" />
                     </div>
-                    <span className="mt-1 text-xs font-black text-navy">Partner Program</span>
-                    <span className="text-[10px] text-muted">Earn ₹35,000+/mo →</span>
+                    <span className="mt-1 text-xs font-black text-white">Partner Program</span>
+                    <span className="text-[10px] text-amber-300 font-bold">Earn ₹35,000+/mo →</span>
                   </a>
                 </div>
 
                 {/* Primary Action Buttons */}
-                <div className="flex flex-col gap-2 pt-1 border-t border-line">
+                <div className="flex flex-col gap-2 pt-1 border-t border-white/10">
                   <Button
                     variant="primary"
                     href={USER_APP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setMobileOpen(false)}
-                    className="w-full !h-12 !text-[15px] font-bold shadow-md"
+                    className="w-full !h-12 !text-[15px] font-black shadow-glow-orange"
                   >
                     <Smartphone size={18} />
                     Download Customer App
@@ -431,7 +433,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
 
                   {!isLoading && user ? (
                     <Button
-                      variant="secondary"
+                      variant="outline-light"
                       onClick={() => {
                         logout();
                         setMobileOpen(false);
@@ -443,7 +445,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                   ) : (
                     <div className="grid grid-cols-2 gap-2">
                       <Button
-                        variant="secondary"
+                        variant="outline-light"
                         onClick={() => {
                           setMobileOpen(false);
                           onLoginClick();
@@ -458,7 +460,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                           setMobileOpen(false);
                           onGetStartedClick();
                         }}
-                        className="w-full !h-11 !text-sm font-bold border-royal text-royal hover:bg-royal/5"
+                        className="w-full !h-11 !text-sm font-black bg-white text-navy"
                       >
                         Get Started →
                       </Button>

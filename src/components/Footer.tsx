@@ -43,20 +43,23 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="bg-[#081D4C] pt-20 text-white/70">
-      <div className="container-shifter grid grid-cols-1 gap-12 pb-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <footer className="bg-[#030712] pt-20 text-slate-300 border-t border-white/10 relative overflow-hidden">
+      {/* Background radial glow */}
+      <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-64 w-3/4 rounded-full bg-royal/10 blur-3xl" />
+
+      <div className="container-shifter relative z-10 grid grid-cols-1 gap-12 pb-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <span className="inline-flex items-center gap-2.5 select-none">
             <img
               src="/shifter-online-icon.png"
               alt="Shifter Online"
-              className="h-9 w-9 object-contain"
+              className="h-10 w-10 object-contain drop-shadow-[0_0_12px_rgba(255,84,18,0.5)]"
             />
-            <span className="text-[19px] font-black tracking-tight text-white">
-              Shifter <span className="text-orange">Online</span>
+            <span className="text-[20px] font-black tracking-tight text-white">
+              Shifter <span className="gradient-text-orange">Online</span>
             </span>
           </span>
-          <p className="mt-4 max-w-xs text-xs sm:text-sm leading-relaxed text-white/60">
+          <p className="mt-4 max-w-xs text-xs sm:text-sm leading-relaxed text-slate-400">
             Shifter Online, by Movigo Logistics Aggregator Pvt. Ltd., is India&apos;s
             technology-driven logistics platform — connecting customers with verified driver
             partners for fast, affordable and transparent goods transportation in Central India.
@@ -69,7 +72,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="grid h-9 w-9 place-items-center rounded-full bg-white/10 text-white transition-colors hover:bg-orange"
+                className="grid h-9 w-9 place-items-center rounded-xl bg-white/5 border border-white/10 text-white transition-all hover:bg-orange hover:border-orange hover:shadow-glow-orange active:scale-95"
               >
                 <Icon />
               </a>
@@ -83,7 +86,7 @@ export function Footer() {
             <ul className="mt-4 flex flex-col gap-2.5">
               {col.links.map((link) => (
                 <li key={link.label}>
-                  <SmartLink href={link.href} className="text-xs sm:text-sm text-white/60 transition-colors hover:text-white">
+                  <SmartLink href={link.href} className="text-xs sm:text-sm text-slate-400 transition-colors hover:text-orange">
                     {link.label}
                   </SmartLink>
                 </li>
@@ -93,12 +96,12 @@ export function Footer() {
         ))}
       </div>
 
-      <div className="border-t border-white/10">
+      <div className="border-t border-white/10 relative z-10">
         <div className="container-shifter flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
-          <p className="text-xs text-white/50">
+          <p className="text-xs text-slate-500">
             © {new Date().getFullYear()} Movigo Logistics Aggregator Pvt. Ltd. All rights reserved.
           </p>
-          <div className="flex flex-wrap items-center gap-4 text-xs text-white/50">
+          <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">
             <SmartLink href="/privacy-policy.html" className="hover:text-white transition-colors">
               Privacy Policy
             </SmartLink>
@@ -106,11 +109,11 @@ export function Footer() {
               Terms &amp; Conditions
             </SmartLink>
             <span className="text-white/20">|</span>
-            <SmartLink href="/admin/login" className="hover:text-white transition-colors text-white/30">
+            <SmartLink href="/admin/login" className="hover:text-white transition-colors text-slate-600">
               Staff Portal
             </SmartLink>
             <span className="text-white/20">|</span>
-            <span>Made with ❤️ in Indore</span>
+            <span className="text-slate-400">Made with ❤️ in Indore</span>
           </div>
         </div>
       </div>

@@ -39,7 +39,7 @@ export function FloatingWidgets() {
             exit={{ opacity: 0, scale: 0.8, y: 10 }}
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="grid h-10 w-10 place-items-center rounded-full bg-white border border-line text-navy shadow-lift hover:bg-offwhite hover:border-orange transition-all"
+            className="grid h-11 w-11 place-items-center rounded-full bg-slate-900/90 border border-white/20 text-white shadow-lift hover:bg-slate-800 hover:border-orange transition-all active:scale-95 backdrop-blur-md"
           >
             <ArrowUp size={16} />
           </motion.button>

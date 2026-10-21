@@ -31,20 +31,22 @@ export function DriverEarningsSection() {
   );
 
   return (
-    <section id="driver-partner" className="py-24 md:py-32 bg-white relative overflow-hidden">
+    <section id="driver-partner" className="py-24 md:py-32 bg-[#050C1A] text-white relative overflow-hidden">
       {/* Background glow */}
-      <div className="pointer-events-none absolute -left-20 top-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-orange/10 blur-3xl" />
-      <div className="pointer-events-none absolute -right-20 top-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-navy/10 blur-3xl" />
+      <div className="pointer-events-none absolute -left-20 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-orange/15 blur-3xl" />
+      <div className="pointer-events-none absolute -right-20 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-royal/20 blur-3xl" />
+      <div className="pointer-events-none absolute inset-0 bg-grid-cyber opacity-25" />
 
-      <div className="container-shifter">
+      <div className="container-shifter relative z-10">
         <ScrollReveal className="text-center max-w-2xl mx-auto">
-          <span className="text-xs font-bold tracking-[0.14em] text-orange uppercase">
-            DRIVER PARTNER OPPORTUNITY
-          </span>
-          <h2 className="mt-3 text-3xl font-black text-ink sm:text-[42px] leading-tight">
+          <div className="inline-flex items-center gap-2 rounded-full border border-orange/30 bg-orange/10 px-3.5 py-1 text-xs font-bold text-orange">
+            <span className="h-1.5 w-1.5 rounded-full bg-orange animate-pulse" />
+            <span>DRIVER PARTNER OPPORTUNITY</span>
+          </div>
+          <h2 className="mt-3 text-3xl font-black text-white sm:text-[42px] leading-tight">
             Attach Your Vehicle &amp; Earn With Shifter
           </h2>
-          <p className="mt-4 text-[15px] leading-relaxed text-muted">
+          <p className="mt-4 text-[15px] leading-relaxed text-slate-300">
             Be your own boss. Enjoy regular daily commercial bookings, 0% commission for your first 30 days, and daily direct bank payouts.
           </p>
         </ScrollReveal>
@@ -52,12 +54,12 @@ export function DriverEarningsSection() {
         <div className="mt-14 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Left Column: Interactive Earnings Calculator */}
           <ScrollReveal delay={0.1} className="lg:col-span-7">
-            <div className="rounded-3xl border border-line bg-[#F8FAFC] p-6 sm:p-9 shadow-lift">
-              <span className="text-xs font-bold uppercase tracking-wider text-muted block mb-3">
+            <div className="rounded-3xl border border-white/15 bg-slate-900/70 p-6 sm:p-9 shadow-lift backdrop-blur-md">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-3">
                 1. Select Your Vehicle Type
               </span>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                 {VEHICLE_CONFIGS.map((v) => {
                   const isSelected = v.id === selectedVehicleId;
                   return (
@@ -65,26 +67,26 @@ export function DriverEarningsSection() {
                       key={v.id}
                       type="button"
                       onClick={() => setSelectedVehicleId(v.id)}
-                      className={`flex flex-col items-center justify-center p-3 rounded-2xl border text-center transition-all ${
+                      className={`flex flex-col items-center justify-center p-3.5 rounded-2xl border text-center transition-all ${
                         isSelected
-                          ? 'border-orange bg-white text-navy shadow-soft ring-2 ring-orange/20 font-bold'
-                          : 'border-line bg-white/70 text-muted hover:bg-white'
+                          ? 'border-orange bg-gradient-to-b from-[#132347] to-[#0A1630] text-white shadow-glow-orange ring-1 ring-orange/50 font-bold'
+                          : 'border-white/10 bg-slate-950/60 text-slate-400 hover:border-slate-700 hover:text-white'
                       }`}
                     >
-                      <img src={v.image} alt={v.name} className="h-7 w-10 object-contain my-1" />
-                      <span className="text-xs font-bold text-ink leading-tight">{v.name}</span>
+                      <img src={v.image} alt={v.name} className="h-8 w-11 object-contain my-1" />
+                      <span className="text-xs font-bold text-white leading-tight">{v.name}</span>
                     </button>
                   );
                 })}
               </div>
 
               {/* Slider for trips per day */}
-              <div className="mt-8 rounded-2xl bg-white p-5 border border-line shadow-2xs">
+              <div className="mt-8 rounded-2xl bg-slate-950/80 p-5 border border-white/10 shadow-soft">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-ink uppercase tracking-wider">
+                  <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">
                     2. Estimated Trips Per Day
                   </span>
-                  <span className="text-lg font-black text-orange bg-orange/10 px-3 py-0.5 rounded-xl">
+                  <span className="text-lg font-black text-orange bg-orange/15 px-3 py-0.5 rounded-xl border border-orange/30">
                     {tripsPerDay} Trips / Day
                   </span>
                 </div>
@@ -99,7 +101,7 @@ export function DriverEarningsSection() {
                     onChange={(e) => setTripsPerDay(Number(e.target.value))}
                     className="w-full accent-orange cursor-pointer"
                   />
-                  <div className="flex justify-between text-[11px] text-muted font-medium mt-1">
+                  <div className="flex justify-between text-[11px] text-slate-400 font-medium mt-1">
                     <span>Part-time (2–3 trips)</span>
                     <span>Standard (5–6 trips)</span>
                     <span>Full-time (8–12 trips)</span>
@@ -108,24 +110,24 @@ export function DriverEarningsSection() {
               </div>
 
               {/* Earnings Result Readout */}
-              <div className="mt-6 rounded-2xl bg-gradient-to-br from-navy to-royal p-6 text-white shadow-lift">
+              <div className="mt-6 rounded-2xl bg-gradient-to-br from-[#0C1A38] via-[#09152E] to-[#040A18] p-6 text-white shadow-lift border border-white/15 glow-border-orange">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-white/70 block">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 block">
                       Estimated Monthly Income
                     </span>
                     <div className="flex items-baseline gap-2 mt-1">
                       <span className="text-3xl sm:text-4xl font-black text-white">
                         ₹{estimatedMonthlyEarnings.toLocaleString('en-IN')}
                       </span>
-                      <span className="text-xs text-white/70">/ month*</span>
+                      <span className="text-xs text-slate-400">/ month*</span>
                     </div>
-                    <span className="block text-[11px] text-white/60 mt-1">
+                    <span className="block text-[11px] text-slate-400 mt-1">
                       *Based on {tripsPerDay} trips/day for 26 working days. Fuel &amp; maintenance extra.
                     </span>
                   </div>
 
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 px-3 py-1.5 text-xs font-bold text-emerald-300 self-start sm:self-auto border border-emerald-500/30">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 px-3.5 py-1.5 text-xs font-bold text-emerald-300 self-start sm:self-auto border border-emerald-500/30">
                     <Zap size={14} /> 0% Commission (Month 1)
                   </span>
                 </div>
@@ -136,7 +138,7 @@ export function DriverEarningsSection() {
                   href="https://play.google.com/store/apps/details?id=com.shifter.driver"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-12 items-center justify-center gap-2 rounded-xl bg-orange px-4 text-xs sm:text-sm font-extrabold text-white shadow-soft hover:bg-orange-light transition-all active:scale-98"
+                  className="flex h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange to-orange-light px-4 text-xs sm:text-sm font-extrabold text-white shadow-glow-orange hover:brightness-110 transition-all active:scale-98"
                 >
                   <Smartphone size={16} />
                   <span>Download Driver App</span>
@@ -159,64 +161,64 @@ export function DriverEarningsSection() {
 
           {/* Right Column: Why Partner With Us */}
           <ScrollReveal delay={0.2} className="lg:col-span-5 space-y-4">
-            <div className="rounded-3xl border border-line bg-white p-7 shadow-soft">
+            <div className="rounded-3xl border border-white/15 bg-slate-900/70 p-7 shadow-lift backdrop-blur-md">
               <span className="text-xs font-bold uppercase tracking-wider text-orange block">
                 PARTNER BENEFITS
               </span>
-              <h3 className="mt-2 text-2xl font-black text-navy">Why Drivers Choose Shifter Online</h3>
+              <h3 className="mt-2 text-2xl font-black text-white">Why Drivers Choose Shifter Online</h3>
 
               <ul className="mt-6 space-y-4">
                 <li className="flex items-start gap-3">
-                  <span className="grid h-8 w-8 place-items-center rounded-xl bg-emerald-100 text-emerald-700 shrink-0 mt-0.5">
+                  <span className="grid h-8 w-8 place-items-center rounded-xl bg-emerald-500/20 text-emerald-400 shrink-0 mt-0.5 border border-emerald-500/30">
                     <CheckCircle2 size={16} />
                   </span>
                   <div>
-                    <h4 className="text-sm font-bold text-ink">Daily Direct Bank/UPI Payouts</h4>
-                    <p className="text-xs text-muted mt-0.5">
+                    <h4 className="text-sm font-bold text-white">Daily Direct Bank/UPI Payouts</h4>
+                    <p className="text-xs text-slate-300 mt-0.5">
                       Your trip earnings reach your bank account or UPI every evening without delays.
                     </p>
                   </div>
                 </li>
 
                 <li className="flex items-start gap-3">
-                  <span className="grid h-8 w-8 place-items-center rounded-xl bg-orange/15 text-orange shrink-0 mt-0.5">
+                  <span className="grid h-8 w-8 place-items-center rounded-xl bg-orange/20 text-orange shrink-0 mt-0.5 border border-orange/30">
                     <Zap size={16} />
                   </span>
                   <div>
-                    <h4 className="text-sm font-bold text-ink">0% Commission First 30 Days</h4>
-                    <p className="text-xs text-muted mt-0.5">
+                    <h4 className="text-sm font-bold text-white">0% Commission First 30 Days</h4>
+                    <p className="text-xs text-slate-300 mt-0.5">
                       Keep 100% of your trip fares for your entire first month of driving with Shifter.
                     </p>
                   </div>
                 </li>
 
                 <li className="flex items-start gap-3">
-                  <span className="grid h-8 w-8 place-items-center rounded-xl bg-royal/10 text-royal shrink-0 mt-0.5">
+                  <span className="grid h-8 w-8 place-items-center rounded-xl bg-royal/20 text-cyan-400 shrink-0 mt-0.5 border border-royal/30">
                     <ShieldCheck size={16} />
                   </span>
                   <div>
-                    <h4 className="text-sm font-bold text-ink">Flexible Working Hours</h4>
-                    <p className="text-xs text-muted mt-0.5">
+                    <h4 className="text-sm font-bold text-white">Flexible Working Hours</h4>
+                    <p className="text-xs text-slate-300 mt-0.5">
                       Go online when you want, choose your own shifts, and accept trips matching your route.
                     </p>
                   </div>
                 </li>
 
                 <li className="flex items-start gap-3">
-                  <span className="grid h-8 w-8 place-items-center rounded-xl bg-slate-100 text-slate-800 shrink-0 mt-0.5">
+                  <span className="grid h-8 w-8 place-items-center rounded-xl bg-white/10 text-white shrink-0 mt-0.5 border border-white/10">
                     <Truck size={16} />
                   </span>
                   <div>
-                    <h4 className="text-sm font-bold text-ink">Commercial Business Contracts</h4>
-                    <p className="text-xs text-muted mt-0.5">
+                    <h4 className="text-sm font-bold text-white">Commercial Business Contracts</h4>
+                    <p className="text-xs text-slate-300 mt-0.5">
                       Regular high-volume corporate and wholesale routes in Indore, Dewas &amp; Pithampur.
                     </p>
                   </div>
                 </li>
               </ul>
 
-              <div className="mt-6 border-t border-line pt-4 flex items-center justify-between text-xs text-muted">
-                <span className="font-semibold text-navy">Driver Support Helpline:</span>
+              <div className="mt-6 border-t border-white/10 pt-4 flex items-center justify-between text-xs text-slate-400">
+                <span className="font-semibold text-slate-300">Driver Support Helpline:</span>
                 <a href="tel:9109114515" className="font-bold text-orange hover:underline">
                   +91 9109114515
                 </a>

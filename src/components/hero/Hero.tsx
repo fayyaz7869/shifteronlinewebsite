@@ -1,101 +1,100 @@
 import { motion } from 'framer-motion';
-import { Smartphone, ShieldCheck, Zap, Star, MapPin, Truck, ChevronRight } from 'lucide-react';
+import { Smartphone, ShieldCheck, Zap, Star, MapPin, Truck, ChevronRight, Activity } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { HeroEstimator } from './HeroEstimator';
 
 export function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden pt-36 pb-20 md:pt-44 md:pb-28">
-      {/* Dynamic ambient gradients */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#EEF4FF] via-[#FAFCFF] to-white" />
-      <div className="absolute inset-0 -z-10 bg-grid-fade" />
-      
-      {/* Luminous colorful aurora background glows */}
-      <div className="pointer-events-none absolute -top-32 left-1/4 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-orange/20 to-amber-accent/15 blur-[120px] -z-10" />
-      <div className="pointer-events-none absolute top-1/4 -right-24 h-[550px] w-[550px] rounded-full bg-gradient-to-bl from-royal/15 via-cyan-accent/10 to-transparent blur-[130px] -z-10" />
+    <section id="home" className="relative overflow-hidden bg-[#040914] text-white pt-32 pb-24 md:pt-40 md:pb-32">
+      {/* High-tech ambient grid and glowing radial lights */}
+      <div className="absolute inset-0 bg-grid-cyber opacity-70 pointer-events-none" />
+      <div className="pointer-events-none absolute -top-40 left-1/4 h-[550px] w-[550px] rounded-full bg-orange/20 blur-[140px]" />
+      <div className="pointer-events-none absolute top-1/3 -right-20 h-[600px] w-[600px] rounded-full bg-royal/25 blur-[150px]" />
+      <div className="pointer-events-none absolute bottom-0 left-10 h-[400px] w-[400px] rounded-full bg-cyan-accent/10 blur-[130px]" />
 
-      <div className="container-shifter grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14">
+      <div className="container-shifter relative z-10 grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-14">
         {/* Left Column: Headline & Value Proposition */}
         <div>
-          {/* Animated Central India Badge */}
+          {/* Cyber Live Operating Badge */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-orange/20 bg-white/90 px-4 py-2 text-xs font-bold tracking-wide text-navy shadow-soft backdrop-blur-md"
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-orange/30 bg-orange/10 px-4 py-2 text-xs font-black tracking-wide text-orange shadow-[0_0_20px_rgba(255,84,18,0.2)] backdrop-blur-md"
           >
-            <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="tracking-wider text-navy font-extrabold">CENTRAL INDIA LOGISTICS</span>
-            <span className="text-line">·</span>
+            <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="tracking-wider uppercase text-white font-extrabold">CENTRAL INDIA DISPATCH</span>
+            <span className="text-white/20">|</span>
             <span className="text-orange font-black flex items-center gap-1">
               INDORE HQ <ChevronRight size={12} />
             </span>
           </motion.div>
 
+          {/* Hero Typography */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="text-balance text-[40px] font-black leading-[1.06] text-ink sm:text-[54px] lg:text-[62px]"
+            className="text-balance text-[42px] font-black leading-[1.05] tracking-tight sm:text-[56px] lg:text-[64px]"
           >
-            Moving Your World
+            Goods Mobility,
             <br />
-            <span className="gradient-text-orange">Forward, Faster.</span>
+            <span className="gradient-text-orange">Engineered for Speed.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-5 max-w-lg text-base sm:text-lg text-muted leading-relaxed"
+            className="mt-6 max-w-lg text-base sm:text-lg text-slate-300 leading-relaxed font-medium"
           >
-            India&apos;s modern on-demand goods transport platform connecting you with verified driver partners for bikes, 3-wheeler e-loaders, Tata Ace and pickup trucks across Central India.
+            Book mini-trucks, 3-wheeler e-loaders and bikes in seconds. Matched with 100% verified driver partners across Indore, Bhopal, Dewas, Ujjain and Pithampur in under 15 minutes.
           </motion.p>
 
-          {/* Value Badges with distinct colorful glow */}
+          {/* 4 Cyber Stat Badges */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 grid grid-cols-2 gap-3 text-xs font-bold text-navy max-w-md"
+            className="mt-8 grid grid-cols-2 gap-3 text-xs max-w-md"
           >
-            <div className="flex items-center gap-2.5 rounded-2xl bg-white/95 p-3 border border-line shadow-2xs backdrop-blur-sm transition-transform hover:-translate-y-0.5">
-              <span className="grid h-8 w-8 place-items-center rounded-xl bg-orange/15 text-orange shrink-0">
-                <Zap size={16} />
+            <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3 backdrop-blur-md shadow-soft hover:border-orange/40 transition-colors">
+              <span className="grid h-9 w-9 place-items-center rounded-xl bg-orange/20 text-orange shrink-0">
+                <Zap size={18} />
               </span>
-              <div className="min-w-0">
-                <span className="block leading-tight font-black text-ink">15-Min Pickup</span>
-                <span className="block text-[10px] text-muted">Nearest driver match</span>
+              <div>
+                <span className="block font-black text-white text-sm">~15 Mins</span>
+                <span className="block text-[11px] text-slate-400">Pickup Dispatch</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-2.5 rounded-2xl bg-white/95 p-3 border border-line shadow-2xs backdrop-blur-sm transition-transform hover:-translate-y-0.5">
-              <span className="grid h-8 w-8 place-items-center rounded-xl bg-emerald-100 text-emerald-700 shrink-0">
-                <ShieldCheck size={16} />
+            <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3 backdrop-blur-md shadow-soft hover:border-emerald-500/40 transition-colors">
+              <span className="grid h-9 w-9 place-items-center rounded-xl bg-emerald-500/20 text-emerald-400 shrink-0">
+                <ShieldCheck size={18} />
               </span>
-              <div className="min-w-0">
-                <span className="block leading-tight font-black text-ink">100% Verified</span>
-                <span className="block text-[10px] text-muted">Vetted DL &amp; Aadhaar</span>
+              <div>
+                <span className="block font-black text-white text-sm">100% Vetted</span>
+                <span className="block text-[11px] text-slate-400">Verified DL &amp; RC</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-2.5 rounded-2xl bg-white/95 p-3 border border-line shadow-2xs backdrop-blur-sm transition-transform hover:-translate-y-0.5">
-              <span className="grid h-8 w-8 place-items-center rounded-xl bg-royal/15 text-royal shrink-0">
-                <MapPin size={16} />
+            <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3 backdrop-blur-md shadow-soft hover:border-royal/40 transition-colors">
+              <span className="grid h-9 w-9 place-items-center rounded-xl bg-royal/20 text-sky-400 shrink-0">
+                <MapPin size={18} />
               </span>
-              <div className="min-w-0">
-                <span className="block leading-tight font-black text-ink">Live Telemetry</span>
-                <span className="block text-[10px] text-muted">Real-time GPS tracking</span>
+              <div>
+                <span className="block font-black text-white text-sm">Live GPS</span>
+                <span className="block text-[11px] text-slate-400">Turn-by-turn map</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-2.5 rounded-2xl bg-white/95 p-3 border border-line shadow-2xs backdrop-blur-sm transition-transform hover:-translate-y-0.5">
-              <span className="grid h-8 w-8 place-items-center rounded-xl bg-amber-100 text-amber-700 shrink-0">
-                <Star size={16} fill="currentColor" />
+            <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3 backdrop-blur-md shadow-soft hover:border-amber-400/40 transition-colors">
+              <span className="grid h-9 w-9 place-items-center rounded-xl bg-amber-400/20 text-amber-300 shrink-0">
+                <Star size={18} fill="currentColor" />
               </span>
-              <div className="min-w-0">
-                <span className="block leading-tight font-black text-ink">4.9★ Rating</span>
-                <span className="block text-[10px] text-muted">Central India users</span>
+              <div>
+                <span className="block font-black text-white text-sm">4.9 / 5</span>
+                <span className="block text-[11px] text-slate-400">2,500+ Trips</span>
               </div>
             </div>
           </motion.div>
@@ -105,7 +104,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
+            className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
           >
             <Button
               href="https://play.google.com/store/apps/details?id=com.shifter.online"
@@ -113,7 +112,7 @@ export function Hero() {
               rel="noopener noreferrer"
               size="lg"
               variant="primary"
-              className="shadow-glow-orange"
+              className="shadow-glow-orange font-black text-white"
             >
               <Smartphone size={18} />
               Download Customer App
@@ -123,38 +122,26 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               size="lg"
-              variant="secondary"
-              className="shadow-2xs"
+              variant="outline-light"
+              className="backdrop-blur-md hover:bg-white/15"
             >
-              <Truck size={18} className="text-royal" />
-              Attach Vehicle (Driver App) →
+              <Truck size={18} className="text-orange" />
+              Attach Vehicle (Earn ₹35k+) →
             </Button>
           </motion.div>
 
-          {/* Verified Business Trust Strip */}
+          {/* Active fleet ticker */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.65, delay: 0.35 }}
-            className="mt-7 flex items-center gap-3 text-xs text-muted"
+            className="mt-8 flex items-center gap-3 text-xs text-slate-400"
           >
-            <div className="flex -space-x-2 overflow-hidden">
-              <span className="inline-grid h-7 w-7 place-items-center rounded-full ring-2 ring-white bg-royal text-white text-[10px] font-black">
-                RK
-              </span>
-              <span className="inline-grid h-7 w-7 place-items-center rounded-full ring-2 ring-white bg-orange text-white text-[10px] font-black">
-                PS
-              </span>
-              <span className="inline-grid h-7 w-7 place-items-center rounded-full ring-2 ring-white bg-emerald-600 text-white text-[10px] font-black">
-                SP
-              </span>
-              <span className="inline-grid h-7 w-7 place-items-center rounded-full ring-2 ring-white bg-navy text-white text-[10px] font-black">
-                DP
-              </span>
-            </div>
-            <span>
-              Trusted daily by over <strong className="text-ink font-bold">1,000+ businesses &amp; households</strong> in Indore &amp; MP
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-emerald-400 font-bold border border-emerald-500/20">
+              <Activity size={12} className="animate-pulse" />
+              500+ Drivers Online
             </span>
+            <span>Covering Indore, Pithampur, Bhopal, Dewas &amp; Ujjain</span>
           </motion.div>
         </div>
 
