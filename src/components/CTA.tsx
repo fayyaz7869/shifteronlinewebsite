@@ -1,3 +1,4 @@
+import { Phone, MessageSquare, Smartphone, Zap } from 'lucide-react';
 import { ScrollReveal } from './ui/ScrollReveal';
 import { Button } from './ui/Button';
 
@@ -5,12 +6,15 @@ interface CTAProps {
   onGetStartedClick: () => void;
 }
 
+const WHATSAPP_URL = 'https://wa.me/919644423533?text=Hello%20Shifter%20Online,%20I%20have%20an%20inquiry';
+
 export function CTA({ onGetStartedClick }: CTAProps) {
   return (
-    <section id="cta" className="relative overflow-hidden bg-navy py-24 md:py-28">
-      <div className="absolute inset-0 bg-grid-fade opacity-30" />
-      <div className="absolute -top-24 right-0 h-72 w-72 rounded-full bg-orange/10 blur-3xl" />
-      <div className="absolute -bottom-16 left-0 h-64 w-64 rounded-full bg-royal/20 blur-3xl" />
+    <section id="cta" className="relative overflow-hidden bg-gradient-to-br from-navy via-[#0A1F4D] to-[#030919] py-24 md:py-28 text-white">
+      {/* Background glow orbs */}
+      <div className="absolute inset-0 bg-grid-fade opacity-20" />
+      <div className="absolute -top-24 right-0 h-80 w-80 rounded-full bg-orange/20 blur-3xl" />
+      <div className="absolute -bottom-16 left-0 h-80 w-80 rounded-full bg-royal/30 blur-3xl" />
 
       <svg
         className="pointer-events-none absolute inset-x-0 top-1/2 hidden w-full -translate-y-1/2 opacity-25 md:block"
@@ -21,28 +25,55 @@ export function CTA({ onGetStartedClick }: CTAProps) {
       >
         <path
           d="M0 80 C 200 20, 400 120, 600 60 S 1000 20, 1200 70"
-          stroke="#FF5A1F"
-          strokeWidth="2"
+          stroke="#FF5412"
+          strokeWidth="2.5"
           strokeDasharray="2 14"
           strokeLinecap="round"
           fill="none"
         />
       </svg>
 
-      <ScrollReveal className="container-shifter relative text-center">
-        <h2 className="mx-auto max-w-2xl text-3xl font-extrabold leading-tight text-white sm:text-[42px]">
-          Ready to Move Smarter?
+      <ScrollReveal className="container-shifter relative text-center z-10">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3.5 py-1 text-xs font-bold text-orange backdrop-blur-sm border border-white/10 mb-4">
+          <Zap size={13} /> 15-Min Guaranteed Pickup Dispatch
+        </span>
+
+        <h2 className="mx-auto max-w-2xl text-3xl font-black leading-tight text-white sm:text-[44px]">
+          Ready to Move Smarter in Central India?
         </h2>
-        <p className="mx-auto mt-4 max-w-lg text-[15px] text-white/70 sm:text-lg">
-          Experience faster, safer and smarter logistics with Shifter Online.
+        <p className="mx-auto mt-4 max-w-lg text-sm sm:text-base text-white/70 leading-relaxed">
+          Experience faster, safer and smarter goods transport with verified driver partners, transparent pricing, and live GPS tracking.
         </p>
+
+        {/* Action Buttons */}
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Button variant="primary" size="lg" onClick={onGetStartedClick}>
-            Get Started →
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={onGetStartedClick}
+            className="shadow-glow-orange w-full sm:w-auto"
+          >
+            <Smartphone size={18} />
+            Get Started on Web
           </Button>
-          <Button href="mailto:support@shifteronline.com" variant="outline-light" size="lg">
-            Contact Us
-          </Button>
+
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex h-14 items-center justify-center gap-2 rounded-2xl bg-[#25D366] px-6 text-sm font-bold text-white shadow-lift hover:bg-[#1EBE5D] transition-all w-full sm:w-auto active:scale-98"
+          >
+            <MessageSquare size={17} className="fill-white" />
+            <span>WhatsApp Dispatch</span>
+          </a>
+
+          <a
+            href="tel:9109114515"
+            className="flex h-14 items-center justify-center gap-2 rounded-2xl bg-white/10 px-6 text-sm font-bold text-white hover:bg-white/20 transition-all border border-white/20 w-full sm:w-auto active:scale-98"
+          >
+            <Phone size={16} className="text-orange" />
+            <span>Call 9109114515</span>
+          </a>
         </div>
       </ScrollReveal>
     </section>
