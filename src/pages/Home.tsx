@@ -5,6 +5,8 @@ import { Services } from '../components/services/Services';
 import { WhyChooseUs } from '../components/WhyChooseUs';
 import { HowItWorks } from '../components/HowItWorks';
 import { TrackingPreview } from '../components/TrackingPreview';
+import { CoverageSection } from '../components/CoverageSection';
+import { DriverEarningsSection } from '../components/DriverEarningsSection';
 import { CustomerReviews } from '../components/CustomerReviews';
 import { AppSection } from '../components/AppSection';
 import { FAQSection } from '../components/FAQSection';
@@ -22,6 +24,8 @@ export function Home() {
       <WhyChooseUs />
       <HowItWorks />
       <TrackingPreview />
+      <CoverageSection />
+      <DriverEarningsSection />
       <CustomerReviews />
       <AppSection />
       <FAQSection />

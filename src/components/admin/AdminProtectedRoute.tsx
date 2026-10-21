@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from 'react-router-dom';
-import { useAdminAuth } from '../../context/AdminAuthContext';
+import { useAdminAuth } from '../../context/useAdminAuth';
 import { Loader2 } from 'lucide-react';
 import type { ReactNode } from 'react';
 

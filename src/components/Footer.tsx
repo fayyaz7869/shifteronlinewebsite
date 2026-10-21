@@ -6,18 +6,21 @@ const columns = [
     title: 'Company',
     links: [
       { label: 'About Us', href: '#why-us' },
-      { label: 'Services', href: '#services' },
-      { label: 'Contact Us', href: 'mailto:support@shifteronline.com' },
-      { label: 'Helpline', href: 'tel:9109114515' },
+      { label: 'Services & Fleet', href: '#services' },
+      { label: 'Live GPS Tracking', href: '#tracking' },
+      { label: 'Operating Hubs', href: '#coverage' },
+      { label: 'Contact & Support', href: '#cta' },
     ],
   },
   {
-    title: 'Services',
+    title: 'Fleet & Driver',
     links: [
-      { label: 'Bike Goods Delivery', href: '#services' },
-      { label: 'Three-Wheeler Transport', href: '#services' },
-      { label: 'Tata Ace & Mini Truck', href: '#services' },
-      { label: 'Business & Commercial Logistics', href: '#services' },
+      { label: '2-Wheeler Express', href: '#services' },
+      { label: '3-Wheeler E-Loader', href: '#services' },
+      { label: 'Tata Ace Mini Truck', href: '#services' },
+      { label: 'Pickup 8ft / Bolero', href: '#services' },
+      { label: 'Driver Partner (Earn ₹35k+)', href: '#driver-partner' },
+      { label: 'Download Driver App', href: 'https://play.google.com/store/apps/details?id=com.shifter.driver' },
     ],
   },
   {
@@ -49,20 +52,22 @@ export function Footer() {
               alt="Shifter Online"
               className="h-9 w-9 object-contain"
             />
-            <span className="text-[19px] font-extrabold tracking-tight text-white">
+            <span className="text-[19px] font-black tracking-tight text-white">
               Shifter <span className="text-orange">Online</span>
             </span>
           </span>
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/55">
+          <p className="mt-4 max-w-xs text-xs sm:text-sm leading-relaxed text-white/60">
             Shifter Online, by Movigo Logistics Aggregator Pvt. Ltd., is India&apos;s
             technology-driven logistics platform — connecting customers with verified driver
-            partners for fast, affordable and transparent goods transportation.
+            partners for fast, affordable and transparent goods transportation in Central India.
           </p>
           <div className="mt-6 flex gap-3">
             {socials.map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
                 href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={label}
                 className="grid h-9 w-9 place-items-center rounded-full bg-white/10 text-white transition-colors hover:bg-orange"
               >
@@ -74,11 +79,11 @@ export function Footer() {
 
         {columns.map((col) => (
           <div key={col.title}>
-            <h4 className="text-sm font-bold text-white">{col.title}</h4>
-            <ul className="mt-4 flex flex-col gap-3">
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider">{col.title}</h4>
+            <ul className="mt-4 flex flex-col gap-2.5">
               {col.links.map((link) => (
                 <li key={link.label}>
-                  <SmartLink href={link.href} className="text-sm text-white/55 transition-colors hover:text-white">
+                  <SmartLink href={link.href} className="text-xs sm:text-sm text-white/60 transition-colors hover:text-white">
                     {link.label}
                   </SmartLink>
                 </li>
@@ -90,15 +95,19 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-shifter flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
-          <p className="text-xs text-white/45">
+          <p className="text-xs text-white/50">
             © {new Date().getFullYear()} Movigo Logistics Aggregator Pvt. Ltd. All rights reserved.
           </p>
-          <div className="flex items-center gap-4 text-xs text-white/45">
-            <SmartLink href="/privacy-policy.html" className="hover:text-white">
+          <div className="flex flex-wrap items-center gap-4 text-xs text-white/50">
+            <SmartLink href="/privacy-policy.html" className="hover:text-white transition-colors">
               Privacy Policy
             </SmartLink>
-            <SmartLink href="/terms.html" className="hover:text-white">
-              Terms & Conditions
+            <SmartLink href="/terms.html" className="hover:text-white transition-colors">
+              Terms &amp; Conditions
+            </SmartLink>
+            <span className="text-white/20">|</span>
+            <SmartLink href="/admin/login" className="hover:text-white transition-colors text-white/30">
+              Staff Portal
             </SmartLink>
             <span className="text-white/20">|</span>
             <span>Made with ❤️ in Indore</span>

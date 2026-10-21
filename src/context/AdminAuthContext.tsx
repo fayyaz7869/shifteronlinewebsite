@@ -1,15 +1,6 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { adminApi, ADMIN_TOKEN_KEY, type AdminUser } from '../lib/adminApi';
-
-interface AdminAuthContextValue {
-  admin: AdminUser | null;
-  isLoading: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  logout: () => void;
-  isAuthenticated: boolean;
-}
-
-const AdminAuthContext = createContext<AdminAuthContextValue | undefined>(undefined);
+import { AdminAuthContext } from './adminAuthContextDef';
 
 export function AdminAuthProvider({ children }: { children: ReactNode }) {
   const [admin, setAdmin] = useState<AdminUser | null>(null);
@@ -55,10 +46,4 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
   );
 
   return <AdminAuthContext.Provider value={value}>{children}</AdminAuthContext.Provider>;
-}
-
-export function useAdminAuth() {
-  const ctx = useContext(AdminAuthContext);
-  if (!ctx) throw new Error('useAdminAuth must be used within an AdminAuthProvider');
-  return ctx;
 }

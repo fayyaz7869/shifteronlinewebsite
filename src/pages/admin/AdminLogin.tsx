@@ -2,7 +2,7 @@ import { useState, useEffect, type FormEvent } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Lock, Mail, Eye, EyeOff, Loader2, ArrowLeft, KeyRound } from 'lucide-react';
-import { useAdminAuth } from '../../context/AdminAuthContext';
+import { useAdminAuth } from '../../context/useAdminAuth';
 import { AdminApiError } from '../../lib/adminApi';
 
 export function AdminLogin() {

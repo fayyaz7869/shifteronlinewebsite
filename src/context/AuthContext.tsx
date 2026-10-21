@@ -1,16 +1,6 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { api, type AuthUser, type SignupPayload } from '../lib/api';
-
-interface AuthContextValue {
-  user: AuthUser | null;
-  isLoading: boolean;
-  login: (identifier: string, password: string) => Promise<void>;
-  signup: (payload: SignupPayload) => Promise<void>;
-  logout: () => void;
-}
-
-const AuthContext = createContext<AuthContextValue | undefined>(undefined);
-const TOKEN_KEY = 'shifter_token';
+import { AuthContext, TOKEN_KEY } from './authContextDef';
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
@@ -50,10 +40,4 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const value = useMemo(() => ({ user, isLoading, login, signup, logout }), [user, isLoading, login, signup, logout]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-}
-
-export function useAuth() {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error('useAuth must be used within an AuthProvider');
-  return ctx;
 }

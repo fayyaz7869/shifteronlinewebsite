@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 
 const userSchema = new Schema(
   {

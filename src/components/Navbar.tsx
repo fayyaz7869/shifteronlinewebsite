@@ -8,6 +8,7 @@ import {
   Headphones,
   Home,
   LogOut,
+  MapPin,
   Menu,
   MessageSquare,
   Navigation,
@@ -16,11 +17,12 @@ import {
   ShieldCheck,
   Smartphone,
   Truck,
+  Users,
   X,
 } from 'lucide-react';
 import { Button } from './ui/Button';
 import { SmartLink } from './ui/SmartLink';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/useAuth';
 
 const USER_APP_URL = 'https://play.google.com/store/apps/details?id=com.shifter.online';
 const DRIVER_APP_URL = 'https://play.google.com/store/apps/details?id=com.shifter.driver';
@@ -28,29 +30,32 @@ const WHATSAPP_URL = 'https://wa.me/919644423533?text=Hello%20Shifter%20Online,%
 
 const desktopNavLinks = [
   { label: 'Home', href: '#home' },
+  { label: 'Services & Fleet', href: '#services', hasDropdown: true },
+  { label: 'Live Tracking', href: '#tracking' },
+  { label: 'Operating Hubs', href: '#coverage' },
+  { label: 'Driver Partner', href: '#driver-partner' },
   { label: 'About Us', href: '#why-us' },
-  { label: 'Services', href: '#services', hasDropdown: true },
-  { label: 'App', href: '#app' },
   { label: 'Contact', href: '#cta' },
 ];
 
 const mobileNavLinks = [
   { label: 'Home', href: '#home', icon: Home, desc: 'Moving Your World Forward' },
-  { label: 'Services & Fleet', href: '#services', icon: Truck, desc: 'Bike, 3-Wheeler, Mini-Truck, Pickup' },
+  { label: 'Services & Fleet', href: '#services', icon: Truck, desc: 'Bike, 3-Wheeler, Tata Ace, Pickup' },
+  { label: 'Live Tracking', href: '#tracking', icon: Navigation, desc: 'Real-time GPS visibility' },
+  { label: 'Operating Hubs & Cities', href: '#coverage', icon: MapPin, desc: 'Indore, Pithampur, Bhopal, Dewas, Ujjain' },
+  { label: 'Driver Partner (Earn ₹35k+)', href: '#driver-partner', icon: Users, desc: '0% Commission month 1, daily payouts' },
   { label: 'Why Choose Us', href: '#why-us', icon: ShieldCheck, desc: 'Verified partners & transparent pricing' },
   { label: 'How It Works', href: '#how-it-works', icon: CheckCircle2, desc: '4 simple steps to delivery' },
-  { label: 'Live Tracking', href: '#tracking', icon: Navigation, desc: 'Real-time GPS visibility' },
   { label: 'Mobile Apps', href: '#app', icon: Smartphone, desc: 'Customer & Driver apps' },
   { label: 'Contact & Support', href: '#cta', icon: Headphones, desc: '24/7 Helpline & Support' },
 ];
 
 const serviceLinks = [
-  { label: 'Bike Goods Delivery', href: '#services' },
-  { label: 'Three-Wheeler Transport', href: '#services' },
-  { label: 'Tata Ace & Mini Truck', href: '#services' },
-  { label: 'Pickup Vehicle Transport', href: '#services' },
-  { label: 'Household Goods Transport', href: '#services' },
-  { label: 'Commercial & Freight Logistics', href: '#services' },
+  { label: '2-Wheeler Parcel Delivery', desc: 'Up to 20 kg · Urgent docs & food', href: '#services' },
+  { label: '3-Wheeler E-Loader', desc: 'Up to 500 kg · Mid-sized cargo', href: '#services' },
+  { label: 'Tata Ace (Chhota Hathi)', desc: 'Up to 750 kg · Home shifting & retail', href: '#services' },
+  { label: 'Pickup 8ft / Bolero', desc: 'Up to 1500 kg · Heavy wholesale cargo', href: '#services' },
+  { label: 'Commercial & Freight Logistics', desc: 'Custom enterprise dispatch routes', href: '#services' },
 ];
 
 interface NavbarProps {
@@ -118,25 +123,53 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
+      <header className="fixed inset-x-0 top-0 z-50 px-3 sm:px-4 pt-2 sm:pt-3">
+        {/* Top Mini Operational Bar */}
+        <div className="mx-auto max-w-[1400px] mb-2 hidden md:flex items-center justify-between px-3 text-[11px] font-semibold text-muted">
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2 py-0.5 text-emerald-700 font-bold">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              15-Min Guaranteed Pickup Dispatch
+            </span>
+            <span>· Central India: Indore, Pithampur, Bhopal, Dewas, Ujjain</span>
+          </div>
+          <div className="flex items-center gap-4 text-ink/75">
+            <a href="tel:9109114515" className="hover:text-orange transition-colors flex items-center gap-1 font-bold">
+              <Phone size={11} className="text-orange" />
+              <span>Helpline: +91 9109114515</span>
+            </a>
+            <span className="text-line">|</span>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-emerald-600 transition-colors flex items-center gap-1 font-bold text-emerald-700"
+            >
+              <MessageSquare size={11} />
+              <span>WhatsApp: 9644423533</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Main Navbar Card */}
         <div
           className={`container-shifter !max-w-[1400px] transition-all duration-300 ${
             scrolled ? 'shadow-nav bg-white/95' : 'shadow-soft bg-white/90'
           } rounded-2xl border border-line backdrop-blur-md`}
         >
-          <nav className="flex h-[72px] items-center justify-between px-4 md:px-6">
+          <nav className="flex h-[68px] sm:h-[72px] items-center justify-between px-3 sm:px-6">
             <SmartLink href="/" className="inline-flex shrink-0 items-center gap-2.5">
               <img
                 src="/shifter-online-icon.png"
                 alt="Shifter Online"
                 className="h-9 w-9 object-contain"
               />
-              <span className="text-[19px] font-extrabold tracking-tight text-ink whitespace-nowrap">
+              <span className="text-[18px] sm:text-[19px] font-black tracking-tight text-ink whitespace-nowrap">
                 <span className="text-orange">Shifter</span> <span className="text-navy">Online</span>
               </span>
             </SmartLink>
 
-            {/* Desktop Navigation Links - Clean 5 single-line tabs */}
+            {/* Desktop Navigation Links */}
             <ul className="hidden lg:flex items-center gap-1 xl:gap-2">
               {desktopNavLinks.map((link) => (
                 <li
@@ -148,12 +181,13 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                   <a
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="group flex items-center gap-1 rounded-lg px-3.5 py-2 text-[15px] font-medium text-ink/80 hover:text-navy transition-colors whitespace-nowrap"
+                    className="group flex items-center gap-1 rounded-xl px-3 py-2 text-[14px] font-bold text-ink/80 hover:text-navy hover:bg-offwhite transition-all whitespace-nowrap"
                   >
                     {link.label}
                     {link.hasDropdown && <ChevronDown size={14} className="opacity-60" />}
-                    <span className="pointer-events-none absolute inset-x-3.5 -bottom-0.5 h-[2px] scale-x-0 bg-orange transition-transform duration-200 group-hover:scale-x-100" />
+                    <span className="pointer-events-none absolute inset-x-3 -bottom-0.5 h-[2px] scale-x-0 bg-orange transition-transform duration-200 group-hover:scale-x-100" />
                   </a>
+
                   {link.hasDropdown && (
                     <AnimatePresence>
                       {servicesOpen && (
@@ -162,7 +196,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 8 }}
                           transition={{ duration: 0.15 }}
-                          className="absolute left-0 top-full w-64 rounded-xl border border-line bg-white p-2 shadow-card"
+                          className="absolute left-0 top-full w-72 rounded-2xl border border-line bg-white p-2.5 shadow-card z-50"
                         >
                           {serviceLinks.map((s) => (
                             <a
@@ -172,9 +206,12 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                                 setServicesOpen(false);
                                 handleNavClick(e, s.href);
                               }}
-                              className="block rounded-lg px-3 py-2 text-sm font-medium text-ink/80 hover:bg-offwhite hover:text-navy"
+                              className="block rounded-xl px-3 py-2 text-left hover:bg-offwhite transition-colors group"
                             >
-                              {s.label}
+                              <span className="block text-xs font-bold text-navy group-hover:text-orange">
+                                {s.label}
+                              </span>
+                              <span className="block text-[11px] text-muted">{s.desc}</span>
                             </a>
                           ))}
                         </motion.div>
@@ -187,38 +224,32 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
 
             {/* Desktop CTA & Contact */}
             <div className="hidden lg:flex items-center gap-2.5 shrink-0 whitespace-nowrap">
-              <a
-                href="tel:9109114515"
-                className="hidden xl:inline-flex items-center gap-1.5 text-xs font-extrabold text-navy hover:text-orange transition-colors bg-offwhite px-3 py-2 rounded-xl border border-line shadow-2xs whitespace-nowrap shrink-0"
-              >
-                <Phone size={13} className="text-orange" />
-                <span>+91 9109114515</span>
-              </a>
               <Button
                 variant="secondary"
                 size="md"
                 href={USER_APP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="!h-10 !px-4 text-sm whitespace-nowrap shrink-0"
+                className="!h-10 !px-4 text-xs font-bold whitespace-nowrap shrink-0 shadow-2xs"
               >
-                <Package size={15} />
-                Place Order
+                <Package size={14} className="text-orange" />
+                Book Delivery
               </Button>
+
               {!isLoading && user ? (
                 <>
-                  <span className="text-sm font-semibold text-ink/80 whitespace-nowrap">Hi, {user.name.split(' ')[0]}</span>
-                  <Button variant="secondary" size="md" onClick={logout} className="!h-10 !px-4 text-sm whitespace-nowrap shrink-0">
-                    <LogOut size={15} />
+                  <span className="text-xs font-bold text-ink/80 whitespace-nowrap">Hi, {user.name.split(' ')[0]}</span>
+                  <Button variant="secondary" size="md" onClick={logout} className="!h-10 !px-3 text-xs whitespace-nowrap shrink-0">
+                    <LogOut size={14} />
                     Log out
                   </Button>
                 </>
               ) : (
                 <>
-                  <Button variant="secondary" size="md" onClick={onLoginClick} className="!h-10 !px-4 text-sm whitespace-nowrap shrink-0">
+                  <Button variant="secondary" size="md" onClick={onLoginClick} className="!h-10 !px-3.5 text-xs font-bold whitespace-nowrap shrink-0">
                     Login
                   </Button>
-                  <Button variant="primary" size="md" onClick={onGetStartedClick} className="!h-10 !px-4 text-sm whitespace-nowrap shrink-0">
+                  <Button variant="primary" size="md" onClick={onGetStartedClick} className="!h-10 !px-4 text-xs font-bold whitespace-nowrap shrink-0 shadow-soft">
                     Get Started →
                   </Button>
                 </>
@@ -231,9 +262,9 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
               aria-label="Toggle navigation menu"
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((v) => !v)}
-              className="grid h-11 w-11 place-items-center rounded-xl bg-offwhite text-navy transition-colors hover:bg-line active:scale-95 lg:hidden"
+              className="grid h-10 w-10 place-items-center rounded-xl bg-offwhite text-navy transition-colors hover:bg-line active:scale-95 lg:hidden"
             >
-              {mobileOpen ? <X size={22} className="text-orange" /> : <Menu size={22} />}
+              {mobileOpen ? <X size={20} className="text-orange" /> : <Menu size={20} />}
             </button>
           </nav>
         </div>
@@ -278,15 +309,15 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                     alt="Shifter Online"
                     className="h-8 w-8 object-contain"
                   />
-                  <span className="text-[17px] font-extrabold tracking-tight text-ink">
+                  <span className="text-[17px] font-black tracking-tight text-ink">
                     <span className="text-orange">Shifter</span> <span className="text-navy">Online</span>
                   </span>
                 </a>
 
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    24/7 Active
+                    Central India Hub
                   </span>
                   <button
                     type="button"
@@ -365,7 +396,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                       <span className="text-[10px] font-semibold uppercase tracking-wider text-white/70">Customer App</span>
                       <Smartphone size={14} className="text-orange" />
                     </div>
-                    <span className="mt-1 text-xs font-extrabold text-white">Get Customer App</span>
+                    <span className="mt-1 text-xs font-black text-white">Get Customer App</span>
                     <span className="text-[10px] text-white/60">Google Play Store →</span>
                   </a>
 
@@ -379,8 +410,8 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                       <span className="text-[10px] font-semibold uppercase tracking-wider text-orange">Driver App</span>
                       <Truck size={14} className="text-orange" />
                     </div>
-                    <span className="mt-1 text-xs font-extrabold text-navy">Partner Program</span>
-                    <span className="text-[10px] text-muted">Attach Vehicle →</span>
+                    <span className="mt-1 text-xs font-black text-navy">Partner Program</span>
+                    <span className="text-[10px] text-muted">Earn ₹35,000+/mo →</span>
                   </a>
                 </div>
 
@@ -417,7 +448,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                           setMobileOpen(false);
                           onLoginClick();
                         }}
-                        className="w-full !h-11 !text-sm"
+                        className="w-full !h-11 !text-sm font-bold"
                       >
                         Login
                       </Button>
@@ -427,7 +458,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                           setMobileOpen(false);
                           onGetStartedClick();
                         }}
-                        className="w-full !h-11 !text-sm border-royal text-royal hover:bg-royal/5"
+                        className="w-full !h-11 !text-sm font-bold border-royal text-royal hover:bg-royal/5"
                       >
                         Get Started →
                       </Button>

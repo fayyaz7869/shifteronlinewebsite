@@ -24,7 +24,7 @@ import {
   Loader2,
   Check,
 } from 'lucide-react';
-import { useAdminAuth } from '../../context/AdminAuthContext';
+import { useAdminAuth } from '../../context/useAdminAuth';
 import {
   adminApi,
   AdminApiError,

@@ -4,6 +4,7 @@ import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { AuthModal, type AuthMode } from './auth/AuthModal';
 import { MobileQuickBar } from './ui/MobileQuickBar';
+import { FloatingWidgets } from './ui/FloatingWidgets';
 
 export interface LayoutContext {
   openLogin: () => void;
@@ -26,6 +27,9 @@ export function Layout() {
 
       {/* Floating 1-tap mobile action bar for Call, WhatsApp and Booking */}
       <MobileQuickBar />
+
+      {/* Floating WhatsApp Action Pill & Scroll to top */}
+      <FloatingWidgets />
 
       <AuthModal mode={authMode} onClose={() => setAuthMode(null)} onSwitchMode={setAuthMode} />
     </div>

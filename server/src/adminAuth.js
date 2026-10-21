@@ -16,7 +16,7 @@ export function verifyAdminToken(req, res, next) {
 
     req.admin = payload;
     next();
-  } catch (err) {
+  } catch {
     return res.status(401).json({ message: 'Session expired or invalid token. Please log in again.' });
   }
 }

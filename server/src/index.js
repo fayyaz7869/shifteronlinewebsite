@@ -8,8 +8,13 @@ import { geocodeRouter } from './geocode.js';
 import { connectDB, disconnectDB } from './db.js';
 
 if (!process.env.JWT_SECRET) {
-  console.error('Missing required environment variable JWT_SECRET. Set it in server/.env — see server/.env.example.');
-  process.exit(1);
+  if (process.env.NODE_ENV === 'production') {
+    console.error('Missing required environment variable JWT_SECRET. Set it in server/.env — see server/.env.example.');
+    process.exit(1);
+  } else {
+    console.warn('[NOTICE] JWT_SECRET not found in server/.env. Using development fallback secret.');
+    process.env.JWT_SECRET = 'shifter_online_development_fallback_jwt_secret_key_2026';
+  }
 }
 
 const app = express();
