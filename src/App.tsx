@@ -1,8 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { AdminAuthProvider } from './context/AdminAuthContext';
+import { SiteMediaProvider } from './context/SiteMediaContext';
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
+import { FleetDetailPage } from './pages/FleetDetailPage';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsConditions } from './pages/TermsConditions';
 import { AdminLogin } from './pages/admin/AdminLogin';
@@ -13,11 +15,14 @@ function App() {
   return (
     <AdminAuthProvider>
       <AuthProvider>
-        <BrowserRouter>
-          <Routes>
+        <SiteMediaProvider>
+          <BrowserRouter>
+            <Routes>
             {/* Public Website Routes */}
             <Route element={<Layout />}>
               <Route path="/" element={<Home />} />
+              <Route path="/fleet/:vehicleId" element={<FleetDetailPage />} />
+              <Route path="/services/:vehicleId" element={<FleetDetailPage />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/privacy.html" element={<PrivacyPolicy />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -40,6 +45,7 @@ function App() {
             <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
           </Routes>
         </BrowserRouter>
+        </SiteMediaProvider>
       </AuthProvider>
     </AdminAuthProvider>
   );

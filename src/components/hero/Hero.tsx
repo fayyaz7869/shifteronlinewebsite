@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Smartphone, ShieldCheck, Zap, Star, MapPin, Truck, ChevronRight, Activity, MessageSquare, Phone } from 'lucide-react';
 import { Button } from '../ui/Button';
+import { useSiteMedia } from '../../context/useSiteMedia';
 
 const INDORE_HUBS = [
   'Rajwada',
@@ -16,6 +17,8 @@ const WHATSAPP_BOOKING_URL =
   'https://wa.me/919644423533?text=Hello%20Shifter%20Online%20Indore!%20%F0%9F%9A%9A%0A%0AI%20need%20to%20book%20a%20vehicle%20for%20delivery%20in%20Indore%2FCentral%20India.%0APlease%20assist%20me%20with%20instant%20dispatch.';
 
 export function Hero() {
+  const { getMediaUrl } = useSiteMedia();
+  const rajwadaBannerImg = getMediaUrl('rajwada_banner', '/rajwada-shifter-banner.jpg');
   return (
     <section id="home" className="relative overflow-hidden bg-gradient-to-b from-[#F2F6FD] via-white to-slate-50/60 text-slate-900 pt-32 pb-20 md:pt-40 md:pb-28">
       {/* Background ambient lighting and subtle city pattern */}
@@ -199,7 +202,7 @@ export function Hero() {
             {/* Rajwada Poster Image Container */}
             <div className="relative overflow-hidden rounded-2xl aspect-[4/3] bg-slate-100 border border-slate-200">
               <img
-                src="/rajwada-shifter-banner.jpg"
+                src={rajwadaBannerImg}
                 alt="Shifter Online at Rajwada Palace Indore"
                 className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 loading="eager"

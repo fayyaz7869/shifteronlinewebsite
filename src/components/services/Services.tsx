@@ -21,36 +21,42 @@ const services = [
     title: 'Bike Goods Delivery',
     description: 'Quick delivery for small parcels and urgent goods across the city.',
     accent: 'orange' as const,
+    to: '/fleet/bike',
   },
   {
     icon: CarTaxiFront,
     title: 'Three-Wheeler Transport',
     description: 'Affordable three-wheeler transport for mid-sized loads and local moves.',
     accent: 'navy' as const,
+    to: '/fleet/three-wheeler',
   },
   {
     icon: Truck,
     title: 'Tata Ace & Mini Truck',
     description: 'Reliable Tata Ace and mini trucks for larger commercial shipments.',
     accent: 'orange' as const,
+    to: '/fleet/tata-ace',
   },
   {
     icon: TruckElectric,
     title: 'Pickup Vehicle Transport',
     description: 'On-demand pickup vehicles for bulkier household and business loads.',
     accent: 'navy' as const,
+    to: '/fleet/pickup',
   },
   {
     icon: Home,
     title: 'Household Goods Transport',
     description: 'Careful, secure transport for home shifting and personal belongings.',
     accent: 'orange' as const,
+    to: '/fleet/house-shifting',
   },
   {
     icon: Building2,
     title: 'Business & Commercial Logistics',
     description: 'End-to-end logistics support for retailers, wholesalers and enterprises.',
     accent: 'navy' as const,
+    to: '/fleet/commercial-logistics',
   },
 ];
 

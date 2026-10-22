@@ -1,5 +1,6 @@
 import { Factory, Home, Store, Coffee, Truck, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { ScrollReveal } from './ui/ScrollReveal';
+import { useSiteMedia } from '../context/useSiteMedia';
 
 const INDORE_LANDMARKS = [
   {
@@ -58,6 +59,8 @@ const WHATSAPP_INDORE_BOOKING =
   'https://wa.me/919644423533?text=Hello%20Shifter%20Online!%20%F0%9F%9A%9A%0A%0AI%20need%20a%20delivery%20vehicle%20in%20Indore.%20Please%20connect%20me%20with%20dispatch.';
 
 export function IndoreLandmarksSection() {
+  const { getMediaUrl } = useSiteMedia();
+  const rajwadaBannerImg = getMediaUrl('rajwada_banner', '/rajwada-shifter-banner.jpg');
   return (
     <section className="py-20 md:py-28 bg-white text-slate-900 border-b border-slate-200/80 relative overflow-hidden">
       {/* Background soft ambient glows */}
@@ -131,7 +134,7 @@ export function IndoreLandmarksSection() {
               <div className="lg:col-span-5">
                 <div className="relative overflow-hidden rounded-2xl border-2 border-white/20 shadow-lift aspect-[4/3]">
                   <img
-                    src="/rajwada-shifter-banner.jpg"
+                    src={rajwadaBannerImg}
                     alt="Rajwada Palace with Shifter Online Banner"
                     className="h-full w-full object-cover"
                     loading="lazy"

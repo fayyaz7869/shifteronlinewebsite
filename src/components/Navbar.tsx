@@ -51,11 +51,12 @@ const mobileNavLinks = [
 ];
 
 const serviceLinks = [
-  { label: '2-Wheeler Parcel Delivery', desc: 'Up to 20 kg · Urgent docs & food', href: '#services' },
-  { label: '3-Wheeler E-Loader', desc: 'Up to 500 kg · Mid-sized cargo', href: '#services' },
-  { label: 'Tata Ace (Chhota Hathi)', desc: 'Up to 750 kg · Home shifting & retail', href: '#services' },
-  { label: 'Pickup 8ft / Bolero', desc: 'Up to 1500 kg · Heavy wholesale cargo', href: '#services' },
-  { label: 'Commercial & Freight Logistics', desc: 'Custom enterprise dispatch routes', href: '#services' },
+  { label: '2-Wheeler Parcel Delivery', desc: 'Up to 20 kg · Urgent docs & food', href: '/fleet/bike' },
+  { label: '3-Wheeler E-Loader', desc: 'Up to 500 kg · Mid-sized cargo', href: '/fleet/three-wheeler' },
+  { label: 'Tata Ace (Chhota Hathi)', desc: 'Up to 750 kg · Home shifting & retail', href: '/fleet/tata-ace' },
+  { label: 'Pickup 8ft / Bolero', desc: 'Up to 1500 kg · Heavy wholesale cargo', href: '/fleet/pickup' },
+  { label: 'Household Goods Shifting', desc: 'Careful relocation with trained helpers', href: '/fleet/house-shifting' },
+  { label: 'Commercial & Freight Logistics', desc: 'Custom enterprise dispatch routes', href: '/fleet/commercial-logistics' },
 ];
 
 interface NavbarProps {

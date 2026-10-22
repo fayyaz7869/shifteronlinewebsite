@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Bike, Truck, Check, ArrowRight, ShieldCheck, Clock, Zap, Layers, X, Gauge } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -311,6 +312,14 @@ export function FleetShowcase() {
                 </svg>
                 <span>Inquire on WhatsApp</span>
               </a>
+
+              <Link
+                to={`/fleet/${selectedVehicle.id === 'three_wheeler' ? 'three-wheeler' : selectedVehicle.id === 'tata_ace' ? 'tata-ace' : selectedVehicle.id}`}
+                className="flex h-11 w-full items-center justify-center gap-2 rounded-2xl border border-slate-300 bg-white px-4 text-xs font-bold text-navy hover:bg-slate-50 transition-all shadow-2xs"
+              >
+                <span>View Full Specifications &amp; Routes</span>
+                <ArrowRight size={14} className="text-orange" />
+              </Link>
 
               <a
                 href="https://play.google.com/store/apps/details?id=com.shifter.online"

@@ -97,6 +97,29 @@ export interface UpdateUserInput {
   password?: string;
 }
 
+export interface SiteMediaItem {
+  _id?: string;
+  key: string;
+  title: string;
+  url: string;
+  publicId?: string;
+  format?: string;
+  width?: number;
+  height?: number;
+  updatedBy?: string;
+  updatedAt?: string;
+}
+
+export async function getPublicMedia(): Promise<{ media: SiteMediaItem[]; map: Record<string, string> }> {
+  try {
+    const res = await fetch(`${API_URL}/api/media`);
+    if (res.ok) return await res.json();
+  } catch {
+    // Graceful fallback
+  }
+  return { media: [], map: {} };
+}
+
 export const adminApi = {
   login: (data: { email: string; password: string }) =>
     adminRequest<{ token: string; admin: AdminUser }>('/api/admin/login', {
@@ -150,6 +173,42 @@ export const adminApi = {
 
   deleteUser: (id: string) =>
     adminRequest<{ message: string }>(`/api/admin/users/${id}`, {
+      method: 'DELETE',
+    }),
+
+  // Media Management (Cloudinary + MongoDB)
+  getMedia: () => adminRequest<{ media: SiteMediaItem[] }>('/api/admin/media'),
+
+  uploadMedia: async (file: File, key: string, title?: string): Promise<{ message: string; media: SiteMediaItem }> => {
+    const token = localStorage.getItem(ADMIN_TOKEN_KEY);
+    const formData = new FormData();
+    formData.append('image', file);
+    formData.append('key', key);
+    if (title) formData.append('title', title);
+
+    let res: Response;
+    try {
+      res = await fetch(`${API_URL}/api/admin/media/upload`, {
+        method: 'POST',
+        headers: {
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: formData,
+      });
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Network error';
+      throw new AdminApiError(`Cannot connect to backend server at ${API_URL} (${msg})`, 503);
+    }
+
+    const body = await res.json();
+    if (!res.ok) {
+      throw new AdminApiError(body?.message || 'Failed to upload image to Cloudinary.', res.status);
+    }
+    return body;
+  },
+
+  resetMedia: (key: string) =>
+    adminRequest<{ message: string }>(`/api/admin/media/${key}`, {
       method: 'DELETE',
     }),
 };

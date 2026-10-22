@@ -23,6 +23,11 @@ import {
   AlertTriangle,
   Loader2,
   Check,
+  UploadCloud,
+  Image as ImageIcon,
+  Copy,
+  RotateCcw,
+  Sparkles,
 } from 'lucide-react';
 import { useAdminAuth } from '../../context/useAdminAuth';
 import {
@@ -31,7 +36,61 @@ import {
   type WebsiteUser,
   type AdminStats,
   type UserStatus,
+  type SiteMediaItem,
 } from '../../lib/adminApi';
+
+interface MediaSlotDef {
+  key: string;
+  title: string;
+  description: string;
+  defaultImage: string;
+  category: 'Hero & Branding' | 'Fleet Vehicles';
+}
+
+const MEDIA_SLOTS: MediaSlotDef[] = [
+  {
+    key: 'rajwada_banner',
+    title: 'Hero Rajwada Palace Banner',
+    description: 'The main hero artwork showing Rajwada Palace with the Shifter Online banner & Indian flag',
+    defaultImage: '/rajwada-shifter-banner.jpg',
+    category: 'Hero & Branding',
+  },
+  {
+    key: 'brand_logo',
+    title: 'Official Brand Logo',
+    description: 'Header, footer and branding logo icon (blue globe with delivery truck)',
+    defaultImage: '/shifter-online-brand.jpg',
+    category: 'Hero & Branding',
+  },
+  {
+    key: 'fleet_tata_ace',
+    title: 'Tata Ace (Chhota Hathi) Photo',
+    description: 'Showcased in fleet catalog, vehicle detail pages, and driver partner section',
+    defaultImage: '/vehicles/4wheeler.svg',
+    category: 'Fleet Vehicles',
+  },
+  {
+    key: 'fleet_pickup',
+    title: 'Pickup 8ft / Bolero Truck Photo',
+    description: 'Heavy logistics 8ft cargo truck illustration and detail pages',
+    defaultImage: '/vehicles/4wheeler.svg',
+    category: 'Fleet Vehicles',
+  },
+  {
+    key: 'fleet_3wheeler',
+    title: '3-Wheeler E-Loader Photo',
+    description: 'Wholesale market freight e-loader vehicle photo and detail pages',
+    defaultImage: '/vehicles/3wheeler.svg',
+    category: 'Fleet Vehicles',
+  },
+  {
+    key: 'fleet_bike',
+    title: '2-Wheeler Express Delivery Bike',
+    description: 'Express parcel bike delivery photo and detail pages',
+    defaultImage: '/vehicles/bike.svg',
+    category: 'Fleet Vehicles',
+  },
+];
 
 interface Toast {
   id: string;
@@ -41,6 +100,20 @@ interface Toast {
 
 export function AdminDashboard() {
   const { admin, logout } = useAdminAuth();
+
+  // Top Level Navigation Tabs
+  const [activeTab, setActiveTab] = useState<'users' | 'media'>('users');
+
+  // Media Management State
+  const [mediaList, setMediaList] = useState<SiteMediaItem[]>([]);
+  const [mediaLoading, setMediaLoading] = useState(false);
+  const [uploadingSlot, setUploadingSlot] = useState<string | null>(null);
+  const [resettingSlot, setResettingSlot] = useState<string | null>(null);
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
+
+  // Custom Media Upload State
+  const [customTitle, setCustomTitle] = useState('');
+  const [customUploading, setCustomUploading] = useState(false);
 
   // Dashboard Data State
   const [users, setUsers] = useState<WebsiteUser[]>([]);
@@ -141,6 +214,61 @@ export function AdminDashboard() {
   useEffect(() => {
     fetchUsers();
   }, [fetchUsers]);
+
+  // Media List Fetch
+  const fetchMediaList = useCallback(async () => {
+    setMediaLoading(true);
+    try {
+      const res = await adminApi.getMedia();
+      setMediaList(res.media || []);
+    } catch {
+      // Graceful fallback
+    } finally {
+      setMediaLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (activeTab === 'media') {
+      fetchMediaList();
+    }
+  }, [activeTab, fetchMediaList]);
+
+  // Handle Upload Media to Cloudinary
+  const handleUploadMedia = async (slotKey: string, title: string, file: File) => {
+    setUploadingSlot(slotKey);
+    try {
+      const res = await adminApi.uploadMedia(file, slotKey, title);
+      addToast('success', res.message || `Uploaded ${title} successfully to Cloudinary!`);
+      await fetchMediaList();
+    } catch (err) {
+      addToast('error', err instanceof AdminApiError ? err.message : 'Upload failed. Check Cloudinary credentials.');
+    } finally {
+      setUploadingSlot(null);
+    }
+  };
+
+  // Handle Reset Media Slot
+  const handleResetMedia = async (slotKey: string, title: string) => {
+    setResettingSlot(slotKey);
+    try {
+      await adminApi.resetMedia(slotKey);
+      addToast('info', `Reset ${title} back to default website asset.`);
+      await fetchMediaList();
+    } catch (err) {
+      addToast('error', err instanceof AdminApiError ? err.message : 'Reset failed.');
+    } finally {
+      setResettingSlot(null);
+    }
+  };
+
+  // Handle Copy URL
+  const handleCopyUrl = (key: string, url: string) => {
+    navigator.clipboard.writeText(url);
+    setCopiedKey(key);
+    addToast('info', 'Cloudinary CDN link copied to clipboard!');
+    setTimeout(() => setCopiedKey(null), 2000);
+  };
 
   // Handle Search Input Debounce / Change
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -426,8 +554,45 @@ export function AdminDashboard() {
 
       {/* Main Content Area */}
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
-        {/* KPI / Metric Cards Grid */}
-        <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Navigation Tabs */}
+        <div className="flex items-center gap-3 border-b border-slate-800 pb-4 mb-8">
+          <button
+            type="button"
+            onClick={() => setActiveTab('users')}
+            className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-extrabold transition-all ${
+              activeTab === 'users'
+                ? 'bg-orange text-white shadow-soft shadow-orange/20'
+                : 'bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800'
+            }`}
+          >
+            <Users size={16} />
+            <span>Users &amp; Client Sheet</span>
+            <span className="rounded-full bg-white/20 px-2 py-0.5 text-[11px] font-bold">
+              {stats.totalUsers}
+            </span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('media')}
+            className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-extrabold transition-all ${
+              activeTab === 'media'
+                ? 'bg-orange text-white shadow-soft shadow-orange/20'
+                : 'bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800'
+            }`}
+          >
+            <UploadCloud size={16} />
+            <span>Cloudinary Website Media Manager</span>
+            <span className="rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 text-[10px] font-bold">
+              Live Assets
+            </span>
+          </button>
+        </div>
+
+        {activeTab === 'users' && (
+          <>
+            {/* KPI / Metric Cards Grid */}
+            <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {/* Card 1: Total Users */}
           <div className="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-5 shadow-lg backdrop-blur-sm">
             <div className="flex items-center justify-between">
@@ -821,6 +986,221 @@ export function AdminDashboard() {
             </div>
           </div>
         </section>
+          </>
+        )}
+
+        {/* ==========================================
+            CLOUDINARY MEDIA MANAGER TAB
+        ========================================== */}
+        {activeTab === 'media' && (
+          <section className="space-y-8">
+            {/* Cloudinary Header Card */}
+            <div className="rounded-3xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8 shadow-xl backdrop-blur-md">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-full border border-orange/30 bg-orange/10 px-3.5 py-1 text-xs font-bold text-orange mb-2">
+                    <Sparkles size={14} />
+                    <span>CLOUDINARY CDN ASSET MANAGER</span>
+                  </div>
+                  <h2 className="text-2xl font-black text-white sm:text-3xl">
+                    Website Media &amp; Image Manager
+                  </h2>
+                  <p className="mt-1 text-xs sm:text-sm text-slate-400 max-w-2xl leading-relaxed">
+                    Upload, change or replace any image on the live website without editing code. All images are hosted on Cloudinary high-speed CDN and synced with MongoDB.
+                  </p>
+                </div>
+
+                <div className="flex flex-col items-start sm:items-end gap-1.5 shrink-0 bg-slate-950/60 p-4 rounded-2xl border border-slate-800">
+                  <div className="flex items-center gap-2 text-xs font-bold text-emerald-400">
+                    <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>Cloudinary Connected</span>
+                  </div>
+                  <span className="text-[11px] text-slate-400 font-mono">Cloud: shifteronline</span>
+                  <span className="text-[11px] text-slate-500 font-mono">API Key: 951554921375439</span>
+                  <button
+                    type="button"
+                    onClick={fetchMediaList}
+                    disabled={mediaLoading}
+                    className="mt-2 flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-800 px-3 py-1 text-[11px] font-bold text-slate-300 hover:text-white transition-colors disabled:opacity-50"
+                  >
+                    <RefreshCw size={11} className={mediaLoading ? 'animate-spin text-orange' : ''} />
+                    <span>{mediaLoading ? 'Syncing...' : 'Sync Cloudinary'}</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Quick Info Box */}
+              <div className="mt-6 rounded-2xl border border-blue-500/20 bg-blue-950/20 p-4 flex items-start gap-3 text-xs text-blue-200">
+                <Shield size={18} className="text-blue-400 shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold block">How image updates work:</span>
+                  <span className="text-blue-300/80 leading-relaxed">
+                    When you click &ldquo;Replace Image&rdquo; on any slot below, your file is uploaded straight to your Cloudinary cloud and saved in your database. The website will immediately show your new image without needing any code changes or server redeployment!
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Slots Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {MEDIA_SLOTS.map((slot) => {
+                const activeMedia = mediaList.find((m) => m.key === slot.key);
+                const currentImgUrl = activeMedia?.url || slot.defaultImage;
+                const isCustom = Boolean(activeMedia?.url);
+                const isUploading = uploadingSlot === slot.key;
+                const isResetting = resettingSlot === slot.key;
+
+                return (
+                  <div
+                    key={slot.key}
+                    className="flex flex-col justify-between rounded-3xl border border-slate-800 bg-slate-900/60 p-6 shadow-lg backdrop-blur-sm hover:border-slate-700 transition-colors"
+                  >
+                    <div>
+                      {/* Slot Header */}
+                      <div className="flex items-center justify-between gap-2 mb-3">
+                        <span className="rounded-md bg-slate-800 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 border border-slate-700">
+                          {slot.category}
+                        </span>
+                        {isCustom ? (
+                          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 text-[10px] font-bold text-emerald-400">
+                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            Cloudinary Live
+                          </span>
+                        ) : (
+                          <span className="rounded-full bg-slate-800 px-2 py-0.5 text-[10px] font-bold text-slate-400">
+                            Default Asset
+                          </span>
+                        )}
+                      </div>
+
+                      <h3 className="text-base font-black text-white">{slot.title}</h3>
+                      <p className="mt-1 text-xs text-slate-400 leading-relaxed line-clamp-2">
+                        {slot.description}
+                      </p>
+
+                      {/* Image Preview Box */}
+                      <div className="mt-4 relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 aspect-[16/10] flex items-center justify-center p-2 group">
+                        <img
+                          src={currentImgUrl}
+                          alt={slot.title}
+                          className="h-full w-full object-contain transition-transform group-hover:scale-105"
+                        />
+                        {isUploading && (
+                          <div className="absolute inset-0 bg-black/75 flex flex-col items-center justify-center gap-2 backdrop-blur-xs">
+                            <Loader2 size={24} className="animate-spin text-orange" />
+                            <span className="text-xs font-bold text-white">Uploading to Cloudinary...</span>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Cloudinary CDN URL snippet if uploaded */}
+                      {isCustom && (
+                        <div className="mt-3 flex items-center justify-between gap-2 rounded-xl bg-slate-950/80 px-3 py-1.5 border border-slate-800">
+                          <span className="text-[11px] font-mono text-slate-400 truncate">
+                            {activeMedia?.url}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => handleCopyUrl(slot.key, activeMedia!.url)}
+                            className="text-slate-400 hover:text-white shrink-0 p-1"
+                            title="Copy Cloudinary URL"
+                          >
+                            {copiedKey === slot.key ? (
+                              <Check size={12} className="text-emerald-400" />
+                            ) : (
+                              <Copy size={12} />
+                            )}
+                          </button>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between gap-3">
+                      <label className="flex-1 cursor-pointer">
+                        <span className="flex items-center justify-center gap-2 rounded-xl bg-orange hover:bg-orange-light text-white px-4 py-2 text-xs font-black transition-all shadow-soft active:scale-98">
+                          <UploadCloud size={14} />
+                          {isCustom ? 'Replace Image' : 'Upload Image'}
+                        </span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          disabled={isUploading}
+                          className="hidden"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) handleUploadMedia(slot.key, slot.title, file);
+                            e.target.value = '';
+                          }}
+                        />
+                      </label>
+
+                      {isCustom && (
+                        <button
+                          type="button"
+                          disabled={isResetting}
+                          onClick={() => handleResetMedia(slot.key, slot.title)}
+                          className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-3 py-2 text-xs font-bold transition-all disabled:opacity-50"
+                          title="Reset to default local image"
+                        >
+                          <RotateCcw size={12} />
+                          <span>Reset</span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Custom Asset Uploader Card */}
+            <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-6 sm:p-8 shadow-xl backdrop-blur-md">
+              <div className="flex items-center gap-2.5 mb-2">
+                <div className="h-8 w-8 rounded-xl bg-orange/10 text-orange flex items-center justify-center">
+                  <ImageIcon size={18} />
+                </div>
+                <h3 className="text-lg font-black text-white">Custom Asset &amp; Photo Uploader</h3>
+              </div>
+              <p className="text-xs text-slate-400 mb-6">
+                Need to upload a promotional flyer, driver celebration picture, or special Indore photo? Upload it here to host it directly on Cloudinary and get a live shareable CDN link.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 items-center">
+                <input
+                  type="text"
+                  value={customTitle}
+                  onChange={(e) => setCustomTitle(e.target.value)}
+                  placeholder="Asset Name (e.g. festive_offer_banner)"
+                  className="w-full sm:w-80 rounded-xl border border-slate-700 bg-slate-950 px-4 py-2.5 text-xs text-white placeholder:text-slate-500 focus:border-orange focus:outline-none"
+                />
+
+                <label className="cursor-pointer w-full sm:w-auto">
+                  <span className="flex items-center justify-center gap-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white px-5 py-2.5 text-xs font-bold transition-all shadow-soft">
+                    <UploadCloud size={15} className="text-orange" />
+                    <span>Choose File &amp; Upload</span>
+                  </span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    disabled={customUploading}
+                    className="hidden"
+                    onChange={async (e) => {
+                      const file = e.target.files?.[0];
+                      if (!file) return;
+                      const title = customTitle.trim() || file.name.replace(/\.[^/.]+$/, '');
+                      const slotKey = `custom_${title.toLowerCase().replace(/[^a-z0-9_-]/g, '_')}`;
+                      setCustomUploading(true);
+                      await handleUploadMedia(slotKey, title, file);
+                      setCustomUploading(false);
+                      setCustomTitle('');
+                      e.target.value = '';
+                    }}
+                  />
+                </label>
+              </div>
+            </div>
+          </section>
+        )}
       </main>
 
       {/* ==========================================

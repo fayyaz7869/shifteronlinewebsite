@@ -1,11 +1,44 @@
 import { Router } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { v2 as cloudinary } from 'cloudinary';
+import multer from 'multer';
 import { User } from './models/User.js';
+import { SiteMedia } from './models/SiteMedia.js';
 import { verifyAdminToken } from './adminAuth.js';
 import { normalizeMobile, isValidMobile, isValidEmail } from './validation.js';
 
 const ADMIN_JWT_EXPIRES_IN = '24h';
+
+// Configure Cloudinary SDK
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || 'shifteronline',
+  api_key: process.env.CLOUDINARY_API_KEY || '951554921375439',
+  api_secret: process.env.CLOUDINARY_API_SECRET || '',
+});
+
+// Configure Multer in-memory storage for Cloudinary upload
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
+});
+
+function uploadBufferToCloudinary(buffer, key = 'asset') {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      {
+        folder: 'shifter_online/media',
+        resource_type: 'image',
+        public_id: `${key.replace(/[^a-zA-Z0-9_-]/g, '_')}_${Date.now()}`,
+      },
+      (error, result) => {
+        if (error) return reject(error);
+        resolve(result);
+      }
+    );
+    stream.end(buffer);
+  });
+}
 
 function formatUser(doc) {
   return {
@@ -359,5 +392,87 @@ adminRouter.delete('/users/:id', verifyAdminToken, async (req, res) => {
   } catch (err) {
     console.error('admin delete user error:', err);
     return res.status(500).json({ message: 'Unable to delete user.' });
+  }
+});
+
+// ==========================================
+// 4. CLOUDINARY MEDIA ASSET MANAGEMENT
+// ==========================================
+
+// List all uploaded site media assets
+adminRouter.get('/media', verifyAdminToken, async (_req, res) => {
+  try {
+    const media = await SiteMedia.find().sort({ updatedAt: -1 });
+    return res.status(200).json({ media });
+  } catch (err) {
+    console.error('Error fetching site media:', err);
+    return res.status(500).json({ message: 'Failed to retrieve site media assets.' });
+  }
+});
+
+// Upload/Replace media asset to Cloudinary and save to MongoDB
+adminRouter.post('/media/upload', verifyAdminToken, upload.single('image'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No image file was provided for upload.' });
+    }
+
+    const key = String(req.body?.key || 'general_media').trim().toLowerCase();
+    const title = String(req.body?.title || key).trim();
+
+    // Verify Cloudinary Secret is set
+    if (!process.env.CLOUDINARY_API_SECRET || process.env.CLOUDINARY_API_SECRET.includes('xxxx')) {
+      return res.status(400).json({
+        message:
+          'Cloudinary API Secret is not yet configured. Please set your real CLOUDINARY_API_SECRET in server/.env.',
+      });
+    }
+
+    const result = await uploadBufferToCloudinary(req.file.buffer, key);
+
+    const updatedMedia = await SiteMedia.findOneAndUpdate(
+      { key },
+      {
+        key,
+        title,
+        url: result.secure_url,
+        publicId: result.public_id,
+        format: result.format,
+        width: result.width,
+        height: result.height,
+        updatedBy: req.admin?.email || 'Admin',
+        updatedAt: new Date(),
+      },
+      { upsert: true, new: true }
+    );
+
+    return res.status(200).json({
+      message: `Image for "${title}" uploaded successfully to Cloudinary!`,
+      media: updatedMedia,
+    });
+  } catch (err) {
+    console.error('Cloudinary media upload error:', err);
+    return res.status(500).json({
+      message: err.message || 'Failed to upload image to Cloudinary.',
+    });
+  }
+});
+
+// Reset or delete a media slot
+adminRouter.delete('/media/:key', verifyAdminToken, async (req, res) => {
+  try {
+    const key = String(req.params.key).trim().toLowerCase();
+    const item = await SiteMedia.findOneAndDelete({ key });
+    if (item?.publicId) {
+      try {
+        await cloudinary.uploader.destroy(item.publicId);
+      } catch (cErr) {
+        console.warn('Cloudinary delete warning:', cErr.message);
+      }
+    }
+    return res.status(200).json({ message: `Media "${key}" reset to default.` });
+  } catch (err) {
+    console.error('Error resetting media:', err);
+    return res.status(500).json({ message: 'Failed to reset media.' });
   }
 });
