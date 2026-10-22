@@ -31,10 +31,10 @@ const WHATSAPP_URL = 'https://wa.me/919644423533?text=Hello%20Shifter%20Online,%
 const desktopNavLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Services & Fleet', href: '#services', hasDropdown: true },
-  { label: 'Live Tracking', href: '#tracking' },
-  { label: 'Operating Hubs', href: '#coverage' },
+  { label: 'Tracking', href: '#tracking' },
+  { label: 'Hubs', href: '#coverage' },
   { label: 'Driver Partner', href: '#driver-partner' },
-  { label: 'Why Choose Us', href: '#why-us' },
+  { label: 'Why Us', href: '#why-us' },
   { label: 'Contact', href: '#cta' },
 ];
 
@@ -172,7 +172,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
             </SmartLink>
 
             {/* Desktop Navigation Links */}
-            <ul className="hidden lg:flex items-center gap-1 xl:gap-2">
+            <ul className="hidden lg:flex items-center gap-0.5 xl:gap-1.5">
               {desktopNavLinks.map((link) => (
                 <li
                   key={link.label}
@@ -183,11 +183,11 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                   <a
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="group flex items-center gap-1 rounded-xl px-3 py-2 text-[14px] font-bold text-slate-700 hover:text-orange hover:bg-slate-50 transition-all whitespace-nowrap"
+                    className="group flex items-center gap-1 rounded-xl px-2 xl:px-2.5 py-1.5 text-[13px] xl:text-[14px] font-bold text-slate-700 hover:text-orange hover:bg-slate-50 transition-all whitespace-nowrap"
                   >
                     {link.label}
                     {link.hasDropdown && <ChevronDown size={14} className="opacity-60" />}
-                    <span className="pointer-events-none absolute inset-x-3 -bottom-0.5 h-[2px] scale-x-0 bg-orange transition-transform duration-200 group-hover:scale-x-100" />
+                    <span className="pointer-events-none absolute inset-x-2 -bottom-0.5 h-[2px] scale-x-0 bg-orange transition-transform duration-200 group-hover:scale-x-100" />
                   </a>
 
                   {link.hasDropdown && (
@@ -225,14 +225,14 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
             </ul>
 
             {/* Desktop CTA & Contact */}
-            <div className="hidden lg:flex items-center gap-2.5 shrink-0 whitespace-nowrap">
+            <div className="hidden lg:flex items-center gap-1.5 xl:gap-2 shrink-0 whitespace-nowrap">
               <Button
                 variant="primary"
                 size="md"
                 href={USER_APP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="!h-10 !px-4 text-xs font-black whitespace-nowrap shrink-0 shadow-glow-orange"
+                className="!h-9 !px-3 xl:!px-3.5 text-xs font-black whitespace-nowrap shrink-0 shadow-glow-orange"
               >
                 <Package size={14} />
                 Book Delivery
@@ -241,17 +241,27 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
               {!isLoading && user ? (
                 <>
                   <span className="text-xs font-bold text-slate-700 whitespace-nowrap">Hi, {user.name.split(' ')[0]}</span>
-                  <Button variant="outline" size="md" onClick={logout} className="!h-10 !px-3 text-xs whitespace-nowrap shrink-0">
+                  <Button variant="outline" size="md" onClick={logout} className="!h-9 !px-2.5 text-xs whitespace-nowrap shrink-0">
                     <LogOut size={14} />
                     Log out
                   </Button>
                 </>
               ) : (
                 <>
-                  <Button variant="outline" size="md" onClick={onLoginClick} className="!h-10 !px-3.5 text-xs font-bold whitespace-nowrap shrink-0 hover:bg-slate-50 border-slate-200 text-slate-700">
+                  <Button
+                    variant="outline"
+                    size="md"
+                    onClick={onLoginClick}
+                    className="!h-9 !px-3 text-xs font-bold whitespace-nowrap shrink-0 hover:bg-slate-50 border-slate-300 text-slate-700"
+                  >
                     Login
                   </Button>
-                  <Button variant="secondary" size="md" onClick={onGetStartedClick} className="!h-10 !px-4 text-xs font-black whitespace-nowrap shrink-0 bg-navy text-white hover:bg-navy-dark">
+                  <Button
+                    variant="navy"
+                    size="md"
+                    onClick={onGetStartedClick}
+                    className="!h-9 !px-3.5 text-xs font-black whitespace-nowrap shrink-0 shadow-soft"
+                  >
                     Get Started →
                   </Button>
                 </>
