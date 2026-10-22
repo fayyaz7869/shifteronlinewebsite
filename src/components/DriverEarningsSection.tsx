@@ -1,230 +1,226 @@
 import { useState } from 'react';
-import { Truck, Bike, CheckCircle2, ShieldCheck, Zap, Smartphone } from 'lucide-react';
+import { Truck, Bike, CheckCircle2, ShieldCheck, Zap, Smartphone, ArrowRight, DollarSign } from 'lucide-react';
 import { ScrollReveal } from './ui/ScrollReveal';
 
-interface VehicleEarnConfig {
+interface VehicleTier {
   id: string;
   name: string;
-  avgPerTrip: number;
+  subtitle: string;
+  earningRange: string;
+  payload: string;
   icon: typeof Truck;
   image: string;
+  popular?: boolean;
 }
 
-const VEHICLE_CONFIGS: VehicleEarnConfig[] = [
-  { id: 'bike', name: '2-Wheeler Bike', avgPerTrip: 120, icon: Bike, image: '/vehicles/bike.svg' },
-  { id: 'three_wheeler', name: '3-Wheeler E-Loader', avgPerTrip: 220, icon: Truck, image: '/vehicles/3wheeler.svg' },
-  { id: 'tata_ace', name: 'Tata Ace (Chhota Hathi)', avgPerTrip: 380, icon: Truck, image: '/vehicles/4wheeler.svg' },
-  { id: 'pickup', name: 'Pickup 8ft / Bolero', avgPerTrip: 550, icon: Truck, image: '/vehicles/4wheeler.svg' },
+const VEHICLE_TIERS: VehicleTier[] = [
+  {
+    id: 'tata_ace',
+    name: 'Tata Ace (Chhota Hathi)',
+    subtitle: 'High demand for retail, FMCG & wholesale goods',
+    earningRange: '₹45,000 – ₹65,000 / mo',
+    payload: '750 kg Capacity',
+    icon: Truck,
+    image: '/vehicles/4wheeler.svg',
+    popular: true,
+  },
+  {
+    id: 'pickup',
+    name: 'Pickup 8ft / Bolero',
+    subtitle: 'Heavy industrial, furniture & long-distance cargo',
+    earningRange: '₹55,000 – ₹80,000 / mo',
+    payload: '1.2 – 1.7 Ton Capacity',
+    icon: Truck,
+    image: '/vehicles/4wheeler.svg',
+  },
+  {
+    id: 'three_wheeler',
+    name: '3-Wheeler / E-Loader',
+    subtitle: 'City bazaar deliveries, low running cost, max savings',
+    earningRange: '₹30,000 – ₹45,000 / mo',
+    payload: '500 kg Capacity',
+    icon: Truck,
+    image: '/vehicles/3wheeler.svg',
+  },
+  {
+    id: 'bike',
+    name: '2-Wheeler Express',
+    subtitle: 'Quick envelopes, food packages & retail parcels',
+    earningRange: '₹20,000 – ₹30,000 / mo',
+    payload: '20 kg Parcel Bag',
+    icon: Bike,
+    image: '/vehicles/bike.svg',
+  },
+];
+
+const PERKS = [
+  {
+    title: '0% Commission for 30 Days',
+    description: 'Keep 100% of your earnings during your first month of driving with Shifter Online.',
+    icon: Zap,
+    color: 'text-orange bg-orange/10',
+  },
+  {
+    title: 'Daily Direct Bank Payouts',
+    description: 'Trip earnings are credited directly into your verified bank account or UPI every evening.',
+    icon: DollarSign,
+    color: 'text-emerald-600 bg-emerald-50',
+  },
+  {
+    title: 'Consistent Commercial Bookings',
+    description: 'Steady enterprise deliveries across Indore, Dewas Naka, Pithampur and MP trade hubs.',
+    icon: ShieldCheck,
+    color: 'text-navy bg-navy/10',
+  },
+  {
+    title: 'Dedicated Driver Support Desk',
+    description: '24/7 Hindi and local phone helpline for routing, toll queries, and loading coordination.',
+    icon: Smartphone,
+    color: 'text-amber-600 bg-amber-50',
+  },
+];
+
+const REQUIREMENTS = [
+  'Valid Commercial or Private Driving License (DL)',
+  'Vehicle Registration Certificate (RC) & Fitness',
+  'Aadhaar Card or National Identity Proof',
+  'Active Bank Account / UPI for Daily Payouts',
 ];
 
 export function DriverEarningsSection() {
-  const [selectedVehicleId, setSelectedVehicleId] = useState('tata_ace');
-  const [tripsPerDay, setTripsPerDay] = useState(5);
+  const [activeTier, setActiveTier] = useState<string>('tata_ace');
+  const selected = VEHICLE_TIERS.find((v) => v.id === activeTier) || VEHICLE_TIERS[0];
 
-  const vehicle = VEHICLE_CONFIGS.find((v) => v.id === selectedVehicleId) || VEHICLE_CONFIGS[2];
-  const workingDays = 26;
-  const estimatedMonthlyEarnings = vehicle.avgPerTrip * tripsPerDay * workingDays;
-
-  const whatsappMessage = encodeURIComponent(
-    `Hello Shifter Online! 🚚\n\nI want to attach my vehicle (${vehicle.name}) as a Driver Partner.\n` +
-      `I plan to do ~${tripsPerDay} trips/day in Indore/Central India. Please guide me through onboarding.`
+  const whatsappOnboarding = encodeURIComponent(
+    `Hello Shifter Online Team! 🚚\n\nI want to attach my vehicle (${selected.name}) as a Driver Partner in Indore/MP.\n` +
+      `Please guide me through the quick onboarding and 0% commission offer.`
   );
 
   return (
-    <section id="driver-partner" className="py-24 md:py-32 bg-[#050C1A] text-white relative overflow-hidden">
-      {/* Background glow */}
-      <div className="pointer-events-none absolute -left-20 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-orange/15 blur-3xl" />
-      <div className="pointer-events-none absolute -right-20 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-royal/20 blur-3xl" />
-      <div className="pointer-events-none absolute inset-0 bg-grid-cyber opacity-25" />
+    <section id="driver-partner" className="py-24 md:py-32 bg-slate-50 text-slate-900 border-y border-slate-200/80 relative overflow-hidden">
+      {/* Background subtle light ambient effects */}
+      <div className="pointer-events-none absolute -left-20 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-orange/5 blur-3xl" />
+      <div className="pointer-events-none absolute -right-20 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-navy/5 blur-3xl" />
 
       <div className="container-shifter relative z-10">
         <ScrollReveal className="text-center max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2 rounded-full border border-orange/30 bg-orange/10 px-3.5 py-1 text-xs font-bold text-orange">
+          <div className="inline-flex items-center gap-2 rounded-full border border-orange/20 bg-orange/10 px-3.5 py-1 text-xs font-bold text-orange">
             <span className="h-1.5 w-1.5 rounded-full bg-orange animate-pulse" />
-            <span>DRIVER PARTNER OPPORTUNITY</span>
+            <span>PARTNER WITH SHIFTER</span>
           </div>
-          <h2 className="mt-3 text-3xl font-black text-white sm:text-[42px] leading-tight">
-            Attach Your Vehicle &amp; Earn With Shifter
+          <h2 className="mt-3 text-3xl font-black text-navy sm:text-[42px] leading-tight">
+            Attach Your Vehicle &amp; Earn More
           </h2>
-          <p className="mt-4 text-[15px] leading-relaxed text-slate-300">
+          <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
             Be your own boss. Enjoy regular daily commercial bookings, 0% commission for your first 30 days, and daily direct bank payouts.
           </p>
         </ScrollReveal>
 
-        <div className="mt-14 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Left Column: Interactive Earnings Calculator */}
-          <ScrollReveal delay={0.1} className="lg:col-span-7">
-            <div className="rounded-3xl border border-white/15 bg-slate-900/70 p-6 sm:p-9 shadow-lift backdrop-blur-md">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-3">
-                1. Select Your Vehicle Type
-              </span>
-
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                {VEHICLE_CONFIGS.map((v) => {
-                  const isSelected = v.id === selectedVehicleId;
-                  return (
-                    <button
-                      key={v.id}
-                      type="button"
-                      onClick={() => setSelectedVehicleId(v.id)}
-                      className={`flex flex-col items-center justify-center p-3.5 rounded-2xl border text-center transition-all ${
-                        isSelected
-                          ? 'border-orange bg-gradient-to-b from-[#132347] to-[#0A1630] text-white shadow-glow-orange ring-1 ring-orange/50 font-bold'
-                          : 'border-white/10 bg-slate-950/60 text-slate-400 hover:border-slate-700 hover:text-white'
-                      }`}
-                    >
-                      <img src={v.image} alt={v.name} className="h-8 w-11 object-contain my-1" />
-                      <span className="text-xs font-bold text-white leading-tight">{v.name}</span>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Slider for trips per day */}
-              <div className="mt-8 rounded-2xl bg-slate-950/80 p-5 border border-white/10 shadow-soft">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">
-                    2. Estimated Trips Per Day
+        {/* Vehicle Tiers Cards */}
+        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {VEHICLE_TIERS.map((tier) => {
+            const isSelected = tier.id === activeTier;
+            return (
+              <button
+                key={tier.id}
+                type="button"
+                onClick={() => setActiveTier(tier.id)}
+                className={`relative flex flex-col text-left p-5 rounded-2xl border transition-all duration-200 ${
+                  isSelected
+                    ? 'bg-white border-orange shadow-lift ring-2 ring-orange/20'
+                    : 'bg-white/80 border-slate-200 hover:border-slate-300 hover:shadow-soft'
+                }`}
+              >
+                {tier.popular && (
+                  <span className="absolute -top-3 right-4 rounded-full bg-orange px-2.5 py-0.5 text-[10px] font-black uppercase text-white shadow-soft">
+                    Most Popular
                   </span>
-                  <span className="text-lg font-black text-orange bg-orange/15 px-3 py-0.5 rounded-xl border border-orange/30">
-                    {tripsPerDay} Trips / Day
-                  </span>
+                )}
+                <div className="h-14 w-full flex items-center justify-start mb-3">
+                  <img src={tier.image} alt={tier.name} className="h-12 w-auto object-contain" />
                 </div>
+                <h3 className="text-base font-extrabold text-navy">{tier.name}</h3>
+                <p className="mt-1 text-xs text-slate-500 line-clamp-2">{tier.subtitle}</p>
 
-                <div className="mt-4">
-                  <input
-                    type="range"
-                    min="2"
-                    max="12"
-                    step="1"
-                    value={tripsPerDay}
-                    onChange={(e) => setTripsPerDay(Number(e.target.value))}
-                    className="w-full accent-orange cursor-pointer"
-                  />
-                  <div className="flex justify-between text-[11px] text-slate-400 font-medium mt-1">
-                    <span>Part-time (2–3 trips)</span>
-                    <span>Standard (5–6 trips)</span>
-                    <span>Full-time (8–12 trips)</span>
+                <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col">
+                  <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+                    Earning Potential
+                  </span>
+                  <span className="text-base font-black text-orange mt-0.5">{tier.earningRange}</span>
+                  <span className="text-xs text-slate-500 mt-1">{tier.payload}</span>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Selected Tier Banner & Quick WhatsApp Onboard */}
+        <div className="mt-8 rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-9 shadow-soft">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left Info */}
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 rounded-xl bg-orange/10 px-3 py-1 text-xs font-bold text-orange mb-3">
+                <span>Selected: {selected.name}</span>
+                <span className="text-slate-300">•</span>
+                <span>{selected.payload}</span>
+              </div>
+              <h3 className="text-2xl font-black text-navy sm:text-3xl">
+                Start Earning {selected.earningRange}
+              </h3>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                Connect directly with our onboarding team on WhatsApp. Submit your documents online and start receiving bookings across Central India in less than 24 hours.
+              </p>
+
+              {/* Requirement Checklist */}
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {REQUIREMENTS.map((req, idx) => (
+                  <div key={idx} className="flex items-center gap-2.5 text-xs font-medium text-slate-700">
+                    <CheckCircle2 size={16} className="text-emerald-500 shrink-0" />
+                    <span>{req}</span>
                   </div>
-                </div>
+                ))}
               </div>
 
-              {/* Earnings Result Readout */}
-              <div className="mt-6 rounded-2xl bg-gradient-to-br from-[#0C1A38] via-[#09152E] to-[#040A18] p-6 text-white shadow-lift border border-white/15 glow-border-orange">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 block">
-                      Estimated Monthly Income
-                    </span>
-                    <div className="flex items-baseline gap-2 mt-1">
-                      <span className="text-3xl sm:text-4xl font-black text-white">
-                        ₹{estimatedMonthlyEarnings.toLocaleString('en-IN')}
-                      </span>
-                      <span className="text-xs text-slate-400">/ month*</span>
-                    </div>
-                    <span className="block text-[11px] text-slate-400 mt-1">
-                      *Based on {tripsPerDay} trips/day for 26 working days. Fuel &amp; maintenance extra.
-                    </span>
-                  </div>
-
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 px-3.5 py-1.5 text-xs font-bold text-emerald-300 self-start sm:self-auto border border-emerald-500/30">
-                    <Zap size={14} /> 0% Commission (Month 1)
-                  </span>
-                </div>
-              </div>
-
-              <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {/* CTA buttons */}
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <a
+                  href={`https://wa.me/919644423533?text=${whatsappOnboarding}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-13 items-center justify-center gap-2.5 rounded-2xl bg-orange px-6 text-sm font-bold text-white shadow-soft hover:bg-orange-light active:scale-98 transition-all"
+                >
+                  <Smartphone size={17} />
+                  Attach Vehicle on WhatsApp
+                  <ArrowRight size={15} />
+                </a>
                 <a
                   href="https://play.google.com/store/apps/details?id=com.shifter.driver"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange to-orange-light px-4 text-xs sm:text-sm font-extrabold text-white shadow-glow-orange hover:brightness-110 transition-all active:scale-98"
+                  className="inline-flex h-13 items-center justify-center gap-2.5 rounded-2xl border border-slate-300 bg-white px-6 text-sm font-bold text-navy hover:bg-slate-50 active:scale-98 transition-all"
                 >
-                  <Smartphone size={16} />
-                  <span>Download Driver App</span>
-                </a>
-
-                <a
-                  href={`https://wa.me/919644423533?text=${whatsappMessage}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 text-xs sm:text-sm font-bold text-white hover:bg-[#1EBE5D] transition-all shadow-soft active:scale-98"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.585 1.77.894 2.796.894 3.18 0 5.766-2.587 5.767-5.766.002-3.18-2.583-5.781-5.767-5.781zm3.385 8.163c-.145.411-.849.771-1.189.816-.339.044-.75.056-1.226-.098-.31-.1-.709-.234-1.229-.462-2.176-.957-3.606-3.18-3.717-3.328-.11-.148-.894-1.19-.894-2.271 0-1.08.566-1.611.768-1.833.201-.223.441-.279.587-.279.146 0 .292.002.419.008.134.007.314-.051.491.374.183.44.624 1.52.678 1.632.055.112.091.242.019.387-.073.145-.11.235-.22.363-.11.127-.231.285-.331.383-.11.108-.226.226-.097.447.129.221.572.944 1.228 1.528.845.752 1.558.986 1.78 1.097.221.111.351.093.481-.056.13-.149.557-.65.706-.874.148-.224.298-.186.5-.112.202.074 1.281.604 1.501.714.22.11.368.164.422.257.054.093.054.542-.091.953z" />
-                  </svg>
-                  <span>Attach on WhatsApp</span>
+                  <Truck size={17} className="text-orange" />
+                  Download Driver App
                 </a>
               </div>
             </div>
-          </ScrollReveal>
 
-          {/* Right Column: Why Partner With Us */}
-          <ScrollReveal delay={0.2} className="lg:col-span-5 space-y-4">
-            <div className="rounded-3xl border border-white/15 bg-slate-900/70 p-7 shadow-lift backdrop-blur-md">
-              <span className="text-xs font-bold uppercase tracking-wider text-orange block">
-                PARTNER BENEFITS
-              </span>
-              <h3 className="mt-2 text-2xl font-black text-white">Why Drivers Choose Shifter Online</h3>
-
-              <ul className="mt-6 space-y-4">
-                <li className="flex items-start gap-3">
-                  <span className="grid h-8 w-8 place-items-center rounded-xl bg-emerald-500/20 text-emerald-400 shrink-0 mt-0.5 border border-emerald-500/30">
-                    <CheckCircle2 size={16} />
-                  </span>
-                  <div>
-                    <h4 className="text-sm font-bold text-white">Daily Direct Bank/UPI Payouts</h4>
-                    <p className="text-xs text-slate-300 mt-0.5">
-                      Your trip earnings reach your bank account or UPI every evening without delays.
-                    </p>
+            {/* Right: Key Perks Grid */}
+            <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              {PERKS.map((perk, idx) => {
+                const Icon = perk.icon;
+                return (
+                  <div key={idx} className="rounded-2xl border border-slate-100 bg-slate-50/70 p-4">
+                    <div className={`h-9 w-9 rounded-xl flex items-center justify-center ${perk.color}`}>
+                      <Icon size={18} />
+                    </div>
+                    <h4 className="mt-3 text-xs font-bold text-navy">{perk.title}</h4>
+                    <p className="mt-1 text-[11px] leading-relaxed text-slate-500">{perk.description}</p>
                   </div>
-                </li>
-
-                <li className="flex items-start gap-3">
-                  <span className="grid h-8 w-8 place-items-center rounded-xl bg-orange/20 text-orange shrink-0 mt-0.5 border border-orange/30">
-                    <Zap size={16} />
-                  </span>
-                  <div>
-                    <h4 className="text-sm font-bold text-white">0% Commission First 30 Days</h4>
-                    <p className="text-xs text-slate-300 mt-0.5">
-                      Keep 100% of your trip fares for your entire first month of driving with Shifter.
-                    </p>
-                  </div>
-                </li>
-
-                <li className="flex items-start gap-3">
-                  <span className="grid h-8 w-8 place-items-center rounded-xl bg-royal/20 text-cyan-400 shrink-0 mt-0.5 border border-royal/30">
-                    <ShieldCheck size={16} />
-                  </span>
-                  <div>
-                    <h4 className="text-sm font-bold text-white">Flexible Working Hours</h4>
-                    <p className="text-xs text-slate-300 mt-0.5">
-                      Go online when you want, choose your own shifts, and accept trips matching your route.
-                    </p>
-                  </div>
-                </li>
-
-                <li className="flex items-start gap-3">
-                  <span className="grid h-8 w-8 place-items-center rounded-xl bg-white/10 text-white shrink-0 mt-0.5 border border-white/10">
-                    <Truck size={16} />
-                  </span>
-                  <div>
-                    <h4 className="text-sm font-bold text-white">Commercial Business Contracts</h4>
-                    <p className="text-xs text-slate-300 mt-0.5">
-                      Regular high-volume corporate and wholesale routes in Indore, Dewas &amp; Pithampur.
-                    </p>
-                  </div>
-                </li>
-              </ul>
-
-              <div className="mt-6 border-t border-white/10 pt-4 flex items-center justify-between text-xs text-slate-400">
-                <span className="font-semibold text-slate-300">Driver Support Helpline:</span>
-                <a href="tel:9109114515" className="font-bold text-orange hover:underline">
-                  +91 9109114515
-                </a>
-              </div>
+                );
+              })}
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </div>
     </section>

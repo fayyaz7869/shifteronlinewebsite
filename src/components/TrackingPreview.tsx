@@ -126,11 +126,11 @@ export function TrackingPreview() {
   };
 
   return (
-    <section id="tracking" className="py-24 md:py-32 bg-[#050C1A] text-white relative overflow-hidden">
-      {/* Background radial glows */}
-      <div className="pointer-events-none absolute -left-32 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl" />
-      <div className="pointer-events-none absolute -right-32 top-1/4 h-96 w-96 rounded-full bg-orange/15 blur-3xl" />
-      <div className="pointer-events-none absolute inset-0 bg-grid-cyber opacity-25" />
+    <section id="tracking" className="py-24 md:py-32 bg-slate-50/70 text-slate-900 relative overflow-hidden border-y border-slate-200/80">
+      {/* Background ambient accents */}
+      <div className="pointer-events-none absolute -left-32 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-cyan-500/5 blur-3xl" />
+      <div className="pointer-events-none absolute -right-32 top-1/4 h-96 w-96 rounded-full bg-orange/5 blur-3xl" />
+      <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-40" />
 
       <div className="container-shifter relative z-10 grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-16">
         {/* Left Column: Information and Interactive Lookup */}
@@ -139,17 +139,17 @@ export function TrackingPreview() {
             <span className="h-1.5 w-1.5 rounded-full bg-orange animate-pulse" />
             <span>LIVE VISIBILITY &amp; TELEMETRY</span>
           </div>
-          <h2 className="mt-3 text-3xl font-black leading-tight text-white sm:text-[42px]">
+          <h2 className="mt-3 text-3xl font-black leading-tight text-slate-900 sm:text-[42px]">
             Track Every Shipment in Real Time
           </h2>
-          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-slate-300">
+          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-slate-600 font-medium">
             Know exactly where your cargo is at any second. See live driver GPS telemetry,
             turn-by-turn routing, accurate arrival ETAs, and verified OTP handover sign-off.
           </p>
 
           {/* Interactive Order Search Box */}
-          <div className="mt-8 rounded-3xl border border-white/10 bg-slate-900/70 p-5 shadow-lift backdrop-blur-md">
-            <label className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1">
+          <div className="mt-8 rounded-3xl border border-slate-200/90 bg-white p-5 shadow-soft">
+            <label className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">
               Live Order Status Checker
             </label>
             <form onSubmit={handleSearch} className="mt-2 flex gap-2">
@@ -160,19 +160,19 @@ export function TrackingPreview() {
                   value={inputOrderId}
                   onChange={(e) => setInputOrderId(e.target.value)}
                   placeholder="Enter Order ID (e.g. SH-284917)"
-                  className="w-full rounded-2xl border border-slate-700 bg-slate-950/80 py-3 pl-10 pr-3 text-xs sm:text-sm font-semibold text-white placeholder:text-slate-500 focus:border-orange focus:bg-slate-950 focus:outline-none"
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50/70 py-3 pl-10 pr-3 text-xs sm:text-sm font-semibold text-slate-900 placeholder:text-slate-400 focus:border-orange focus:bg-white focus:outline-none"
                 />
               </div>
               <button
                 type="submit"
                 disabled={isSearching}
-                className="flex items-center gap-1.5 rounded-2xl bg-gradient-to-r from-orange to-orange-light px-5 py-3 text-xs font-bold text-white shadow-glow-orange transition-all hover:brightness-110 active:scale-98 disabled:opacity-50"
+                className="flex items-center gap-1.5 rounded-2xl bg-orange px-5 py-3 text-xs font-bold text-white shadow-soft transition-all hover:bg-orange-dark active:scale-98 disabled:opacity-50"
               >
                 {isSearching ? 'Tracking...' : 'Track'}
               </button>
             </form>
 
-            <div className="mt-3.5 flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+            <div className="mt-3.5 flex items-center gap-2 text-xs text-slate-500 flex-wrap">
               <span>Quick Demos:</span>
               {Object.keys(SAMPLE_ORDERS).map((id) => (
                 <button
@@ -184,8 +184,8 @@ export function TrackingPreview() {
                   }}
                   className={`rounded-xl px-2.5 py-1 text-xs font-bold transition-all ${
                     activeOrder.orderId === id
-                      ? 'bg-gradient-to-r from-orange to-orange-light text-white shadow-soft ring-1 ring-orange/40'
-                      : 'bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10'
+                      ? 'bg-navy text-white shadow-2xs'
+                      : 'bg-slate-100 border border-slate-200 text-slate-700 hover:bg-slate-200'
                   }`}
                 >
                   #{id}
@@ -196,20 +196,20 @@ export function TrackingPreview() {
 
           {/* Key tracking features */}
           <ul className="mt-8 flex flex-col gap-3.5">
-            <li className="flex items-center gap-3 text-sm text-slate-200">
-              <span className="grid h-8 w-8 place-items-center rounded-xl bg-orange/15 text-orange shrink-0 border border-orange/20">
+            <li className="flex items-center gap-3 text-sm text-slate-700 font-medium">
+              <span className="grid h-8 w-8 place-items-center rounded-xl bg-orange/10 text-orange shrink-0 border border-orange/20">
                 <Navigation size={15} />
               </span>
               <span>Live driver telemetry with instant turn-by-turn map coordinates</span>
             </li>
-            <li className="flex items-center gap-3 text-sm text-slate-200">
-              <span className="grid h-8 w-8 place-items-center rounded-xl bg-emerald-500/15 text-emerald-400 shrink-0 border border-emerald-500/20">
+            <li className="flex items-center gap-3 text-sm text-slate-700 font-medium">
+              <span className="grid h-8 w-8 place-items-center rounded-xl bg-emerald-50 text-emerald-600 shrink-0 border border-emerald-200">
                 <ShieldCheck size={15} />
               </span>
               <span>Secure 4-digit OTP handover confirmation upon delivery</span>
             </li>
-            <li className="flex items-center gap-3 text-sm text-slate-200">
-              <span className="grid h-8 w-8 place-items-center rounded-xl bg-royal/20 text-cyan-400 shrink-0 border border-royal/30">
+            <li className="flex items-center gap-3 text-sm text-slate-700 font-medium">
+              <span className="grid h-8 w-8 place-items-center rounded-xl bg-royal/10 text-royal shrink-0 border border-royal/20">
                 <Package size={15} />
               </span>
               <span>Track directly via WhatsApp Bot or Shifter Customer App</span>
@@ -219,39 +219,39 @@ export function TrackingPreview() {
 
         {/* Right Column: Interactive Live Tracking Card */}
         <ScrollReveal delay={0.1}>
-          <div className="overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-b from-[#0B152B] to-[#060D1E] shadow-lift glow-border-orange">
+          <div className="overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-lift">
             {/* Window Top Bar */}
-            <div className="flex items-center justify-between border-b border-white/10 bg-[#0A162F] px-5 py-3.5">
+            <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-5 py-3.5">
               <div className="flex items-center gap-2">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
-                <span className="ml-2 text-xs font-bold text-white truncate">
+                <span className="ml-2 text-xs font-bold text-slate-800 truncate">
                   Dispatch Monitor · {activeOrder.orderId}
                 </span>
               </div>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 px-2.5 py-0.5 text-[10px] font-black text-emerald-400">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 text-[10px] font-black text-emerald-700">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 ACTIVE IN TRANSIT
               </span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-[1.2fr_1fr]">
               {/* Map Illustration Area */}
-              <div className="relative h-64 overflow-hidden bg-[#071329] sm:h-auto sm:min-h-[380px] border-b sm:border-b-0 sm:border-r border-white/10">
+              <div className="relative h-64 overflow-hidden bg-[#EBF2FE] sm:h-auto sm:min-h-[380px] border-b sm:border-b-0 sm:border-r border-slate-200">
                 <svg viewBox="0 0 400 340" className="absolute inset-0 h-full w-full">
                   <defs>
                     <pattern id="mapGridTrack2" width="32" height="32" patternUnits="userSpaceOnUse">
-                      <path d="M32 0H0V32" fill="none" stroke="#1E3A8A" strokeOpacity="0.2" />
+                      <path d="M32 0H0V32" fill="none" stroke="#123F8C" strokeOpacity="0.08" />
                     </pattern>
                   </defs>
                   <rect width="400" height="340" fill="url(#mapGridTrack2)" />
 
-                  <g opacity="0.3">
-                    <rect x="230" y="220" width="30" height="24" rx="3" fill="#3B82F6" opacity="0.2" />
-                    <rect x="270" y="240" width="24" height="20" rx="3" fill="#3B82F6" opacity="0.15" />
-                    <rect x="60" y="90" width="26" height="22" rx="3" fill="#3B82F6" opacity="0.18" />
-                    <rect x="120" y="60" width="20" height="18" rx="3" fill="#3B82F6" opacity="0.12" />
+                  <g opacity="0.45">
+                    <rect x="230" y="220" width="30" height="24" rx="3" fill="#123F8C" opacity="0.12" />
+                    <rect x="270" y="240" width="24" height="20" rx="3" fill="#123F8C" opacity="0.09" />
+                    <rect x="60" y="90" width="26" height="22" rx="3" fill="#123F8C" opacity="0.1" />
+                    <rect x="120" y="60" width="20" height="18" rx="3" fill="#123F8C" opacity="0.08" />
                   </g>
 
                   {/* Route Line */}
@@ -295,7 +295,7 @@ export function TrackingPreview() {
                 </svg>
 
                 {/* Floating ETA badge */}
-                <div className="absolute left-3 top-3 rounded-2xl bg-slate-900/90 px-3 py-2 text-xs font-black text-white shadow-lift backdrop-blur-md border border-white/15">
+                <div className="absolute left-3 top-3 rounded-2xl bg-white/95 px-3 py-2 text-xs font-black text-slate-800 shadow-soft backdrop-blur-md border border-slate-200">
                   ETA: <span className="text-orange">{activeOrder.eta}</span>
                 </div>
 
@@ -304,12 +304,12 @@ export function TrackingPreview() {
                   type="button"
                   onClick={handleCopyOtp}
                   title="Click to copy OTP"
-                  className="absolute right-3 bottom-3 rounded-2xl bg-slate-900/95 px-3 py-2 text-xs text-white shadow-lift backdrop-blur-md border border-white/15 hover:border-orange/50 transition-all active:scale-95 text-left"
+                  className="absolute right-3 bottom-3 rounded-2xl bg-white/95 px-3 py-2 text-xs text-slate-800 shadow-soft backdrop-blur-md border border-slate-200 hover:border-orange transition-all active:scale-95 text-left"
                 >
                   <div className="flex items-center gap-1.5 justify-between">
-                    <span className="text-[10px] text-slate-400">Delivery OTP</span>
+                    <span className="text-[10px] text-slate-500 font-semibold">Delivery OTP</span>
                     {copiedOtp ? (
-                      <span className="flex items-center gap-0.5 text-[9px] font-bold text-emerald-400">
+                      <span className="flex items-center gap-0.5 text-[9px] font-bold text-emerald-600">
                         <Check size={10} /> Copied
                       </span>
                     ) : (
@@ -323,29 +323,29 @@ export function TrackingPreview() {
               </div>
 
               {/* Status Details Column */}
-              <div className="flex flex-col p-5 sm:p-6 justify-between bg-[#081226]">
+              <div className="flex flex-col p-5 sm:p-6 justify-between bg-white">
                 <div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
                     Active Trip Route
                   </span>
-                  <p className="text-sm font-black text-white mt-0.5">{activeOrder.route}</p>
-                  <p className="text-[11px] text-slate-400 mt-0.5">{activeOrder.packageDesc}</p>
+                  <p className="text-sm font-black text-slate-900 mt-0.5">{activeOrder.route}</p>
+                  <p className="text-[11px] text-slate-500 mt-0.5">{activeOrder.packageDesc}</p>
 
                   {/* Driver Profile Mini Card */}
-                  <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-3 flex items-center gap-3">
+                  <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-3 flex items-center gap-3">
                     <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-orange text-white font-black text-sm shadow-soft">
                       {activeOrder.driverName[0]}
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-1.5">
-                        <span className="text-xs font-bold text-white truncate">
+                        <span className="text-xs font-bold text-slate-900 truncate">
                           {activeOrder.driverName}
                         </span>
-                        <span className="inline-flex items-center gap-0.5 rounded-full bg-amber-500/20 px-1.5 py-0.2 text-[10px] font-bold text-amber-300">
+                        <span className="inline-flex items-center gap-0.5 rounded-full bg-amber-50 px-1.5 py-0.2 text-[10px] font-bold text-amber-700 border border-amber-200">
                           <Star size={9} fill="currentColor" /> {activeOrder.driverRating}
                         </span>
                       </div>
-                      <span className="block text-[11px] text-slate-400 truncate font-medium">
+                      <span className="block text-[11px] text-slate-500 truncate font-medium">
                         {activeOrder.vehicle}
                       </span>
                     </div>
@@ -368,19 +368,19 @@ export function TrackingPreview() {
                           <Circle
                             size={16}
                             className={`mt-0.5 shrink-0 ${
-                              step.active ? 'text-cyan-400 fill-cyan-400/20 animate-pulse' : 'text-slate-600'
+                              step.active ? 'text-royal fill-royal/20 animate-pulse' : 'text-slate-300'
                             }`}
                           />
                         )}
                         <div className="flex-1">
                           <span
                             className={`block ${
-                              step.done || step.active ? 'font-bold text-white' : 'text-slate-400'
+                              step.done || step.active ? 'font-bold text-slate-900' : 'text-slate-500'
                             }`}
                           >
                             {step.label}
                           </span>
-                          <span className="text-[10px] text-slate-500">{step.time}</span>
+                          <span className="text-[10px] text-slate-400">{step.time}</span>
                         </div>
                       </div>
                     ))}
@@ -388,12 +388,12 @@ export function TrackingPreview() {
                 </div>
 
                 {/* Bottom WhatsApp tracking CTA */}
-                <div className="mt-6 border-t border-white/10 pt-3">
+                <div className="mt-6 border-t border-slate-100 pt-3">
                   <a
                     href={`https://wa.me/919644423533?text=Track%20my%20order%20${activeOrder.orderId}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-white transition-all hover:bg-white/10 hover:border-orange/40"
+                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-50 border border-slate-200 py-2.5 text-xs font-bold text-slate-800 transition-all hover:bg-slate-100 hover:border-orange"
                   >
                     <span>Receive Trip Updates on WhatsApp</span>
                     <Navigation size={12} className="text-orange" />

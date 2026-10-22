@@ -51,11 +51,11 @@ const values = [
 
 export function WhyChooseUs() {
   return (
-    <section id="why-us" className="bg-gradient-to-b from-[#050C1A] via-[#071126] to-[#040914] py-24 md:py-32 relative overflow-hidden text-white">
-      {/* Background radial glows */}
-      <div className="pointer-events-none absolute -left-32 top-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-orange/15 blur-3xl" />
-      <div className="pointer-events-none absolute -right-32 top-1/3 h-80 w-80 rounded-full bg-royal/20 blur-3xl" />
-      <div className="pointer-events-none absolute inset-0 bg-grid-cyber opacity-25" />
+    <section id="why-us" className="bg-slate-50/60 py-24 md:py-32 relative overflow-hidden text-slate-900 border-y border-slate-200/80">
+      {/* Background ambient accents */}
+      <div className="pointer-events-none absolute -left-32 top-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-orange/5 blur-3xl" />
+      <div className="pointer-events-none absolute -right-32 top-1/3 h-80 w-80 rounded-full bg-royal/5 blur-3xl" />
+      <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-40" />
 
       <div className="container-shifter relative z-10 grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-20 items-center">
         <ScrollReveal>
@@ -63,22 +63,22 @@ export function WhyChooseUs() {
             <span className="h-1.5 w-1.5 rounded-full bg-orange animate-pulse" />
             <span>WHY SHIFTER ONLINE</span>
           </div>
-          <h2 className="mt-3 text-3xl font-black leading-tight text-white sm:text-[42px]">
+          <h2 className="mt-3 text-3xl font-black leading-tight text-slate-900 sm:text-[42px]">
             Built for Businesses &amp; Families That Can&apos;t Afford Delays
           </h2>
-          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-slate-300">
+          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-slate-600 font-medium">
             Shifter Online, by Movigo Logistics Aggregator Pvt. Ltd., combines intelligent dispatch algorithms with 100% verified local driver partners to ensure your cargo arrives safely and on time.
           </p>
 
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {points.map(({ icon: Icon, title, description, accent }, i) => (
               <ScrollReveal key={title} delay={i * 0.08}>
-                <div className="rounded-3xl border border-white/10 bg-slate-900/60 p-5 shadow-lift backdrop-blur-md hover:border-orange/40 hover:bg-slate-900/90 transition-all hover:-translate-y-1">
-                  <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl ${accent} mb-3 shadow-soft`}>
+                <div className="rounded-3xl border border-slate-200/90 bg-white p-5 shadow-soft hover:shadow-card hover:border-orange/50 transition-all hover:-translate-y-1">
+                  <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl ${accent} mb-3 shadow-2xs`}>
                     <Icon size={20} strokeWidth={2.2} />
                   </span>
-                  <h3 className="text-[15px] font-black text-white">{title}</h3>
-                  <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-slate-300">{description}</p>
+                  <h3 className="text-[15px] font-black text-slate-900">{title}</h3>
+                  <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-slate-500 font-medium">{description}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -86,7 +86,7 @@ export function WhyChooseUs() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.1} className="relative">
-          <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#0B1736] via-[#08122B] to-[#040A18] p-8 sm:p-11 shadow-lift border border-white/15 text-white glow-border-orange">
+          <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#0B2559] via-[#0E2E6E] to-[#07193D] p-8 sm:p-11 shadow-lift border border-slate-200 text-white">
             <div className="pointer-events-none absolute -right-10 -top-10 h-64 w-64 opacity-80">
               <TrustBadgeIllustration />
             </div>
@@ -95,18 +95,18 @@ export function WhyChooseUs() {
               <span className="text-xs font-bold tracking-[0.14em] text-orange uppercase">
                 OUR OPERATIONAL CREED
               </span>
-              <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3.5 py-1.5 backdrop-blur-sm border border-emerald-500/30">
+              <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-emerald-500/20 px-3.5 py-1.5 backdrop-blur-sm border border-emerald-500/40">
                 <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span className="text-xs font-bold text-emerald-300">100% Verified Driver Partners</span>
               </div>
-              <p className="mt-4 text-xs sm:text-sm text-slate-300 max-w-sm leading-relaxed">
+              <p className="mt-4 text-xs sm:text-sm text-slate-200 max-w-sm leading-relaxed">
                 The core principles that guide every dispatch, every customer delivery, and every partner relationship across Central India.
               </p>
 
               <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-6">
                 {values.map(({ icon: Icon, label }) => (
                   <div key={label} className="flex items-center gap-3">
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/5 text-orange border border-white/10 shadow-soft">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/10 text-orange border border-white/15 shadow-soft">
                       <Icon size={18} />
                     </span>
                     <span className="text-sm font-bold text-white">{label}</span>
@@ -114,7 +114,7 @@ export function WhyChooseUs() {
                 ))}
               </div>
 
-              <div className="mt-10 border-t border-white/10 pt-5 flex items-center justify-between text-xs text-slate-400">
+              <div className="mt-10 border-t border-white/15 pt-5 flex items-center justify-between text-xs text-slate-300">
                 <span>Movigo Logistics Aggregator Pvt. Ltd.</span>
                 <span className="text-orange font-bold">Indore, India</span>
               </div>

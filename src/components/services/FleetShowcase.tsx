@@ -11,7 +11,7 @@ interface VehicleFleetItem {
   payloadKg: number;
   dimensions: string;
   fuelType: string;
-  startingPrice: string;
+  loadClass: string;
   icon: typeof Bike;
   tag?: string;
   image: string;
@@ -29,7 +29,7 @@ const FLEET: VehicleFleetItem[] = [
     payloadKg: 20,
     dimensions: '40 × 40 × 40 cm Box',
     fuelType: 'EV / Petrol',
-    startingPrice: 'From ₹40',
+    loadClass: 'Lightweight Cargo',
     tag: 'Quick Delivery',
     image: '/vehicles/bike.svg',
     icon: Bike,
@@ -50,7 +50,7 @@ const FLEET: VehicleFleetItem[] = [
     payloadKg: 500,
     dimensions: '5.5 × 4.5 × 4.0 ft (L × W × H)',
     fuelType: 'Electric / CNG',
-    startingPrice: 'From ₹140',
+    loadClass: 'Medium Freight',
     tag: 'Eco Friendly',
     image: '/vehicles/3wheeler.svg',
     icon: Truck,
@@ -71,7 +71,7 @@ const FLEET: VehicleFleetItem[] = [
     payloadKg: 750,
     dimensions: '7.0 × 4.8 × 4.8 ft (L × W × H)',
     fuelType: 'Diesel / CNG',
-    startingPrice: 'From ₹260',
+    loadClass: 'Heavy Commercial',
     tag: 'Most Popular',
     image: '/vehicles/4wheeler.svg',
     icon: Truck,
@@ -92,7 +92,7 @@ const FLEET: VehicleFleetItem[] = [
     payloadKg: 1500,
     dimensions: '8.5 × 5.0 × 5.0 ft (L × W × H)',
     fuelType: 'Heavy Diesel',
-    startingPrice: 'From ₹420',
+    loadClass: 'Maximum Payload',
     tag: 'Heavy Haul',
     image: '/vehicles/4wheeler.svg',
     icon: Truck,
@@ -198,8 +198,8 @@ export function FleetShowcase() {
                   </span>
                 )}
                 <span className="text-xs font-bold text-muted">· {selectedVehicle.fuelType}</span>
-                <span className="text-xs font-black text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-500/20">
-                  {selectedVehicle.startingPrice}
+                <span className="text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-md border border-slate-200">
+                  {selectedVehicle.loadClass}
                 </span>
               </div>
 
@@ -360,11 +360,11 @@ export function FleetShowcase() {
               <div className="mt-5 overflow-x-auto">
                 <table className="w-full text-left text-xs">
                   <thead>
-                    <tr className="border-b border-line bg-[#F8FAFD] text-muted uppercase tracking-wider text-[10px]">
+                    <tr className="border-b border-line bg-slate-50 text-slate-500 uppercase tracking-wider text-[10px]">
                       <th className="p-3">Vehicle</th>
                       <th className="p-3">Max Payload</th>
                       <th className="p-3">Cargo Space</th>
-                      <th className="p-3">Pricing Tier</th>
+                      <th className="p-3">Cargo Class</th>
                       <th className="p-3">Best Suited For</th>
                     </tr>
                   </thead>
@@ -377,7 +377,7 @@ export function FleetShowcase() {
                         </td>
                         <td className="p-3 font-black text-orange">{f.capacity}</td>
                         <td className="p-3 font-semibold text-ink">{f.dimensions}</td>
-                        <td className="p-3 font-bold text-royal">{f.startingPrice}</td>
+                        <td className="p-3 font-bold text-royal">{f.loadClass}</td>
                         <td className="p-3 text-muted">{f.idealFor.slice(0, 2).join(', ')}</td>
                       </tr>
                     ))}

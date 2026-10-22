@@ -7,11 +7,11 @@ export function Logo({ dark = false, className = '' }: LogoProps) {
   return (
     <span className={`inline-flex items-center gap-2.5 select-none ${className}`}>
       <img
-        src="/shifter-online-icon.png"
+        src="/shifter-online-brand.jpg"
         alt="Shifter Online"
-        className="h-9 w-9 object-contain"
+        className="h-10 w-10 rounded-xl object-contain shadow-soft border border-slate-200/60"
       />
-      <span className={`text-[19px] font-black tracking-tight ${dark ? 'text-white' : 'text-ink'}`}>
+      <span className="text-[20px] font-black tracking-tight leading-none">
         <span className="text-orange">Shifter</span> <span className={dark ? 'text-white' : 'text-navy'}>Online</span>
       </span>
     </span>

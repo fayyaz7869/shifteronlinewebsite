@@ -26,7 +26,7 @@ const benefits = [
   {
     icon: IndianRupee,
     title: 'Zero Hidden Charges',
-    description: 'Standard transparent upfront fare calculation with fixed per-km rates',
+    description: '100% transparent quotes with fixed standard rates and zero surprise surge fees',
     accent: 'from-orange via-pink-500 to-purple-600',
     shadow: 'shadow-[0_0_20px_rgba(255,84,18,0.35)]',
   },
@@ -34,29 +34,25 @@ const benefits = [
 
 export function BenefitsBar() {
   return (
-    <section className="relative z-10 -mt-12 px-4">
+    <section className="relative z-10 -mt-10 px-4">
       <ScrollReveal className="container-shifter">
-        <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-r from-[#07132B] via-[#0B1E44] to-[#07132B] px-6 py-9 sm:px-10 md:py-11 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] border border-white/15 backdrop-blur-2xl text-white">
-          {/* Subtle background ambient lights */}
-          <div className="pointer-events-none absolute -left-12 -top-12 h-48 w-48 rounded-full bg-orange/20 blur-3xl" />
-          <div className="pointer-events-none absolute -right-12 -bottom-12 h-48 w-48 rounded-full bg-royal/30 blur-3xl" />
-
+        <div className="relative overflow-hidden rounded-[28px] bg-white px-6 py-8 sm:px-10 md:py-10 shadow-card border border-slate-200/90 text-slate-800">
           <div className="relative grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {benefits.map(({ icon: Icon, title, description, accent, shadow }, i) => (
               <div
                 key={title}
-                className={`group flex items-start gap-4 lg:flex-col lg:items-start lg:gap-3 transition-transform hover:-translate-y-1 ${
-                  i !== 0 ? 'lg:border-l lg:border-white/10 lg:pl-6' : ''
+                className={`group flex items-start gap-4 lg:flex-col lg:items-start lg:gap-3 transition-transform hover:-translate-y-0.5 ${
+                  i !== 0 ? 'lg:border-l lg:border-slate-200/80 lg:pl-6' : ''
                 }`}
               >
                 <span
-                  className={`grid h-13 w-13 shrink-0 place-items-center rounded-2xl bg-gradient-to-tr ${accent} text-white ${shadow} group-hover:scale-110 transition-transform`}
+                  className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-tr ${accent} text-white ${shadow} group-hover:scale-105 transition-transform`}
                 >
-                  <Icon size={24} strokeWidth={2.4} />
+                  <Icon size={22} strokeWidth={2.4} />
                 </span>
                 <div>
-                  <span className="block text-[16px] font-black text-white leading-snug">{title}</span>
-                  <span className="mt-1 block text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+                  <span className="block text-[16px] font-black text-slate-900 leading-snug">{title}</span>
+                  <span className="mt-1 block text-xs sm:text-sm text-slate-500 leading-relaxed font-medium">
                     {description}
                   </span>
                 </div>

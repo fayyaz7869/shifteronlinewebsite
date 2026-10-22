@@ -3,55 +3,58 @@
 @theme {
   --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  /* Cyber & Modern Tech Palette */
-  --color-navy: #050C1A;
-  --color-navy-dark: #02060F;
-  --color-navy-card: #0A162D;
-  --color-royal: #1E5BE8;
-  --color-royal-light: #3B82F6;
+  /* Vibrant Clean Brand Palette (Based on Shifter Online Official Logo) */
+  --color-navy: #0B2559;
+  --color-navy-dark: #061738;
+  --color-navy-card: #0F2F6E;
   
-  --color-orange: #FF5412;
-  --color-orange-light: #FF7B3D;
-  --color-orange-dark: #E03E00;
+  --color-royal: #124ECF;
+  --color-royal-light: #2A66EE;
+  
+  --color-orange: #FF5A1F;
+  --color-orange-light: #FF783E;
+  --color-orange-dark: #E0440E;
   --color-amber-accent: #F59E0B;
   
-  --color-cyan-accent: #06B6D4;
-  --color-emerald-accent: #10B981;
+  --color-cyan-accent: #0284C7;
+  --color-emerald-accent: #16A34A;
   
-  --color-offwhite: #F4F7FC;
-  --color-surface-subtle: #EBF1FA;
-  --color-ink: #07132E;
-  --color-muted: #566885;
-  --color-line: #1E293B;
-  --color-line-dark: #1A2946;
+  --color-surface: #FFFFFF;
+  --color-surface-subtle: #F8FAFC;
+  --color-offwhite: #F1F5F9;
+  
+  --color-ink: #0F172A;
+  --color-ink-light: #1E293B;
+  --color-muted: #556987;
+  --color-line: #E2E8F0;
+  --color-line-subtle: #EEF2F6;
 
-  --shadow-soft: 0 2px 4px rgba(5, 12, 26, 0.04), 0 12px 32px -10px rgba(5, 12, 26, 0.08);
-  --shadow-card: 0 4px 6px -1px rgba(5, 12, 26, 0.05), 0 20px 48px -12px rgba(5, 12, 26, 0.12);
-  --shadow-lift: 0 24px 60px -15px rgba(0, 0, 0, 0.45);
-  --shadow-nav: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
-  --shadow-glow-orange: 0 12px 40px -8px rgba(255, 84, 18, 0.45);
-  --shadow-glow-royal: 0 12px 40px -8px rgba(30, 91, 232, 0.45);
-  --shadow-glow-emerald: 0 12px 40px -8px rgba(16, 185, 129, 0.45);
+  --shadow-soft: 0 2px 8px -2px rgba(15, 23, 42, 0.05), 0 10px 24px -4px rgba(15, 23, 42, 0.06);
+  --shadow-card: 0 4px 14px -2px rgba(15, 23, 42, 0.06), 0 18px 38px -6px rgba(15, 23, 42, 0.09);
+  --shadow-lift: 0 14px 35px -6px rgba(15, 23, 42, 0.1), 0 28px 64px -12px rgba(15, 23, 42, 0.12);
+  --shadow-nav: 0 4px 20px -2px rgba(11, 37, 89, 0.08);
+  --shadow-glow-orange: 0 8px 28px -4px rgba(255, 90, 31, 0.35);
+  --shadow-glow-royal: 0 8px 28px -4px rgba(18, 78, 207, 0.3);
 }
 
 @layer base {
   * {
-    border-color: #1E293B;
+    border-color: #E2E8F0;
   }
 
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   section[id] {
-    scroll-margin-top: 110px;
+    scroll-margin-top: 100px;
   }
 
   body {
     margin: 0;
-    background-color: #040914;
-    color: #E2E8F0;
+    background-color: #FFFFFF;
+    color: #0F172A;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -59,12 +62,12 @@
   }
 
   ::selection {
-    background-color: var(--color-orange);
+    background-color: #FF5A1F;
     color: #ffffff;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-orange);
+    outline: 2px solid #FF5A1F;
     outline-offset: 2px;
   }
 }
@@ -87,71 +90,35 @@
     text-wrap: balance;
   }
 
-  .bg-grid-cyber {
+  .bg-grid-light {
     background-image:
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-    background-size: 44px 44px;
-    -webkit-mask-image: radial-gradient(ellipse 80% 65% at 50% 30%, black 45%, transparent 95%);
-    mask-image: radial-gradient(ellipse 80% 65% at 50% 30%, black 45%, transparent 95%);
+      linear-gradient(to bottom, rgba(11, 37, 89, 0.035) 1px, transparent 1px),
+      linear-gradient(to right, rgba(11, 37, 89, 0.035) 1px, transparent 1px);
+    background-size: 36px 36px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 40%, transparent 95%);
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 40%, transparent 95%);
   }
 
-  .bg-grid-subtle {
-    background-image:
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
-
-  .glass-card-dark {
-    background-color: rgba(10, 22, 45, 0.85);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-  }
-
-  .glass-card-cyber {
-    background-color: rgba(13, 24, 48, 0.7);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+  .bg-dots-light {
+    background-image: radial-gradient(rgba(11, 37, 89, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 
   .glass-card-light {
-    background-color: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(226, 232, 243, 0.85);
+    background-color: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(226, 232, 240, 0.9);
   }
 
   .gradient-text-orange {
-    background: linear-gradient(135deg, #FF5412 0%, #FF8A4C 50%, #FBBF24 100%);
+    background: linear-gradient(135deg, #FF5A1F 0%, #FF783E 50%, #F59E0B 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .gradient-text-blue {
-    background: linear-gradient(135deg, #38BDF8 0%, #1E5BE8 60%, #818CF8 100%);
+    background: linear-gradient(135deg, #0B2559 0%, #124ECF 70%, #0284C7 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
-
-  .gradient-text-white {
-    background: linear-gradient(180deg, #FFFFFF 0%, #CBD5E1 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .glow-border-orange {
-    position: relative;
-  }
-  .glow-border-orange::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(255,84,18,0.6), rgba(30,91,232,0.4), rgba(255,84,18,0.2));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
   }
 }

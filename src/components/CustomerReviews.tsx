@@ -1,4 +1,4 @@
-import { Star, Building2, User, Truck, ShieldCheck, Factory } from 'lucide-react';
+import { Star, Building2, User, Truck, ShieldCheck, Factory, CheckCircle2 } from 'lucide-react';
 import { ScrollReveal } from './ui/ScrollReveal';
 
 const REVIEWS = [
@@ -20,7 +20,7 @@ const REVIEWS = [
     tag: '2 BHK Home Relocation',
     icon: User,
     comment:
-      'Shifted our complete 2 BHK apartment using Shifter Online Pickup 8ft. The fare was completely transparent with zero hidden charges. Both the driver and helper were polite, punctual, and took great care of our glass items.',
+      'Shifted our complete 2 BHK apartment using Shifter Online Pickup 8ft. The booking was completely transparent with zero hidden charges. Both the driver and helper were polite, punctual, and took great care of our glass items.',
   },
   {
     name: 'Sunil Parmar',
@@ -40,87 +40,110 @@ const REVIEWS = [
     tag: 'B2B Logistics Partner',
     icon: Factory,
     comment:
-      'Pithampur routes used to be unpredictable with local transport brokers. With Shifter Online, we schedule e-loaders and 8ft pickups with fixed per-km rates and verified drivers. Saved our business over 20% in freight costs.',
+      'Pithampur routes used to be unpredictable with local transport brokers. With Shifter Online, we schedule e-loaders and 8ft pickups with fixed transparent rates and verified drivers. Saved our business over 20% in freight costs.',
   },
 ];
 
 export function CustomerReviews() {
   return (
-    <section className="py-24 md:py-32 bg-[#040914] text-white relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-white text-slate-900 border-b border-slate-200/80 relative overflow-hidden">
       {/* Background ambient radial lights */}
-      <div className="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-royal/15 blur-3xl" />
-      <div className="pointer-events-none absolute -right-32 bottom-20 h-96 w-96 rounded-full bg-orange/15 blur-3xl" />
-      <div className="pointer-events-none absolute inset-0 bg-grid-cyber opacity-25" />
+      <div className="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-navy/5 blur-3xl" />
+      <div className="pointer-events-none absolute -right-32 bottom-20 h-96 w-96 rounded-full bg-orange/5 blur-3xl" />
 
       <div className="container-shifter relative z-10">
         <ScrollReveal className="mx-auto max-w-2xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-orange/30 bg-orange/10 px-3.5 py-1 text-xs font-bold text-orange">
+          <div className="inline-flex items-center gap-2 rounded-full border border-orange/20 bg-orange/10 px-3.5 py-1 text-xs font-bold text-orange">
             <span className="h-1.5 w-1.5 rounded-full bg-orange animate-pulse" />
             <span>TRUSTED BY THOUSANDS</span>
           </div>
-          <h2 className="mt-3 text-3xl font-black leading-tight text-white sm:text-[42px]">
+          <h2 className="mt-3 text-3xl font-black leading-tight text-navy sm:text-[42px]">
             What People Say About Shifter
           </h2>
-          <p className="mt-4 text-[15px] leading-relaxed text-slate-300">
+          <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
             From local merchants and manufacturers to families shifting homes and driver partners — see why Central India trusts Shifter Online.
           </p>
 
           {/* Aggregate Rating Banner */}
-          <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-3 rounded-2xl bg-slate-900/80 px-5 py-2.5 border border-white/10 shadow-lift text-xs font-bold text-white">
-            <div className="flex items-center gap-1 text-amber-400">
+          <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-3 rounded-2xl bg-slate-50 px-5 py-2.5 border border-slate-200 shadow-soft text-xs font-bold text-slate-800">
+            <div className="flex items-center gap-1 text-amber-500">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} size={15} fill="currentColor" />
               ))}
             </div>
             <span>4.9 / 5 Overall Rating</span>
-            <span className="text-white/20">|</span>
-            <span className="text-slate-400 font-medium">Over 2,500+ Trips in Central India</span>
+            <span className="text-slate-300">|</span>
+            <span className="text-slate-600 font-medium">Over 2,500+ Trips in Central India</span>
           </div>
         </ScrollReveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {REVIEWS.map((review, i) => {
+        {/* Reviews Grid */}
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {REVIEWS.map((review, idx) => {
             const Icon = review.icon;
             return (
-              <ScrollReveal key={review.name} delay={i * 0.08}>
-                <div className="flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-lift backdrop-blur-md transition-all hover:-translate-y-1 hover:border-orange/50 hover:bg-slate-900/90 group">
-                  <div>
-                    <div className="flex items-center justify-between">
-                      {/* Star ratings */}
-                      <div className="flex items-center gap-0.5 text-amber-400">
-                        {[...Array(review.rating)].map((_, idx) => (
-                          <Star key={idx} size={14} fill="currentColor" />
-                        ))}
-                      </div>
-                      <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/15 border border-emerald-500/30 px-2.5 py-0.5 rounded-full flex items-center gap-1">
-                        <ShieldCheck size={11} /> Verified
-                      </span>
+              <ScrollReveal
+                key={idx}
+                delay={idx * 0.08}
+                className="group relative flex flex-col justify-between rounded-3xl bg-white p-7 border border-slate-200/90 shadow-soft hover:shadow-lift hover:border-orange/40 transition-all duration-300"
+              >
+                <div>
+                  {/* Top Bar: Stars + Tag */}
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-1 text-amber-500">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <Star key={i} size={15} fill="currentColor" />
+                      ))}
                     </div>
-
-                    <span className="mt-3.5 inline-block rounded-lg bg-white/5 border border-white/10 px-2.5 py-0.5 text-[10px] font-bold text-orange">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-[11px] font-bold text-slate-700">
+                      <CheckCircle2 size={12} className="text-emerald-500" />
                       {review.tag}
                     </span>
-
-                    <p className="mt-3.5 text-[13px] leading-relaxed text-slate-300">
-                      &ldquo;{review.comment}&rdquo;
-                    </p>
                   </div>
 
-                  <div className="mt-6 flex items-center gap-3 border-t border-white/10 pt-4">
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-orange/15 text-orange border border-orange/20 shadow-soft">
-                      <Icon size={18} />
-                    </span>
-                    <div className="min-w-0">
-                      <h4 className="text-xs font-black text-white truncate group-hover:text-orange transition-colors">{review.name}</h4>
-                      <p className="text-[11px] text-slate-400 truncate">{review.role}</p>
-                      <p className="text-[10px] text-slate-500 truncate">{review.location}</p>
-                    </div>
+                  {/* Comment Body */}
+                  <p className="mt-4 text-sm leading-relaxed text-slate-700 font-normal">
+                    &ldquo;{review.comment}&rdquo;
+                  </p>
+                </div>
+
+                {/* User Details */}
+                <div className="mt-6 pt-5 border-t border-slate-100 flex items-center gap-3.5">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-orange/10 text-orange font-bold text-sm border border-orange/20">
+                    <Icon size={18} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-black text-navy">{review.name}</h4>
+                    <p className="text-xs text-slate-500 font-medium">
+                      {review.role} · <span className="text-slate-400">{review.location}</span>
+                    </p>
                   </div>
                 </div>
               </ScrollReveal>
             );
           })}
         </div>
+
+        {/* Safety & Compliance Trust Banner */}
+        <ScrollReveal delay={0.2} className="mt-12">
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:p-6 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="h-10 w-10 rounded-xl bg-orange/10 text-orange flex items-center justify-center shrink-0">
+                <ShieldCheck size={20} />
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-navy">100% Verified Drivers &amp; Safe Deliveries</h4>
+                <p className="text-xs text-slate-500">Every partner passes complete Police DL &amp; RC background checks before taking orders.</p>
+              </div>
+            </div>
+            <a
+              href="tel:9109114515"
+              className="inline-flex items-center gap-2 rounded-xl bg-navy px-4 py-2 text-xs font-bold text-white hover:bg-navy-light transition-all shrink-0"
+            >
+              Call 24/7 Helpline: +91 9109114515
+            </a>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

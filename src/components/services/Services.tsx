@@ -74,11 +74,11 @@ const industries = [
 
 export function Services() {
   return (
-    <section id="services" className="py-24 md:py-32 bg-[#050C1A] text-white relative overflow-hidden">
-      {/* Ambient background glows */}
-      <div className="pointer-events-none absolute -left-40 top-40 h-96 w-96 rounded-full bg-royal/15 blur-3xl" />
-      <div className="pointer-events-none absolute -right-40 bottom-40 h-96 w-96 rounded-full bg-orange/15 blur-3xl" />
-      <div className="pointer-events-none absolute inset-0 bg-grid-cyber opacity-30" />
+    <section id="services" className="py-24 md:py-32 bg-white text-slate-900 relative overflow-hidden">
+      {/* Subtle background ambient lights */}
+      <div className="pointer-events-none absolute -left-40 top-40 h-96 w-96 rounded-full bg-orange/5 blur-3xl" />
+      <div className="pointer-events-none absolute -right-40 bottom-40 h-96 w-96 rounded-full bg-royal/5 blur-3xl" />
+      <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-50" />
 
       <div className="container-shifter relative z-10">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,380px)_1fr] lg:gap-16">
@@ -87,21 +87,21 @@ export function Services() {
               <span className="h-1.5 w-1.5 rounded-full bg-orange animate-pulse" />
               <span>WHAT WE OFFER</span>
             </div>
-            <h2 className="mt-3 text-3xl font-black leading-tight text-white sm:text-[42px]">
+            <h2 className="mt-3 text-3xl font-black leading-tight text-slate-900 sm:text-[42px]">
               Comprehensive Logistics Solutions
             </h2>
-            <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-orange to-orange-light" />
-            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-slate-300">
-              From a two-wheeler for a single parcel to a mini truck for a full commercial load —
-              choose the right vehicle for every shipment with transparent pricing.
+            <div className="mt-4 h-1 w-16 rounded-full bg-orange" />
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-slate-600 font-medium">
+              From a two-wheeler for a single urgent parcel to a full mini truck for commercial loads or house shifting —
+              choose the right vehicle for every shipment.
             </p>
-            <a href="#services" className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-orange hover:text-orange-light transition-colors">
+            <a href="#services" className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-orange hover:text-orange-dark transition-colors">
               Explore Complete Fleet Matrix →
             </a>
 
-            <div className="mt-10 hidden rounded-3xl border border-white/10 bg-gradient-to-b from-slate-900/80 to-[#071126]/90 p-6 shadow-lift backdrop-blur-md lg:block">
+            <div className="mt-10 hidden rounded-3xl border border-slate-200/80 bg-slate-50/70 p-6 shadow-soft backdrop-blur-md lg:block">
               <VehicleLineupIllustration />
-              <p className="mt-3 text-center text-xs font-bold tracking-wider text-slate-400">
+              <p className="mt-3 text-center text-xs font-bold tracking-wider text-slate-500">
                 BIKE · THREE-WHEELER · MINI TRUCK · PICKUP
               </p>
             </div>
@@ -121,16 +121,16 @@ export function Services() {
           <FleetShowcase />
         </ScrollReveal>
 
-        <ScrollReveal delay={0.1} className="mt-20 rounded-3xl border border-white/10 bg-slate-900/60 px-6 py-10 shadow-lift backdrop-blur-md sm:px-10">
+        <ScrollReveal delay={0.1} className="mt-16 rounded-3xl border border-slate-200/80 bg-slate-50/80 px-6 py-10 shadow-soft backdrop-blur-md sm:px-10">
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
             {metrics.map(({ icon: Icon, value, label }) => (
               <div key={label} className="flex items-center gap-3">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white/5 border border-white/10 text-orange shadow-soft">
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white border border-slate-200 text-orange shadow-soft">
                   <Icon size={22} />
                 </span>
                 <span>
-                  <span className="block text-xl font-black text-white sm:text-2xl">{value}</span>
-                  <span className="block text-xs font-semibold text-slate-400 sm:text-sm">{label}</span>
+                  <span className="block text-xl font-black text-slate-900 sm:text-2xl">{value}</span>
+                  <span className="block text-xs font-semibold text-slate-500 sm:text-sm">{label}</span>
                 </span>
               </div>
             ))}
@@ -139,11 +139,11 @@ export function Services() {
 
         <ScrollReveal delay={0.15} className="mt-12 text-center">
           <span className="text-xs font-bold tracking-[0.14em] text-orange uppercase">INDUSTRIES WE SERVE</span>
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-2.5">
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-2.5">
             {industries.map((industry) => (
               <span
                 key={industry}
-                className="rounded-full border border-white/10 bg-slate-900/70 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-300 hover:border-orange/50 hover:text-white transition-all shadow-xs"
+                className="rounded-full border border-slate-200 bg-white px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700 hover:border-orange hover:text-orange transition-all shadow-2xs"
               >
                 {industry}
               </span>

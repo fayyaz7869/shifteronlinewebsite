@@ -1,7 +1,7 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
 import { Link, type LinkProps } from 'react-router-dom';
 
-type Variant = 'primary' | 'secondary' | 'outline-light' | 'ghost-light';
+type Variant = 'primary' | 'secondary' | 'outline' | 'outline-light' | 'ghost-light';
 type Size = 'md' | 'lg';
 
 const base =
@@ -13,6 +13,8 @@ const variants: Record<Variant, string> = {
     'bg-gradient-to-r from-orange via-orange to-orange-light text-white shadow-glow-orange hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0',
   secondary:
     'bg-white text-navy border border-line hover:border-royal/50 hover:bg-royal/5 hover:text-royal hover:-translate-y-0.5 active:translate-y-0 shadow-2xs',
+  outline:
+    'bg-transparent text-navy border border-slate-300 hover:border-orange hover:text-orange hover:bg-orange/5 hover:-translate-y-0.5 active:translate-y-0 shadow-2xs',
   'outline-light':
     'bg-transparent text-white border border-white/30 hover:bg-white/10 hover:-translate-y-0.5 active:translate-y-0',
   'ghost-light': 'bg-white text-navy hover:bg-white/95 hover:-translate-y-0.5 active:translate-y-0 shadow-soft',

@@ -19,7 +19,7 @@ const columns = [
       { label: '3-Wheeler E-Loader', href: '#services' },
       { label: 'Tata Ace Mini Truck', href: '#services' },
       { label: 'Pickup 8ft / Bolero', href: '#services' },
-      { label: 'Driver Partner (Earn ₹35k+)', href: '#driver-partner' },
+      { label: 'Driver Partner (Earn ₹45k+)', href: '#driver-partner' },
       { label: 'Download Driver App', href: 'https://play.google.com/store/apps/details?id=com.shifter.driver' },
     ],
   },
@@ -43,22 +43,30 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="bg-[#030712] pt-20 text-slate-300 border-t border-white/10 relative overflow-hidden">
+    <footer className="bg-[#0B1528] pt-20 text-slate-300 border-t border-slate-800 relative overflow-hidden">
       {/* Background radial glow */}
-      <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-64 w-3/4 rounded-full bg-royal/10 blur-3xl" />
+      <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-64 w-3/4 rounded-full bg-orange/10 blur-3xl" />
 
       <div className="container-shifter relative z-10 grid grid-cols-1 gap-12 pb-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
-          <span className="inline-flex items-center gap-2.5 select-none">
-            <img
-              src="/shifter-online-icon.png"
-              alt="Shifter Online"
-              className="h-10 w-10 object-contain drop-shadow-[0_0_12px_rgba(255,84,18,0.5)]"
-            />
-            <span className="text-[20px] font-black tracking-tight text-white">
-              Shifter <span className="gradient-text-orange">Online</span>
-            </span>
+          <span className="inline-flex items-center gap-3 select-none">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-soft border border-white/20">
+              <img
+                src="/shifter-online-brand.jpg"
+                alt="Shifter Online"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[20px] font-black tracking-tight text-white leading-none">
+                Shifter <span className="text-orange">Online</span>
+              </span>
+              <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase mt-0.5">
+                Logistics Made Simple
+              </span>
+            </div>
           </span>
+
           <p className="mt-4 max-w-xs text-xs sm:text-sm leading-relaxed text-slate-400">
             Shifter Online, by Movigo Logistics Aggregator Pvt. Ltd., is India&apos;s
             technology-driven logistics platform — connecting customers with verified driver
@@ -72,7 +80,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="grid h-9 w-9 place-items-center rounded-xl bg-white/5 border border-white/10 text-white transition-all hover:bg-orange hover:border-orange hover:shadow-glow-orange active:scale-95"
+                className="grid h-9 w-9 place-items-center rounded-xl bg-white/5 border border-white/10 text-white transition-all hover:bg-orange hover:border-orange hover:text-white active:scale-95"
               >
                 <Icon />
               </a>
@@ -109,7 +117,7 @@ export function Footer() {
               Terms &amp; Conditions
             </SmartLink>
             <span className="text-white/20">|</span>
-            <SmartLink href="/admin/login" className="hover:text-white transition-colors text-slate-600">
+            <SmartLink href="/admin/login" className="hover:text-white transition-colors text-slate-500">
               Staff Portal
             </SmartLink>
             <span className="text-white/20">|</span>
