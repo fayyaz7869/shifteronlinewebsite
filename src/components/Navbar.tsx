@@ -31,7 +31,7 @@ const WHATSAPP_URL = 'https://wa.me/919644423533?text=Hello%20Shifter%20Online,%
 const desktopNavLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Services & Fleet', href: '#services', hasDropdown: true },
-  { label: 'Tracking', href: '#tracking' },
+  { label: 'Live Tracking', href: '#tracking' },
   { label: 'Hubs', href: '#coverage' },
   { label: 'Driver Partner', href: '#driver-partner' },
   { label: 'Why Us', href: '#why-us' },
@@ -111,6 +111,12 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
               top: elementPosition - navOffset,
               behavior: 'smooth',
             });
+            if (targetId === 'tracking') {
+              setTimeout(() => {
+                const input = document.getElementById('tracking-search-input');
+                if (input) input.focus();
+              }, 450);
+            }
           }
         }
       }, 70);
