@@ -28,8 +28,10 @@ import {
   Copy,
   RotateCcw,
   Sparkles,
+  ClipboardList,
 } from 'lucide-react';
 import { useAdminAuth } from '../../context/useAdminAuth';
+import { AdminInquiriesManager } from './AdminInquiriesManager';
 import {
   adminApi,
   AdminApiError,
@@ -102,7 +104,17 @@ export function AdminDashboard() {
   const { admin, logout } = useAdminAuth();
 
   // Top Level Navigation Tabs
-  const [activeTab, setActiveTab] = useState<'users' | 'media'>('users');
+  const [activeTab, setActiveTab] = useState<'users' | 'inquiries' | 'media'>('users');
+  const [inquiryNewCount, setInquiryNewCount] = useState<number>(0);
+
+  useEffect(() => {
+    adminApi
+      .getInquiries()
+      .then((res) => {
+        if (res.stats) setInquiryNewCount(res.stats.newCount);
+      })
+      .catch(() => {});
+  }, []);
 
   // Media Management State
   const [mediaList, setMediaList] = useState<SiteMediaItem[]>([]);
@@ -574,6 +586,28 @@ export function AdminDashboard() {
 
           <button
             type="button"
+            onClick={() => setActiveTab('inquiries')}
+            className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-extrabold transition-all ${
+              activeTab === 'inquiries'
+                ? 'bg-orange text-white shadow-soft shadow-orange/20'
+                : 'bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800'
+            }`}
+          >
+            <ClipboardList size={16} />
+            <span>Customer &amp; Driver Inquiries</span>
+            {inquiryNewCount > 0 ? (
+              <span className="rounded-full bg-red-500 text-white px-2 py-0.5 text-[10px] font-black animate-pulse">
+                {inquiryNewCount} NEW
+              </span>
+            ) : (
+              <span className="rounded-full bg-white/20 px-2 py-0.5 text-[11px] font-bold">
+                Leads
+              </span>
+            )}
+          </button>
+
+          <button
+            type="button"
             onClick={() => setActiveTab('media')}
             className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-extrabold transition-all ${
               activeTab === 'media'
@@ -987,6 +1021,13 @@ export function AdminDashboard() {
           </div>
         </section>
           </>
+        )}
+
+        {/* ==========================================
+            CUSTOMER & DRIVER INQUIRIES TAB
+        ========================================== */}
+        {activeTab === 'inquiries' && (
+          <AdminInquiriesManager onNewCountChange={(cnt) => setInquiryNewCount(cnt)} />
         )}
 
         {/* ==========================================

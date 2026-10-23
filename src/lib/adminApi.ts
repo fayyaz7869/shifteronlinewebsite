@@ -211,4 +211,63 @@ export const adminApi = {
     adminRequest<{ message: string }>(`/api/admin/media/${key}`, {
       method: 'DELETE',
     }),
+
+  // Inquiries Management
+  getInquiries: (params: InquiryFilterParams = {}) => {
+    const searchParams = new URLSearchParams();
+    if (params.search) searchParams.set('search', params.search);
+    if (params.type && params.type !== 'all') searchParams.set('type', params.type);
+    if (params.status && params.status !== 'all') searchParams.set('status', params.status);
+    const qs = searchParams.toString();
+    return adminRequest<InquiriesResponse>(`/api/admin/inquiries${qs ? `?${qs}` : ''}`);
+  },
+
+  updateInquiryStatus: (id: string, status: InquiryStatus) =>
+    adminRequest<{ message: string; inquiry: AdminInquiry }>(`/api/admin/inquiries/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ status }),
+    }),
+
+  deleteInquiry: (id: string) =>
+    adminRequest<{ message: string }>(`/api/admin/inquiries/${id}`, {
+      method: 'DELETE',
+    }),
 };
+
+export type InquiryType = 'customer' | 'driver';
+export type InquiryStatus = 'New' | 'Contacted' | 'Closed';
+
+export interface AdminInquiry {
+  _id: string;
+  type: InquiryType;
+  name: string;
+  mobile: string;
+  vehicleType?: string;
+  pickupLocation?: string;
+  dropLocation?: string;
+  cargoType?: string;
+  needHelper?: boolean;
+  vehicleNumber?: string;
+  preferredHub?: string;
+  hasDocuments?: boolean;
+  notes?: string;
+  status: InquiryStatus;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface InquiryFilterParams {
+  search?: string;
+  type?: 'all' | InquiryType;
+  status?: 'all' | InquiryStatus;
+}
+
+export interface InquiriesResponse {
+  inquiries: AdminInquiry[];
+  stats: {
+    total: number;
+    newCount: number;
+    customerCount: number;
+    driverCount: number;
+  };
+}

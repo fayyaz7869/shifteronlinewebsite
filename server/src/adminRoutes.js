@@ -481,10 +481,46 @@ adminRouter.delete('/media/:key', verifyAdminToken, async (req, res) => {
 // ==========================================
 // 5. INQUIRIES MANAGEMENT
 // ==========================================
-adminRouter.get('/inquiries', verifyAdminToken, async (_req, res) => {
+adminRouter.get('/inquiries', verifyAdminToken, async (req, res) => {
   try {
-    const list = await Inquiry.find().sort({ createdAt: -1 }).limit(100);
-    return res.status(200).json({ inquiries: list });
+    const { search = '', type = 'all', status = 'all' } = req.query;
+
+    const filter = {};
+    if (type && type !== 'all') {
+      filter.type = type;
+    }
+    if (status && status !== 'all') {
+      filter.status = status;
+    }
+    if (search && String(search).trim()) {
+      const q = String(search).trim();
+      filter.$or = [
+        { name: { $regex: q, $options: 'i' } },
+        { mobile: { $regex: q, $options: 'i' } },
+        { vehicleType: { $regex: q, $options: 'i' } },
+        { pickupLocation: { $regex: q, $options: 'i' } },
+        { dropLocation: { $regex: q, $options: 'i' } },
+        { vehicleNumber: { $regex: q, $options: 'i' } },
+      ];
+    }
+
+    const [list, total, newCount, customerCount, driverCount] = await Promise.all([
+      Inquiry.find(filter).sort({ createdAt: -1 }).limit(200),
+      Inquiry.countDocuments(),
+      Inquiry.countDocuments({ status: 'New' }),
+      Inquiry.countDocuments({ type: 'customer' }),
+      Inquiry.countDocuments({ type: 'driver' }),
+    ]);
+
+    return res.status(200).json({
+      inquiries: list,
+      stats: {
+        total,
+        newCount,
+        customerCount,
+        driverCount,
+      },
+    });
   } catch (err) {
     console.error('Error fetching inquiries:', err);
     return res.status(500).json({ message: 'Failed to fetch inquiries.' });
@@ -501,5 +537,14 @@ adminRouter.patch('/inquiries/:id', verifyAdminToken, async (req, res) => {
     return res.status(200).json({ message: 'Status updated.', inquiry: updated });
   } catch {
     return res.status(500).json({ message: 'Failed to update inquiry.' });
+  }
+});
+
+adminRouter.delete('/inquiries/:id', verifyAdminToken, async (req, res) => {
+  try {
+    await Inquiry.findByIdAndDelete(req.params.id);
+    return res.status(200).json({ message: 'Inquiry deleted successfully.' });
+  } catch {
+    return res.status(500).json({ message: 'Failed to delete inquiry.' });
   }
 });
