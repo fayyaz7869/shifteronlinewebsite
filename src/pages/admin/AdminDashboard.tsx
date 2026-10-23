@@ -31,6 +31,7 @@ import {
   ClipboardList,
 } from 'lucide-react';
 import { useAdminAuth } from '../../context/useAdminAuth';
+import { useSiteMedia } from '../../context/useSiteMedia';
 import { AdminInquiriesManager } from './AdminInquiriesManager';
 import {
   adminApi,
@@ -102,6 +103,7 @@ interface Toast {
 
 export function AdminDashboard() {
   const { admin, logout } = useAdminAuth();
+  const { refreshMedia } = useSiteMedia();
 
   // Top Level Navigation Tabs
   const [activeTab, setActiveTab] = useState<'users' | 'inquiries' | 'media'>('users');
@@ -253,6 +255,7 @@ export function AdminDashboard() {
       const res = await adminApi.uploadMedia(file, slotKey, title);
       addToast('success', res.message || `Uploaded ${title} successfully to Cloudinary!`);
       await fetchMediaList();
+      await refreshMedia();
     } catch (err) {
       addToast('error', err instanceof AdminApiError ? err.message : 'Upload failed. Check Cloudinary credentials.');
     } finally {
@@ -267,6 +270,7 @@ export function AdminDashboard() {
       await adminApi.resetMedia(slotKey);
       addToast('info', `Reset ${title} back to default website asset.`);
       await fetchMediaList();
+      await refreshMedia();
     } catch (err) {
       addToast('error', err instanceof AdminApiError ? err.message : 'Reset failed.');
     } finally {

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Truck, Bike, CheckCircle2, ShieldCheck, Zap, Smartphone, ArrowRight, DollarSign } from 'lucide-react';
 import { ScrollReveal } from './ui/ScrollReveal';
+import { useSiteMedia } from '../context/useSiteMedia';
 
 interface VehicleTier {
   id: string;
@@ -12,6 +13,13 @@ interface VehicleTier {
   image: string;
   popular?: boolean;
 }
+
+const TIER_MEDIA_KEYS: Record<string, string> = {
+  tata_ace: 'fleet_tata_ace',
+  pickup: 'fleet_pickup',
+  three_wheeler: 'fleet_3wheeler',
+  bike: 'fleet_bike',
+};
 
 const VEHICLE_TIERS: VehicleTier[] = [
   {
@@ -88,8 +96,10 @@ const REQUIREMENTS = [
 ];
 
 export function DriverEarningsSection() {
+  const { getMediaUrl } = useSiteMedia();
   const [activeTier, setActiveTier] = useState<string>('tata_ace');
   const selected = VEHICLE_TIERS.find((v) => v.id === activeTier) || VEHICLE_TIERS[0];
+  const selectedImageUrl = getMediaUrl(TIER_MEDIA_KEYS[selected.id] || '', selected.image);
 
   const whatsappOnboarding = encodeURIComponent(
     `Hello Shifter Online Team! 🚚\n\nI want to attach my vehicle (${selected.name}) as a Driver Partner in Indore/MP.\n` +
@@ -137,7 +147,11 @@ export function DriverEarningsSection() {
                   </span>
                 )}
                 <div className="h-14 w-full flex items-center justify-start mb-3">
-                  <img src={tier.image} alt={tier.name} className="h-12 w-auto object-contain" />
+                  <img
+                    src={getMediaUrl(TIER_MEDIA_KEYS[tier.id] || '', tier.image)}
+                    alt={tier.name}
+                    className="h-12 w-auto object-contain rounded-lg"
+                  />
                 </div>
                 <h3 className="text-base font-extrabold text-navy">{tier.name}</h3>
                 <p className="mt-1 text-xs text-slate-500 line-clamp-2">{tier.subtitle}</p>
@@ -159,14 +173,25 @@ export function DriverEarningsSection() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left Info */}
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 rounded-xl bg-orange/10 px-3 py-1 text-xs font-bold text-orange mb-3">
-                <span>Selected: {selected.name}</span>
-                <span className="text-slate-300">•</span>
-                <span>{selected.payload}</span>
+              <div className="flex items-center gap-4 mb-3">
+                <div className="h-16 w-24 rounded-2xl bg-slate-50 border border-slate-200 p-1 flex items-center justify-center shrink-0">
+                  <img
+                    src={selectedImageUrl}
+                    alt={selected.name}
+                    className="h-14 w-auto object-contain rounded-lg"
+                  />
+                </div>
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-xl bg-orange/10 px-3 py-1 text-xs font-bold text-orange">
+                    <span>Selected: {selected.name}</span>
+                    <span className="text-slate-300">•</span>
+                    <span>{selected.payload}</span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-black text-navy mt-1">
+                    Start Earning {selected.earningRange}
+                  </h3>
+                </div>
               </div>
-              <h3 className="text-2xl font-black text-navy sm:text-3xl">
-                Start Earning {selected.earningRange}
-              </h3>
               <p className="mt-2 text-sm text-slate-600 leading-relaxed">
                 Connect directly with our onboarding team on WhatsApp. Submit your documents online and start receiving bookings across Central India in less than 24 hours.
               </p>

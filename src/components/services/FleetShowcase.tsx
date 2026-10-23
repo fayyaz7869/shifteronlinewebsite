@@ -2,6 +2,14 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Bike, Truck, Check, ArrowRight, ShieldCheck, Clock, Zap, Layers, X, Gauge } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSiteMedia } from '../../context/useSiteMedia';
+
+const FLEET_MEDIA_KEYS: Record<string, string> = {
+  bike: 'fleet_bike',
+  three_wheeler: 'fleet_3wheeler',
+  tata_ace: 'fleet_tata_ace',
+  pickup: 'fleet_pickup',
+};
 
 interface VehicleFleetItem {
   id: string;
@@ -108,9 +116,14 @@ const FLEET: VehicleFleetItem[] = [
 ];
 
 export function FleetShowcase() {
+  const { getMediaUrl } = useSiteMedia();
   const [activeTab, setActiveTab] = useState('tata_ace');
   const [showComparison, setShowComparison] = useState(false);
   const selectedVehicle = FLEET.find((v) => v.id === activeTab) || FLEET[2];
+  const selectedVehicleImage = getMediaUrl(
+    FLEET_MEDIA_KEYS[selectedVehicle.id] || '',
+    selectedVehicle.image
+  );
 
   const whatsappLink = `https://wa.me/919644423533?text=${encodeURIComponent(
     `Hello Shifter Online! 🚚\n\nI have an inquiry regarding ${selectedVehicle.name} (${selectedVehicle.capacity}). Please share vehicle availability and transport details.`
@@ -163,7 +176,11 @@ export function FleetShowcase() {
                   isActive ? 'bg-orange text-white shadow-xs' : 'bg-white text-navy shadow-2xs border border-line'
                 }`}
               >
-                <img src={v.image} alt={v.name} className="h-6 w-8 object-contain" />
+                <img
+                  src={getMediaUrl(FLEET_MEDIA_KEYS[v.id] || '', v.image)}
+                  alt={v.name}
+                  className="h-7 w-auto object-contain rounded-md"
+                />
               </div>
               <div className="min-w-0">
                 <span className="block truncate text-xs font-black text-ink sm:text-sm">
@@ -275,7 +292,11 @@ export function FleetShowcase() {
               {/* Vehicle spotlight visual */}
               <div className="relative rounded-2xl bg-gradient-to-br from-[#EBF2FE] to-[#F5F8FC] p-6 flex items-center justify-center border border-line mb-5 overflow-hidden">
                 <div className="pointer-events-none absolute h-32 w-32 rounded-full bg-orange/15 blur-2xl" />
-                <img src={selectedVehicle.image} alt={selectedVehicle.name} className="h-28 w-auto object-contain relative z-10" />
+                <img
+                  src={selectedVehicleImage}
+                  alt={selectedVehicle.name}
+                  className="h-28 w-auto object-contain relative z-10 rounded-xl"
+                />
               </div>
 
               <span className="text-xs font-bold uppercase tracking-wider text-muted block mb-3">
@@ -381,7 +402,11 @@ export function FleetShowcase() {
                     {FLEET.map((f) => (
                       <tr key={f.id} className="hover:bg-slate-50 transition-colors">
                         <td className="p-3 font-black text-navy flex items-center gap-2">
-                          <img src={f.image} alt={f.name} className="h-6 w-9 object-contain" />
+                          <img
+                            src={getMediaUrl(FLEET_MEDIA_KEYS[f.id] || '', f.image)}
+                            alt={f.name}
+                            className="h-6 w-9 object-contain rounded"
+                          />
                           <span>{f.name}</span>
                         </td>
                         <td className="p-3 font-black text-orange">{f.capacity}</td>

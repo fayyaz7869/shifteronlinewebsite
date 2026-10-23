@@ -15,8 +15,19 @@ import {
 } from 'lucide-react';
 import { FLEET_DETAILS, type VehicleDetail } from '../data/fleetData';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
+import { useSiteMedia } from '../context/useSiteMedia';
+
+const VEHICLE_SLOT_KEYS: Record<string, string> = {
+  bike: 'fleet_bike',
+  'three-wheeler': 'fleet_3wheeler',
+  'tata-ace': 'fleet_tata_ace',
+  pickup: 'fleet_pickup',
+  'house-shifting': 'fleet_tata_ace',
+  'commercial-logistics': 'fleet_pickup',
+};
 
 export function FleetDetailPage() {
+  const { getMediaUrl } = useSiteMedia();
   const { vehicleId } = useParams<{ vehicleId: string }>();
   const navigate = useNavigate();
 
@@ -28,6 +39,7 @@ export function FleetDetailPage() {
   // Lookup vehicle or default to tata-ace
   const currentKey = vehicleId ? vehicleId.toLowerCase().replace(/_/g, '-') : 'tata-ace';
   const vehicle: VehicleDetail = FLEET_DETAILS[currentKey] || FLEET_DETAILS['tata-ace'];
+  const vehicleImage = getMediaUrl(VEHICLE_SLOT_KEYS[vehicle.id] || '', vehicle.image);
 
   const otherVehicles = Object.values(FLEET_DETAILS).filter((v) => v.slug !== vehicle.slug);
 
@@ -161,9 +173,9 @@ export function FleetDetailPage() {
 
               <div className="relative flex items-center justify-center py-8 px-4 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/70 border border-slate-200/80">
                 <img
-                  src={vehicle.image}
+                  src={vehicleImage}
                   alt={vehicle.name}
-                  className="max-h-56 w-auto object-contain drop-shadow-md"
+                  className="max-h-56 w-auto object-contain drop-shadow-md rounded-2xl"
                 />
               </div>
 
@@ -360,7 +372,11 @@ export function FleetDetailPage() {
                   </div>
 
                   <div className="h-28 flex items-center justify-center p-2 mb-4 bg-slate-50/80 rounded-2xl">
-                    <img src={item.image} alt={item.name} className="h-20 w-auto object-contain group-hover:scale-105 transition-transform" />
+                    <img
+                      src={getMediaUrl(VEHICLE_SLOT_KEYS[item.id] || '', item.image)}
+                      alt={item.name}
+                      className="h-20 w-auto object-contain group-hover:scale-105 transition-transform rounded-xl"
+                    />
                   </div>
 
                   <h3 className="text-base font-black text-navy group-hover:text-orange transition-colors">

@@ -16,6 +16,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSiteMedia } from '../../context/useSiteMedia';
 
 const API_BASE = (import.meta.env.VITE_API_URL as string | undefined) ?? 'http://localhost:4000';
 
@@ -25,6 +26,8 @@ interface InquiryModalProps {
 }
 
 export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
+  const { getMediaUrl } = useSiteMedia();
+  const brandLogo = getMediaUrl('brand_logo', '/shifter-online-brand.jpg');
   const [inquiryType, setInquiryType] = useState<'customer' | 'driver'>('customer');
 
   // Form Fields
@@ -169,7 +172,7 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
               <div className="relative z-10 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <img
-                    src="/shifter-online-brand.jpg"
+                    src={brandLogo}
                     alt="Shifter Online Logo"
                     className="h-11 w-11 rounded-2xl object-contain border border-white/20 shadow-soft bg-white/10 p-0.5"
                   />

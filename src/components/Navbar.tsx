@@ -22,6 +22,7 @@ import {
 import { Button } from './ui/Button';
 import { SmartLink } from './ui/SmartLink';
 import { useAuth } from '../context/useAuth';
+import { useSiteMedia } from '../context/useSiteMedia';
 
 const USER_APP_URL = 'https://play.google.com/store/apps/details?id=com.shifter.online';
 const DRIVER_APP_URL = 'https://play.google.com/store/apps/details?id=com.shifter.driver';
@@ -64,6 +65,8 @@ interface NavbarProps {
 }
 
 export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
+  const { getMediaUrl } = useSiteMedia();
+  const brandLogo = getMediaUrl('brand_logo', '/shifter-online-brand.jpg');
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -168,7 +171,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
           <nav className="flex h-[66px] sm:h-[72px] items-center justify-between px-3 sm:px-6">
             <SmartLink href="/" className="inline-flex shrink-0 items-center gap-2.5 group">
               <img
-                src="/shifter-online-brand.jpg"
+                src={brandLogo}
                 alt="Shifter Online"
                 className="h-10 w-10 rounded-xl object-contain shadow-soft border border-slate-200/80 group-hover:scale-105 transition-transform"
               />
@@ -323,7 +326,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                   className="inline-flex items-center gap-2"
                 >
                   <img
-                    src="/shifter-online-brand.jpg"
+                    src={brandLogo}
                     alt="Shifter Online"
                     className="h-8 w-8 rounded-lg object-contain shadow-2xs border border-slate-200"
                   />

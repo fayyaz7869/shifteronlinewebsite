@@ -1,5 +1,6 @@
 import { SmartLink } from './ui/SmartLink';
 import { FacebookIcon, InstagramIcon, LinkedinIcon } from './ui/SocialIcons';
+import { useSiteMedia } from '../context/useSiteMedia';
 
 const columns = [
   {
@@ -42,6 +43,8 @@ const socials = [
 ];
 
 export function Footer() {
+  const { getMediaUrl } = useSiteMedia();
+  const brandLogo = getMediaUrl('brand_logo', '/shifter-online-brand.jpg');
   return (
     <footer className="bg-[#0B1528] pt-20 text-slate-300 border-t border-slate-800 relative overflow-hidden">
       {/* Background radial glow */}
@@ -52,7 +55,7 @@ export function Footer() {
           <span className="inline-flex items-center gap-3 select-none">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-soft border border-white/20">
               <img
-                src="/shifter-online-brand.jpg"
+                src={brandLogo}
                 alt="Shifter Online"
                 className="h-full w-full object-cover"
               />
