@@ -1,7 +1,6 @@
 import { useOutletContext } from 'react-router-dom';
 import { Hero } from '../components/hero/Hero';
 import { BenefitsBar } from '../components/BenefitsBar';
-import { IndoreLandmarksSection } from '../components/IndoreLandmarksSection';
 import { Services } from '../components/services/Services';
 import { WhyChooseUs } from '../components/WhyChooseUs';
 import { HowItWorks } from '../components/HowItWorks';
@@ -21,7 +20,6 @@ export function Home() {
     <main>
       <Hero />
       <BenefitsBar />
-      <IndoreLandmarksSection />
       <Services />
       <WhyChooseUs />
       <HowItWorks />

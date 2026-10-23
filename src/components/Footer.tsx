@@ -7,7 +7,7 @@ const columns = [
     links: [
       { label: 'About Us', href: '#why-us' },
       { label: 'Services & Fleet', href: '#services' },
-      { label: 'Live GPS Tracking', href: '#tracking' },
+      { label: 'Smart Logistics', href: '#tracking' },
       { label: 'Operating Hubs', href: '#coverage' },
       { label: 'Contact & Support', href: '#cta' },
     ],

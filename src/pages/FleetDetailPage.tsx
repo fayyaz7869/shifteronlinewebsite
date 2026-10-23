@@ -11,6 +11,7 @@ import {
   Star,
   Users,
   Smartphone,
+  Truck,
 } from 'lucide-react';
 import { FLEET_DETAILS, type VehicleDetail } from '../data/fleetData';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
@@ -262,26 +263,36 @@ export function FleetDetailPage() {
                   className="flex h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange px-6 text-sm font-black text-white shadow-soft hover:bg-orange-light active:scale-98 transition-all"
                 >
                   <MessageSquare size={18} />
-                  Book on WhatsApp
+                  Chat on WhatsApp
                   <ArrowRight size={15} />
-                </a>
-
-                <a
-                  href="tel:9109114515"
-                  className="flex h-14 items-center justify-center gap-2 rounded-2xl border border-slate-300 bg-white px-6 text-xs font-bold text-navy hover:bg-slate-50 active:scale-98 transition-all"
-                >
-                  <Phone size={16} className="text-emerald-600" />
-                  Call Operations Desk: +91 9109114515
                 </a>
 
                 <a
                   href="https://play.google.com/store/apps/details?id=com.shifter.online"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-12 items-center justify-center gap-2 rounded-2xl bg-navy text-white text-xs font-bold hover:bg-navy-dark active:scale-98 transition-all"
+                  className="flex h-13 items-center justify-center gap-2 rounded-2xl bg-navy text-white text-xs font-bold hover:bg-navy-dark active:scale-98 transition-all"
                 >
-                  <Smartphone size={15} className="text-orange" />
+                  <Smartphone size={16} className="text-orange" />
                   Download Customer App
+                </a>
+
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.shifter.driver"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-12 items-center justify-center gap-2 rounded-2xl border border-slate-300 bg-white text-xs font-bold text-navy hover:bg-slate-50 active:scale-98 transition-all"
+                >
+                  <Truck size={15} className="text-royal" />
+                  Download Driver App
+                </a>
+
+                <a
+                  href="tel:9109114515"
+                  className="flex h-12 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-6 text-xs font-bold text-slate-700 hover:text-navy hover:bg-white active:scale-98 transition-all"
+                >
+                  <Phone size={15} className="text-emerald-600" />
+                  Call Operations Desk: +91 9109114515
                 </a>
               </div>
 

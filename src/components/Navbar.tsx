@@ -11,7 +11,6 @@ import {
   MapPin,
   Menu,
   MessageSquare,
-  Navigation,
   Package,
   Phone,
   ShieldCheck,
@@ -31,7 +30,7 @@ const WHATSAPP_URL = 'https://wa.me/919644423533?text=Hello%20Shifter%20Online,%
 const desktopNavLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Services & Fleet', href: '#services', hasDropdown: true },
-  { label: 'Live Tracking', href: '#tracking' },
+  { label: 'Smart Logistics', href: '#tracking' },
   { label: 'Hubs', href: '#coverage' },
   { label: 'Driver Partner', href: '#driver-partner' },
   { label: 'Why Us', href: '#why-us' },
@@ -41,7 +40,7 @@ const desktopNavLinks = [
 const mobileNavLinks = [
   { label: 'Home', href: '#home', icon: Home, desc: 'Moving Your World Forward' },
   { label: 'Services & Fleet', href: '#services', icon: Truck, desc: 'Bike, 3-Wheeler, Tata Ace, Pickup' },
-  { label: 'Live Tracking', href: '#tracking', icon: Navigation, desc: 'Real-time GPS visibility' },
+  { label: 'Smart Logistics Solutions', href: '#tracking', icon: Truck, desc: 'Commercial, Shifting & Industrial transport' },
   { label: 'Operating Hubs & Cities', href: '#coverage', icon: MapPin, desc: 'Indore, Pithampur, Bhopal, Dewas, Ujjain' },
   { label: 'Driver Partner (Earn ₹35k+)', href: '#driver-partner', icon: Users, desc: '0% Commission month 1, daily payouts' },
   { label: 'Why Choose Us', href: '#why-us', icon: ShieldCheck, desc: 'Verified partners & transparent pricing' },

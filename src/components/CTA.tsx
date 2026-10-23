@@ -2,12 +2,12 @@ import { Phone, MessageSquare, Smartphone, Zap, ArrowRight } from 'lucide-react'
 import { ScrollReveal } from './ui/ScrollReveal';
 
 interface CTAProps {
-  onGetStartedClick: () => void;
+  onGetStartedClick?: () => void;
 }
 
 const WHATSAPP_URL = 'https://wa.me/919644423533?text=Hello%20Shifter%20Online,%20I%20want%20to%20book%20a%20vehicle';
 
-export function CTA({ onGetStartedClick }: CTAProps) {
+export function CTA({ onGetStartedClick: _onGetStartedClick }: CTAProps) {
   return (
     <section id="cta" className="relative bg-slate-50 py-20 md:py-28 overflow-hidden">
       <div className="container-shifter relative z-10">
@@ -30,25 +30,36 @@ export function CTA({ onGetStartedClick }: CTAProps) {
               </p>
 
               {/* Action Buttons */}
-              <div className="mt-9 flex flex-col items-center justify-center gap-3.5 sm:flex-row">
-                <button
-                  type="button"
-                  onClick={onGetStartedClick}
+              <div className="mt-9 flex flex-col items-center justify-center gap-3.5 sm:flex-row flex-wrap">
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.shifter.online"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex h-13 w-full sm:w-auto items-center justify-center gap-2.5 rounded-2xl bg-orange px-8 text-sm font-extrabold text-white shadow-soft hover:bg-orange-light active:scale-98 transition-all"
                 >
                   <Smartphone size={17} />
-                  Book Vehicle Online
+                  Download Customer App
                   <ArrowRight size={15} />
-                </button>
+                </a>
+
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.shifter.driver"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-13 w-full sm:w-auto items-center justify-center gap-2.5 rounded-2xl border border-white/25 bg-white/10 px-7 text-sm font-extrabold text-white shadow-soft backdrop-blur-md hover:bg-white/20 active:scale-98 transition-all"
+                >
+                  <Smartphone size={17} className="text-orange" />
+                  Download Driver App
+                </a>
 
                 <a
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-13 w-full sm:w-auto items-center justify-center gap-2.5 rounded-2xl border border-white/25 bg-white/10 px-8 text-sm font-extrabold text-white shadow-soft backdrop-blur-md hover:bg-white/20 active:scale-98 transition-all"
+                  className="inline-flex h-13 w-full sm:w-auto items-center justify-center gap-2.5 rounded-2xl border border-emerald-400/40 bg-emerald-500/20 px-7 text-sm font-extrabold text-white shadow-soft backdrop-blur-md hover:bg-emerald-500/30 active:scale-98 transition-all"
                 >
                   <MessageSquare size={17} className="text-emerald-400" />
-                  Instant WhatsApp Booking
+                  Chat on WhatsApp
                 </a>
 
                 <a

@@ -113,21 +113,21 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* Action Buttons: Fast WhatsApp Booking + App Download */}
+          {/* Action Buttons: Chat on WhatsApp + Customer App + Driver App + Call */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:flex-wrap"
           >
             <a
               href={WHATSAPP_BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange px-7 text-sm font-black text-white shadow-glow-orange hover:bg-orange-light active:scale-98 transition-all"
+              className="inline-flex h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange px-6 text-sm font-black text-white shadow-glow-orange hover:bg-orange-light active:scale-98 transition-all"
             >
               <MessageSquare size={18} />
-              Book Vehicle on WhatsApp
+              Chat on WhatsApp
             </a>
 
             <Button
@@ -140,6 +140,18 @@ export function Hero() {
             >
               <Smartphone size={18} className="text-orange" />
               Download Customer App
+            </Button>
+
+            <Button
+              href="https://play.google.com/store/apps/details?id=com.shifter.driver"
+              target="_blank"
+              rel="noopener noreferrer"
+              size="lg"
+              variant="outline"
+              className="border-slate-300 text-navy hover:bg-white hover:border-navy"
+            >
+              <Truck size={18} className="text-royal" />
+              Download Driver App
             </Button>
 
             <a
@@ -230,10 +242,10 @@ export function Hero() {
                     </div>
                   </div>
                   <a
-                    href={WHATSAPP_BOOKING_URL}
+                    href="https://play.google.com/store/apps/details?id=com.shifter.online"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-xl bg-orange px-3 py-1.5 text-xs font-black text-white hover:bg-orange-light shadow-soft transition-all"
+                    className="inline-flex items-center gap-1.5 rounded-xl bg-orange px-3.5 py-1.5 text-xs font-black text-white hover:bg-orange-light shadow-soft transition-all"
                   >
                     <span>Book Now</span>
                     <ChevronRight size={13} />
