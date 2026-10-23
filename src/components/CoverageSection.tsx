@@ -14,49 +14,49 @@ interface CityHub {
 
 const HUBS: CityHub[] = [
   {
-    name: 'Indore (HQ)',
-    tag: 'Primary Operating Zone',
-    dispatchTime: '10–14 mins',
-    activeDrivers: '500+ Active',
-    vehicleAvailability: 'Bike, 3W, Tata Ace, Pickup',
-    status: 'Active Hub',
-    popularAreas: ['Vijay Nagar', 'Palasia', 'Dewas Naka', 'Transport Nagar', 'Rajwada', 'Super Corridor'],
-  },
-  {
-    name: 'Pithampur Industrial Area',
-    tag: 'Heavy Freight Corridor',
-    dispatchTime: '14–18 mins',
+    name: 'Central Indore (Rajwada & Sarafa)',
+    tag: 'Heritage Wholesale & Retail Core',
+    dispatchTime: '8–12 mins',
     activeDrivers: '180+ Active',
-    vehicleAvailability: 'Tata Ace, Pickup 8ft, Heavy 4W',
-    status: 'Industrial Hub',
-    popularAreas: ['Sector 1, 2 & 3', 'Pharma Zone', 'SEZ Area', 'Auto Cluster'],
-  },
-  {
-    name: 'Bhopal',
-    tag: 'Commercial & Retail Hub',
-    dispatchTime: '12–16 mins',
-    activeDrivers: '250+ Active',
-    vehicleAvailability: 'Bike, 3W Loader, Tata Ace',
+    vehicleAvailability: 'Bike Express, 3W E-Loader, Tata Ace',
     status: 'Active Hub',
-    popularAreas: ['MP Nagar', 'Govindpura Industrial', 'New Market', 'Mandideep Hub'],
+    popularAreas: ['Rajwada Chowk', 'Sarafa Bazaar', 'Siya Ganj', 'Cloth Market', 'Maharani Road', 'Malharganj'],
   },
   {
-    name: 'Dewas',
-    tag: 'Industrial & Agri Hub',
-    dispatchTime: '15–20 mins',
-    activeDrivers: '120+ Active',
-    vehicleAvailability: '3W Loader, Tata Ace, Pickup',
+    name: 'Vijay Nagar & Super Corridor',
+    tag: 'IT Hub & Prime Relocation Sector',
+    dispatchTime: '10–14 mins',
+    activeDrivers: '210+ Active',
+    vehicleAvailability: 'Tata Ace, Pickup 8ft, 3-Wheeler',
     status: 'Rapid Dispatch',
-    popularAreas: ['Industrial Area', 'AB Road Corridor', 'Mandi Hub'],
+    popularAreas: ['Scheme 54', 'Scheme 78', 'Super Corridor', 'Bapat Square', 'MR 10', 'Meghdoot Garden'],
   },
   {
-    name: 'Ujjain',
-    tag: 'Trade & City Transit',
-    dispatchTime: '15–20 mins',
+    name: 'Dewas Naka & Transport Nagar',
+    tag: 'Central Logistics & Warehousing Hub',
+    dispatchTime: '10–15 mins',
+    activeDrivers: '260+ Active',
+    vehicleAvailability: 'Pickup 8ft, Tata Ace, 1.7T Heavy',
+    status: 'Industrial Hub',
+    popularAreas: ['Transport Nagar', 'Dewas Naka Square', 'Manglia Warehouse Zone', 'Lasudia Mori', 'Nipania'],
+  },
+  {
+    name: 'Palasia & 56 Dukan',
+    tag: 'FMCG, Food & Corporate Hub',
+    dispatchTime: '10–12 mins',
+    activeDrivers: '150+ Active',
+    vehicleAvailability: '2-Wheeler Parcel, 3-Wheeler, Tata Ace',
+    status: 'Active Hub',
+    popularAreas: ['New Palasia', '56 Dukan', 'Old Palasia', 'Geeta Bhawan', 'Janjeerwala Square', 'Tilak Nagar'],
+  },
+  {
+    name: 'Bhanwarkuan & Rau Corridor',
+    tag: 'Student Sector & Home Shifting',
+    dispatchTime: '12–15 mins',
     activeDrivers: '140+ Active',
-    vehicleAvailability: '2W Bike, 3W E-Loader, Tata Ace',
+    vehicleAvailability: 'Tata Ace, 3W Loader, House Shifting',
     status: 'Rapid Dispatch',
-    popularAreas: ['Freeganj', 'Nagziri Industrial', 'Agar Road', 'City Trade Centers'],
+    popularAreas: ['Bhanwarkuan Square', 'Tower Chauraha', 'Sapna Sangeeta', 'Silicon City', 'Rau Circle', 'CAT Road'],
   },
 ];
 
@@ -74,13 +74,13 @@ export function CoverageSection() {
         <ScrollReveal className="text-center max-w-2xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-orange/30 bg-orange/10 px-3.5 py-1 text-xs font-bold text-orange">
             <span className="h-1.5 w-1.5 rounded-full bg-orange animate-pulse" />
-            <span>OPERATING NETWORK &amp; HUBS</span>
+            <span>INDORE OPERATING NETWORK &amp; HUBS</span>
           </div>
           <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-[42px] leading-tight">
-            Connecting Central India&apos;s Supply Chain
+            100% Citywide Coverage Across Indore
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-slate-600 font-medium">
-            From Indore&apos;s busiest wholesale markets to Pithampur&apos;s manufacturing plants — our smart driver network ensures rapid goods movement across Madhya Pradesh.
+            From Indore&apos;s busiest wholesale markets in Rajwada and Siya Ganj to IT corridors in Vijay Nagar and logistics parks at Dewas Naka — our smart driver network ensures fast on-demand transport across all Indore sectors.
           </p>
         </ScrollReveal>
 

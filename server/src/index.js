@@ -6,6 +6,7 @@ import { adminRouter } from './adminRoutes.js';
 import { routeRouter } from './routeCalculation.js';
 import { geocodeRouter } from './geocode.js';
 import { SiteMedia } from './models/SiteMedia.js';
+import { Inquiry } from './models/Inquiry.js';
 import { connectDB, disconnectDB } from './db.js';
 
 if (!process.env.JWT_SECRET) {
@@ -43,6 +44,62 @@ app.get('/api/media', async (_req, res) => {
     return res.status(200).json({ media: list, map });
   } catch {
     return res.status(200).json({ media: [], map: {} });
+  }
+});
+
+// Public inquiry submission endpoint
+app.post('/api/inquiries', async (req, res) => {
+  try {
+    const {
+      type = 'customer',
+      name,
+      mobile,
+      vehicleType,
+      pickupLocation,
+      dropLocation,
+      cargoType,
+      needHelper,
+      vehicleNumber,
+      preferredHub,
+      hasDocuments,
+      notes,
+    } = req.body || {};
+
+    if (!name || !String(name).trim()) {
+      return res.status(400).json({ message: 'Name is required.' });
+    }
+    if (!mobile || !String(mobile).trim()) {
+      return res.status(400).json({ message: 'Mobile number is required.' });
+    }
+
+    const cleanMobile = String(mobile).replace(/\D/g, '').slice(-10);
+    if (!/^[6-9]\d{9}$/.test(cleanMobile)) {
+      return res.status(400).json({ message: 'Please enter a valid 10-digit Indian mobile number.' });
+    }
+
+    const inquiry = await Inquiry.create({
+      type: type === 'driver' ? 'driver' : 'customer',
+      name: String(name).trim(),
+      mobile: cleanMobile,
+      vehicleType: vehicleType ? String(vehicleType).trim() : '',
+      pickupLocation: pickupLocation ? String(pickupLocation).trim() : '',
+      dropLocation: dropLocation ? String(dropLocation).trim() : '',
+      cargoType: cargoType ? String(cargoType).trim() : '',
+      needHelper: Boolean(needHelper),
+      vehicleNumber: vehicleNumber ? String(vehicleNumber).trim() : '',
+      preferredHub: preferredHub ? String(preferredHub).trim() : '',
+      hasDocuments: Boolean(hasDocuments),
+      notes: notes ? String(notes).trim() : '',
+      status: 'New',
+    });
+
+    return res.status(201).json({
+      message: 'Inquiry submitted successfully! Our Indore operations desk will contact you shortly.',
+      inquiry,
+    });
+  } catch (err) {
+    console.error('Error saving inquiry:', err);
+    return res.status(500).json({ message: 'Failed to submit inquiry. Please try again or WhatsApp us.' });
   }
 });
 

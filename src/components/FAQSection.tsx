@@ -14,7 +14,7 @@ const FAQS = [
   },
   {
     q: 'How fast will a driver partner arrive at my location?',
-    a: 'On average, our smart dispatch algorithm matches and dispatches the nearest verified driver partner within 10 to 15 minutes across Indore, Bhopal, Dewas, Ujjain, and Pithampur.',
+    a: 'On average, our smart dispatch algorithm matches and dispatches the nearest verified driver partner within 10 to 15 minutes across all areas and commercial hubs of Indore.',
   },
   {
     q: 'How do I attach my vehicle as a Driver Partner?',

@@ -41,7 +41,7 @@ const mobileNavLinks = [
   { label: 'Home', href: '#home', icon: Home, desc: 'Moving Your World Forward' },
   { label: 'Services & Fleet', href: '#services', icon: Truck, desc: 'Bike, 3-Wheeler, Tata Ace, Pickup' },
   { label: 'Smart Logistics Solutions', href: '#tracking', icon: Truck, desc: 'Commercial, Shifting & Industrial transport' },
-  { label: 'Operating Hubs & Cities', href: '#coverage', icon: MapPin, desc: 'Indore, Pithampur, Bhopal, Dewas, Ujjain' },
+  { label: 'Indore Operating Hubs', href: '#coverage', icon: MapPin, desc: 'Central Indore, Vijay Nagar, Transport Nagar & Palasia' },
   { label: 'Driver Partner (Earn ₹35k+)', href: '#driver-partner', icon: Users, desc: '0% Commission month 1, daily payouts' },
   { label: 'Why Choose Us', href: '#why-us', icon: ShieldCheck, desc: 'Verified partners & transparent pricing' },
   { label: 'How It Works', href: '#how-it-works', icon: CheckCircle2, desc: '4 simple steps to delivery' },
@@ -137,7 +137,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
               15-Min Guaranteed Pickup Dispatch
             </span>
-            <span className="text-slate-500">· Central India: Indore, Pithampur, Bhopal, Dewas, Ujjain</span>
+            <span className="text-slate-500">· 100% Indore City Coverage: Vijay Nagar, Palasia, Rajwada, Transport Nagar</span>
           </div>
           <div className="flex items-center gap-4 text-slate-600">
             <a href="tel:9109114515" className="hover:text-orange transition-colors flex items-center gap-1 font-bold">

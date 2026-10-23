@@ -5,6 +5,7 @@ import { v2 as cloudinary } from 'cloudinary';
 import multer from 'multer';
 import { User } from './models/User.js';
 import { SiteMedia } from './models/SiteMedia.js';
+import { Inquiry } from './models/Inquiry.js';
 import { verifyAdminToken } from './adminAuth.js';
 import { normalizeMobile, isValidMobile, isValidEmail } from './validation.js';
 
@@ -474,5 +475,31 @@ adminRouter.delete('/media/:key', verifyAdminToken, async (req, res) => {
   } catch (err) {
     console.error('Error resetting media:', err);
     return res.status(500).json({ message: 'Failed to reset media.' });
+  }
+});
+
+// ==========================================
+// 5. INQUIRIES MANAGEMENT
+// ==========================================
+adminRouter.get('/inquiries', verifyAdminToken, async (_req, res) => {
+  try {
+    const list = await Inquiry.find().sort({ createdAt: -1 }).limit(100);
+    return res.status(200).json({ inquiries: list });
+  } catch (err) {
+    console.error('Error fetching inquiries:', err);
+    return res.status(500).json({ message: 'Failed to fetch inquiries.' });
+  }
+});
+
+adminRouter.patch('/inquiries/:id', verifyAdminToken, async (req, res) => {
+  try {
+    const status = req.body?.status;
+    if (!['New', 'Contacted', 'Closed'].includes(status)) {
+      return res.status(400).json({ message: 'Invalid status.' });
+    }
+    const updated = await Inquiry.findByIdAndUpdate(req.params.id, { status }, { new: true });
+    return res.status(200).json({ message: 'Status updated.', inquiry: updated });
+  } catch {
+    return res.status(500).json({ message: 'Failed to update inquiry.' });
   }
 });
