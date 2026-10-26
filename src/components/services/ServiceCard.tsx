@@ -12,7 +12,7 @@ interface ServiceCardProps {
   to: string;
 }
 
-export function ServiceCard({ icon: Icon, image, title, description, accent, to }: ServiceCardProps) {
+export function ServiceCard({ icon: Icon, image, title, description, to }: ServiceCardProps) {
   return (
     <Link to={to} className="block h-full cursor-pointer focus:outline-none">
       <motion.div
@@ -20,33 +20,24 @@ export function ServiceCard({ icon: Icon, image, title, description, accent, to 
         transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
         className="group flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-soft transition-all duration-300 hover:border-orange/60 hover:shadow-card hover:ring-2 hover:ring-orange/15"
       >
-        <div className="relative flex h-36 items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100/70 border-b border-slate-100">
-          <div
-            className={`absolute h-28 w-28 rounded-full blur-2xl transition-transform duration-300 group-hover:scale-125 opacity-70 ${
-              accent === 'orange' ? 'bg-orange/20' : 'bg-royal/15'
-            }`}
-          />
-          <span
-            className={`relative grid h-16 w-16 place-items-center rounded-2xl transition-transform duration-300 group-hover:scale-110 shadow-md p-1.5 overflow-hidden ${
-              image
-                ? 'bg-white border border-slate-200/90 shadow-soft'
-                : accent === 'orange'
-                  ? 'bg-gradient-to-tr from-orange to-orange-light text-white shadow-orange/25'
-                  : 'bg-gradient-to-tr from-navy to-royal text-white shadow-royal/25'
-            }`}
-          >
-            {image ? (
-              <img
-                src={image}
-                alt={title}
-                className="h-full w-full object-contain rounded-xl"
-              />
-            ) : (
-              <Icon size={28} strokeWidth={2.2} />
-            )}
-          </span>
+        {/* Full Div Vehicle Image Container */}
+        <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-100 border-b border-slate-100">
+          {image ? (
+            <img
+              src={image}
+              alt={title}
+              className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100/70">
+              <span className="grid h-16 w-16 place-items-center rounded-2xl bg-orange text-white shadow-md">
+                <Icon size={28} strokeWidth={2.2} />
+              </span>
+            </div>
+          )}
         </div>
 
+        {/* Card Body - Content bilkul unchanged */}
         <div className="flex flex-1 flex-col p-6">
           <h3 className="text-base sm:text-lg font-black text-slate-900 group-hover:text-orange transition-colors">
             {title}
