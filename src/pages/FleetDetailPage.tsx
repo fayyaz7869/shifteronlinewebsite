@@ -17,13 +17,13 @@ import { FLEET_DETAILS, type VehicleDetail } from '../data/fleetData';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { useSiteMedia } from '../context/useSiteMedia';
 
-const VEHICLE_SLOT_KEYS: Record<string, { primary: string; fallback?: string }> = {
-  bike: { primary: 'fleet_bike' },
-  'three-wheeler': { primary: 'fleet_3wheeler' },
-  'tata-ace': { primary: 'fleet_tata_ace' },
-  pickup: { primary: 'fleet_pickup' },
-  'house-shifting': { primary: 'fleet_house_shifting', fallback: 'fleet_tata_ace' },
-  'commercial-logistics': { primary: 'fleet_commercial', fallback: 'fleet_pickup' },
+const VEHICLE_SLOT_KEYS: Record<string, string> = {
+  bike: 'fleet_bike',
+  'three-wheeler': 'fleet_3wheeler',
+  'tata-ace': 'fleet_tata_ace',
+  pickup: 'fleet_pickup',
+  'house-shifting': 'fleet_tata_ace',
+  'commercial-logistics': 'fleet_pickup',
 };
 
 export function FleetDetailPage() {
@@ -37,11 +37,8 @@ export function FleetDetailPage() {
   }, [vehicleId]);
 
   const getFleetVehicleImage = (id: string, defaultImg: string) => {
-    const slotDef = VEHICLE_SLOT_KEYS[id];
-    if (!slotDef) return defaultImg;
-    return slotDef.fallback
-      ? getMediaUrl(slotDef.primary, getMediaUrl(slotDef.fallback, defaultImg))
-      : getMediaUrl(slotDef.primary, defaultImg);
+    const slotKey = VEHICLE_SLOT_KEYS[id];
+    return slotKey ? getMediaUrl(slotKey, defaultImg) : defaultImg;
   };
 
   // Lookup vehicle or default to tata-ace

@@ -47,7 +47,7 @@ interface MediaSlotDef {
   title: string;
   description: string;
   defaultImage: string;
-  category: 'Hero & Branding' | 'Fleet Vehicles' | 'Service Card Icons';
+  category: 'Hero & Branding' | 'Fleet Vehicles';
 }
 
 const MEDIA_SLOTS: MediaSlotDef[] = [
@@ -68,86 +68,30 @@ const MEDIA_SLOTS: MediaSlotDef[] = [
   {
     key: 'fleet_tata_ace',
     title: 'Tata Ace (Chhota Hathi) Photo',
-    description: 'Showcased in fleet catalog, vehicle detail pages, and driver partner section',
+    description: 'Showcased in Comprehensive Logistics Solutions, Choose Vehicle fleet showcase, and driver partner section',
     defaultImage: '/vehicles/4wheeler.svg',
     category: 'Fleet Vehicles',
   },
   {
     key: 'fleet_pickup',
     title: 'Pickup 8ft / Bolero Truck Photo',
-    description: 'Heavy logistics 8ft cargo truck illustration and detail pages',
+    description: 'Showcased in Comprehensive Logistics Solutions, Choose Vehicle fleet showcase, and heavy logistics section',
     defaultImage: '/vehicles/4wheeler.svg',
     category: 'Fleet Vehicles',
   },
   {
     key: 'fleet_3wheeler',
     title: '3-Wheeler E-Loader Photo',
-    description: 'Wholesale market freight e-loader vehicle photo and detail pages',
+    description: 'Showcased in Comprehensive Logistics Solutions, Choose Vehicle fleet showcase, and mid-sized cargo section',
     defaultImage: '/vehicles/3wheeler.svg',
     category: 'Fleet Vehicles',
   },
   {
     key: 'fleet_bike',
     title: '2-Wheeler Express Delivery Bike',
-    description: 'Express parcel bike delivery photo and detail pages',
+    description: 'Showcased in Comprehensive Logistics Solutions, Choose Vehicle fleet showcase, and express delivery section',
     defaultImage: '/vehicles/bike.svg',
     category: 'Fleet Vehicles',
-  },
-  {
-    key: 'fleet_house_shifting',
-    title: 'Household Goods Transport Photo',
-    description: 'Showcased in household shifting detail pages',
-    defaultImage: '/vehicles/4wheeler.svg',
-    category: 'Fleet Vehicles',
-  },
-  {
-    key: 'fleet_commercial',
-    title: 'Business & Commercial Logistics Photo',
-    description: 'Showcased in commercial logistics B2B enterprise detail pages',
-    defaultImage: '/vehicles/4wheeler.svg',
-    category: 'Fleet Vehicles',
-  },
-  {
-    key: 'service_icon_bike',
-    title: 'Card 1 Icon: Bike Goods Delivery',
-    description: 'Custom icon/image for the Bike Goods Delivery card badge on homepage',
-    defaultImage: '/vehicles/bike.svg',
-    category: 'Service Card Icons',
-  },
-  {
-    key: 'service_icon_3wheeler',
-    title: 'Card 2 Icon: Three-Wheeler Transport',
-    description: 'Custom icon/image for the Three-Wheeler Transport card badge on homepage',
-    defaultImage: '/vehicles/3wheeler.svg',
-    category: 'Service Card Icons',
-  },
-  {
-    key: 'service_icon_tata_ace',
-    title: 'Card 3 Icon: Tata Ace & Mini Truck',
-    description: 'Custom icon/image for the Tata Ace card badge on homepage',
-    defaultImage: '/vehicles/4wheeler.svg',
-    category: 'Service Card Icons',
-  },
-  {
-    key: 'service_icon_pickup',
-    title: 'Card 4 Icon: Pickup Vehicle Transport',
-    description: 'Custom icon/image for the Pickup Vehicle card badge on homepage',
-    defaultImage: '/vehicles/4wheeler.svg',
-    category: 'Service Card Icons',
-  },
-  {
-    key: 'service_icon_house_shifting',
-    title: 'Card 5 Icon: Household Goods Transport',
-    description: 'Custom icon/image for the Household Goods Shifting card badge on homepage',
-    defaultImage: '/vehicles/4wheeler.svg',
-    category: 'Service Card Icons',
-  },
-  {
-    key: 'service_icon_commercial',
-    title: 'Card 6 Icon: Commercial Logistics',
-    description: 'Custom icon/image for the Commercial Logistics card badge on homepage',
-    defaultImage: '/vehicles/4wheeler.svg',
-    category: 'Service Card Icons',
   },
 ];
 

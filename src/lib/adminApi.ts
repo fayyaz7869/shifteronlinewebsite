@@ -138,7 +138,7 @@ export interface SiteMediaItem {
 
 export async function getPublicMedia(): Promise<{ media: SiteMediaItem[]; map: Record<string, string> }> {
   try {
-    const res = await fetch(`${API_URL}/api/media`);
+    const res = await requestWithFallback('/api/media');
     if (res.ok) return await res.json();
   } catch {
     // Graceful fallback

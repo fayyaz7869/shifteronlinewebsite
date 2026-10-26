@@ -18,8 +18,8 @@ import { FleetShowcase } from './FleetShowcase';
 import { useSiteMedia } from '../../context/useSiteMedia';
 
 interface ServiceItem {
-  iconSlotKey: string;
-  fleetSlotKey: string;
+  fleetKey: string;
+  defaultImage: string;
   icon: LucideIcon;
   title: string;
   description: string;
@@ -29,8 +29,8 @@ interface ServiceItem {
 
 const services: ServiceItem[] = [
   {
-    iconSlotKey: 'service_icon_bike',
-    fleetSlotKey: 'fleet_bike',
+    fleetKey: 'fleet_bike',
+    defaultImage: '/vehicles/bike.svg',
     icon: Bike,
     title: 'Bike Goods Delivery',
     description: 'Quick delivery for small parcels and urgent goods across the city.',
@@ -38,8 +38,8 @@ const services: ServiceItem[] = [
     to: '/fleet/bike',
   },
   {
-    iconSlotKey: 'service_icon_3wheeler',
-    fleetSlotKey: 'fleet_3wheeler',
+    fleetKey: 'fleet_3wheeler',
+    defaultImage: '/vehicles/3wheeler.svg',
     icon: CarTaxiFront,
     title: 'Three-Wheeler Transport',
     description: 'Affordable three-wheeler transport for mid-sized loads and local moves.',
@@ -47,8 +47,8 @@ const services: ServiceItem[] = [
     to: '/fleet/three-wheeler',
   },
   {
-    iconSlotKey: 'service_icon_tata_ace',
-    fleetSlotKey: 'fleet_tata_ace',
+    fleetKey: 'fleet_tata_ace',
+    defaultImage: '/vehicles/4wheeler.svg',
     icon: Truck,
     title: 'Tata Ace & Mini Truck',
     description: 'Reliable Tata Ace and mini trucks for larger commercial shipments.',
@@ -56,8 +56,8 @@ const services: ServiceItem[] = [
     to: '/fleet/tata-ace',
   },
   {
-    iconSlotKey: 'service_icon_pickup',
-    fleetSlotKey: 'fleet_pickup',
+    fleetKey: 'fleet_pickup',
+    defaultImage: '/vehicles/4wheeler.svg',
     icon: TruckElectric,
     title: 'Pickup Vehicle Transport',
     description: 'On-demand pickup vehicles for bulkier household and business loads.',
@@ -65,8 +65,8 @@ const services: ServiceItem[] = [
     to: '/fleet/pickup',
   },
   {
-    iconSlotKey: 'service_icon_house_shifting',
-    fleetSlotKey: 'fleet_tata_ace',
+    fleetKey: 'fleet_tata_ace',
+    defaultImage: '/vehicles/4wheeler.svg',
     icon: Home,
     title: 'Household Goods Transport',
     description: 'Careful, secure transport for home shifting and personal belongings.',
@@ -74,8 +74,8 @@ const services: ServiceItem[] = [
     to: '/fleet/house-shifting',
   },
   {
-    iconSlotKey: 'service_icon_commercial',
-    fleetSlotKey: 'fleet_pickup',
+    fleetKey: 'fleet_pickup',
+    defaultImage: '/vehicles/4wheeler.svg',
     icon: Building2,
     title: 'Business & Commercial Logistics',
     description: 'End-to-end logistics support for retailers, wholesalers and enterprises.',
@@ -141,14 +141,13 @@ export function Services() {
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {services.map((service, i) => {
-              // 1. Check for dedicated card icon upload, 2. Check for fleet vehicle image upload, 3. Empty (fallback to Lucide icon)
-              const cardImage = getMediaUrl(service.iconSlotKey, getMediaUrl(service.fleetSlotKey, ''));
+              const cardImage = getMediaUrl(service.fleetKey, service.defaultImage);
 
               return (
                 <ScrollReveal key={service.title} delay={i * 0.06}>
                   <ServiceCard
                     icon={service.icon}
-                    image={cardImage || undefined}
+                    image={cardImage}
                     title={service.title}
                     description={service.description}
                     accent={service.accent}

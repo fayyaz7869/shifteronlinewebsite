@@ -27,17 +27,19 @@ export function ServiceCard({ icon: Icon, image, title, description, accent, to 
             }`}
           />
           <span
-            className={`relative grid h-16 w-16 place-items-center rounded-2xl transition-transform duration-300 group-hover:scale-110 shadow-md p-2 overflow-hidden ${
-              accent === 'orange'
-                ? 'bg-gradient-to-tr from-orange to-orange-light text-white shadow-orange/25'
-                : 'bg-gradient-to-tr from-navy to-royal text-white shadow-royal/25'
+            className={`relative grid h-16 w-16 place-items-center rounded-2xl transition-transform duration-300 group-hover:scale-110 shadow-md p-1.5 overflow-hidden ${
+              image
+                ? 'bg-white border border-slate-200/90 shadow-soft'
+                : accent === 'orange'
+                  ? 'bg-gradient-to-tr from-orange to-orange-light text-white shadow-orange/25'
+                  : 'bg-gradient-to-tr from-navy to-royal text-white shadow-royal/25'
             }`}
           >
             {image ? (
               <img
                 src={image}
                 alt={title}
-                className="max-h-full max-w-full object-contain drop-shadow"
+                className="h-full w-full object-contain rounded-xl"
               />
             ) : (
               <Icon size={28} strokeWidth={2.2} />
