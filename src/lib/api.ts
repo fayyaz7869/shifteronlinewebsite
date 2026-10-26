@@ -1,4 +1,29 @@
-const API_URL = (import.meta.env.VITE_API_URL as string | undefined) ?? 'http://localhost:4000';
+const CONFIGURED_API_URL = (import.meta.env.VITE_API_URL as string | undefined)?.trim();
+const LOCAL_API_URL = 'http://localhost:4000';
+const LIVE_BACKEND_URL = 'https://shifteronline-backend.onrender.com';
+
+const API_URL = CONFIGURED_API_URL || LOCAL_API_URL;
+
+async function requestWithFallback(path: string, options: RequestInit = {}): Promise<Response> {
+  const isLocal = API_URL.includes('localhost') || API_URL.includes('127.0.0.1');
+
+  if (!isLocal || API_URL === LIVE_BACKEND_URL) {
+    return await fetch(`${API_URL}${path}`, options);
+  }
+
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 1800);
+    const res = await fetch(`${API_URL}${path}`, {
+      ...options,
+      signal: options.signal || controller.signal,
+    });
+    clearTimeout(timer);
+    return res;
+  } catch {
+    return await fetch(`${LIVE_BACKEND_URL}${path}`, options);
+  }
+}
 
 export class ApiError extends Error {
   status: number;
@@ -14,7 +39,7 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
 
   let res: Response;
   try {
-    res = await fetch(`${API_URL}${path}`, {
+    res = await requestWithFallback(path, {
       ...options,
       headers: {
         'Content-Type': 'application/json',

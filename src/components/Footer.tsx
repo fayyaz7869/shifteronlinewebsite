@@ -120,10 +120,6 @@ export function Footer() {
               Terms &amp; Conditions
             </SmartLink>
             <span className="text-white/20">|</span>
-            <SmartLink href="/admin/login" className="hover:text-white transition-colors text-slate-500">
-              Staff Portal
-            </SmartLink>
-            <span className="text-white/20">|</span>
             <span className="text-slate-400">Made with ❤️ in Indore</span>
           </div>
         </div>

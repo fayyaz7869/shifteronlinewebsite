@@ -18,79 +18,69 @@ import { FleetShowcase } from './FleetShowcase';
 import { useSiteMedia } from '../../context/useSiteMedia';
 
 interface ServiceItem {
-  slotKey: string;
-  fallbackSlotKey?: string;
-  defaultImage: string;
+  iconSlotKey: string;
+  fleetSlotKey: string;
   icon: LucideIcon;
   title: string;
   description: string;
   accent: 'orange' | 'navy';
   to: string;
-  tag: string;
 }
 
 const services: ServiceItem[] = [
   {
-    slotKey: 'fleet_bike',
-    defaultImage: '/vehicles/bike.svg',
+    iconSlotKey: 'service_icon_bike',
+    fleetSlotKey: 'fleet_bike',
     icon: Bike,
     title: 'Bike Goods Delivery',
     description: 'Quick delivery for small parcels and urgent goods across the city.',
     accent: 'orange',
     to: '/fleet/bike',
-    tag: 'Quick Delivery',
   },
   {
-    slotKey: 'fleet_3wheeler',
-    defaultImage: '/vehicles/3wheeler.svg',
+    iconSlotKey: 'service_icon_3wheeler',
+    fleetSlotKey: 'fleet_3wheeler',
     icon: CarTaxiFront,
     title: 'Three-Wheeler Transport',
     description: 'Affordable three-wheeler transport for mid-sized loads and local moves.',
     accent: 'navy',
     to: '/fleet/three-wheeler',
-    tag: 'Eco Friendly',
   },
   {
-    slotKey: 'fleet_tata_ace',
-    defaultImage: '/vehicles/4wheeler.svg',
+    iconSlotKey: 'service_icon_tata_ace',
+    fleetSlotKey: 'fleet_tata_ace',
     icon: Truck,
     title: 'Tata Ace & Mini Truck',
     description: 'Reliable Tata Ace and mini trucks for larger commercial shipments.',
     accent: 'orange',
     to: '/fleet/tata-ace',
-    tag: 'Most Popular',
   },
   {
-    slotKey: 'fleet_pickup',
-    defaultImage: '/vehicles/4wheeler.svg',
+    iconSlotKey: 'service_icon_pickup',
+    fleetSlotKey: 'fleet_pickup',
     icon: TruckElectric,
     title: 'Pickup Vehicle Transport',
     description: 'On-demand pickup vehicles for bulkier household and business loads.',
     accent: 'navy',
     to: '/fleet/pickup',
-    tag: 'Heavy Cargo',
   },
   {
-    slotKey: 'fleet_house_shifting',
-    fallbackSlotKey: 'fleet_tata_ace',
-    defaultImage: '/vehicles/4wheeler.svg',
+    iconSlotKey: 'service_icon_house_shifting',
+    fleetSlotKey: 'fleet_tata_ace',
     icon: Home,
     title: 'Household Goods Transport',
     description: 'Careful, secure transport for home shifting and personal belongings.',
     accent: 'orange',
     to: '/fleet/house-shifting',
-    tag: 'Safe Shifting',
   },
   {
-    slotKey: 'fleet_commercial',
-    fallbackSlotKey: 'fleet_pickup',
-    defaultImage: '/vehicles/4wheeler.svg',
+    iconSlotKey: 'service_icon_commercial',
+    fleetSlotKey: 'fleet_pickup',
     icon: Building2,
     title: 'Business & Commercial Logistics',
     description: 'End-to-end logistics support for retailers, wholesalers and enterprises.',
     accent: 'navy',
     to: '/fleet/commercial-logistics',
-    tag: 'Enterprise B2B',
   },
 ];
 
@@ -151,20 +141,18 @@ export function Services() {
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {services.map((service, i) => {
-              const imageUrl = service.fallbackSlotKey
-                ? getMediaUrl(service.slotKey, getMediaUrl(service.fallbackSlotKey, service.defaultImage))
-                : getMediaUrl(service.slotKey, service.defaultImage);
+              // 1. Check for dedicated card icon upload, 2. Check for fleet vehicle image upload, 3. Empty (fallback to Lucide icon)
+              const cardImage = getMediaUrl(service.iconSlotKey, getMediaUrl(service.fleetSlotKey, ''));
 
               return (
                 <ScrollReveal key={service.title} delay={i * 0.06}>
                   <ServiceCard
-                    image={imageUrl}
+                    icon={service.icon}
+                    image={cardImage || undefined}
                     title={service.title}
                     description={service.description}
                     accent={service.accent}
                     to={service.to}
-                    icon={service.icon}
-                    tag={service.tag}
                   />
                 </ScrollReveal>
               );

@@ -1,4 +1,30 @@
-const API_URL = (import.meta.env.VITE_API_URL as string | undefined) ?? 'http://localhost:4000';
+const CONFIGURED_API_URL = (import.meta.env.VITE_API_URL as string | undefined)?.trim();
+const LOCAL_API_URL = 'http://localhost:4000';
+const LIVE_BACKEND_URL = 'https://shifteronline-backend.onrender.com';
+
+const API_URL = CONFIGURED_API_URL || LOCAL_API_URL;
+
+async function requestWithFallback(path: string, options: RequestInit = {}): Promise<Response> {
+  const isLocal = API_URL.includes('localhost') || API_URL.includes('127.0.0.1');
+
+  if (!isLocal || API_URL === LIVE_BACKEND_URL) {
+    return await fetch(`${API_URL}${path}`, options);
+  }
+
+  // If local server is not running, quickly fallback to live Render backend
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 1800);
+    const res = await fetch(`${API_URL}${path}`, {
+      ...options,
+      signal: options.signal || controller.signal,
+    });
+    clearTimeout(timer);
+    return res;
+  } catch {
+    return await fetch(`${LIVE_BACKEND_URL}${path}`, options);
+  }
+}
 
 export class AdminApiError extends Error {
   status: number;
@@ -16,7 +42,7 @@ async function adminRequest<T>(path: string, options: RequestInit = {}): Promise
 
   let res: Response;
   try {
-    res = await fetch(`${API_URL}${path}`, {
+    res = await requestWithFallback(path, {
       ...options,
       headers: {
         'Content-Type': 'application/json',
@@ -27,7 +53,7 @@ async function adminRequest<T>(path: string, options: RequestInit = {}): Promise
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : 'Network error';
     throw new AdminApiError(
-      `Unable to connect to backend server at ${API_URL} (${msg}). Please ensure the website backend server is running on port 4000.`,
+      `Unable to connect to backend server (${msg}).`,
       503
     );
   }
@@ -188,7 +214,7 @@ export const adminApi = {
 
     let res: Response;
     try {
-      res = await fetch(`${API_URL}/api/admin/media/upload`, {
+      res = await requestWithFallback('/api/admin/media/upload', {
         method: 'POST',
         headers: {
           ...(token ? { Authorization: `Bearer ${token}` } : {}),
@@ -197,7 +223,7 @@ export const adminApi = {
       });
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Network error';
-      throw new AdminApiError(`Cannot connect to backend server at ${API_URL} (${msg})`, 503);
+      throw new AdminApiError(`Cannot connect to backend server (${msg})`, 503);
     }
 
     const body = await res.json();

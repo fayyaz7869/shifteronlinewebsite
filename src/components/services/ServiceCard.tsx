@@ -4,63 +4,45 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 interface ServiceCardProps {
-  image: string;
+  icon: LucideIcon;
+  image?: string;
   title: string;
   description: string;
   accent: 'orange' | 'navy';
   to: string;
-  icon?: LucideIcon;
-  tag?: string;
 }
 
-export function ServiceCard({
-  image,
-  title,
-  description,
-  accent,
-  to,
-  icon: Icon,
-  tag,
-}: ServiceCardProps) {
+export function ServiceCard({ icon: Icon, image, title, description, accent, to }: ServiceCardProps) {
   return (
     <Link to={to} className="block h-full cursor-pointer focus:outline-none">
       <motion.div
-        whileHover={{ y: -6 }}
+        whileHover={{ y: -5 }}
         transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
         className="group flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-soft transition-all duration-300 hover:border-orange/60 hover:shadow-card hover:ring-2 hover:ring-orange/15"
       >
-        {/* Full div vehicle image container covering 100% of top */}
-        <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-100 border-b border-slate-100">
-          <img
-            src={image}
-            alt={title}
-            loading="lazy"
-            className="h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-108"
+        <div className="relative flex h-36 items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100/70 border-b border-slate-100">
+          <div
+            className={`absolute h-28 w-28 rounded-full blur-2xl transition-transform duration-300 group-hover:scale-125 opacity-70 ${
+              accent === 'orange' ? 'bg-orange/20' : 'bg-royal/15'
+            }`}
           />
-
-          {/* Subtle gradient vignette at bottom for depth */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-slate-900/10 to-transparent pointer-events-none" />
-
-          {/* Shifter Fleet category tag badge */}
-          <div className="absolute top-3 left-3 pointer-events-none">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 backdrop-blur-md px-3 py-1 text-[11px] font-bold text-slate-800 shadow-sm border border-white/70">
-              <span
-                className={`h-1.5 w-1.5 rounded-full ${
-                  accent === 'orange' ? 'bg-orange animate-pulse' : 'bg-royal animate-pulse'
-                }`}
+          <span
+            className={`relative grid h-16 w-16 place-items-center rounded-2xl transition-transform duration-300 group-hover:scale-110 shadow-md p-2 overflow-hidden ${
+              accent === 'orange'
+                ? 'bg-gradient-to-tr from-orange to-orange-light text-white shadow-orange/25'
+                : 'bg-gradient-to-tr from-navy to-royal text-white shadow-royal/25'
+            }`}
+          >
+            {image ? (
+              <img
+                src={image}
+                alt={title}
+                className="max-h-full max-w-full object-contain drop-shadow"
               />
-              <span>{tag || 'Shifter Fleet'}</span>
-            </span>
-          </div>
-
-          {/* Floating vehicle icon badge */}
-          {Icon && (
-            <div className="absolute bottom-3 right-3 pointer-events-none">
-              <span className="grid h-8 w-8 place-items-center rounded-xl bg-white/95 backdrop-blur-md text-slate-800 shadow-md border border-white/80">
-                <Icon size={16} strokeWidth={2.2} />
-              </span>
-            </div>
-          )}
+            ) : (
+              <Icon size={28} strokeWidth={2.2} />
+            )}
+          </span>
         </div>
 
         <div className="flex flex-1 flex-col p-6">
