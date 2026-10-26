@@ -65,8 +65,8 @@ const services: ServiceItem[] = [
     to: '/fleet/pickup',
   },
   {
-    fleetKey: 'fleet_tata_ace',
-    defaultImage: '/vehicles/4wheeler.svg',
+    fleetKey: 'fleet_house_shifting',
+    defaultImage: '/household-goods-shifting.png',
     icon: Home,
     title: 'Household Goods Transport',
     description: 'Careful, secure transport for home shifting and personal belongings.',
@@ -74,8 +74,8 @@ const services: ServiceItem[] = [
     to: '/fleet/house-shifting',
   },
   {
-    fleetKey: 'fleet_pickup',
-    defaultImage: '/vehicles/4wheeler.svg',
+    fleetKey: 'fleet_commercial',
+    defaultImage: '/commercial-logistics.jpg',
     icon: Building2,
     title: 'Business & Commercial Logistics',
     description: 'End-to-end logistics support for retailers, wholesalers and enterprises.',
