@@ -93,6 +93,20 @@ const MEDIA_SLOTS: MediaSlotDef[] = [
     defaultImage: '/vehicles/bike.svg',
     category: 'Fleet Vehicles',
   },
+  {
+    key: 'fleet_house_shifting',
+    title: 'Household Goods Transport Photo',
+    description: 'Showcased in household shifting service card and shifting detail pages',
+    defaultImage: '/vehicles/4wheeler.svg',
+    category: 'Fleet Vehicles',
+  },
+  {
+    key: 'fleet_commercial',
+    title: 'Business & Commercial Logistics Photo',
+    description: 'Showcased in commercial logistics service card and B2B enterprise pages',
+    defaultImage: '/vehicles/4wheeler.svg',
+    category: 'Fleet Vehicles',
+  },
 ];
 
 interface Toast {

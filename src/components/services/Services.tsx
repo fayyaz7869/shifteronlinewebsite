@@ -9,54 +9,88 @@ import {
   Package,
   Truck,
   TruckElectric,
+  type LucideIcon,
 } from 'lucide-react';
 import { ScrollReveal } from '../ui/ScrollReveal';
 import { ServiceCard } from './ServiceCard';
 import { VehicleLineupIllustration } from '../illustrations/VehicleLineupIllustration';
 import { FleetShowcase } from './FleetShowcase';
+import { useSiteMedia } from '../../context/useSiteMedia';
 
-const services = [
+interface ServiceItem {
+  slotKey: string;
+  fallbackSlotKey?: string;
+  defaultImage: string;
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  accent: 'orange' | 'navy';
+  to: string;
+  tag: string;
+}
+
+const services: ServiceItem[] = [
   {
+    slotKey: 'fleet_bike',
+    defaultImage: '/vehicles/bike.svg',
     icon: Bike,
     title: 'Bike Goods Delivery',
     description: 'Quick delivery for small parcels and urgent goods across the city.',
-    accent: 'orange' as const,
+    accent: 'orange',
     to: '/fleet/bike',
+    tag: 'Quick Delivery',
   },
   {
+    slotKey: 'fleet_3wheeler',
+    defaultImage: '/vehicles/3wheeler.svg',
     icon: CarTaxiFront,
     title: 'Three-Wheeler Transport',
     description: 'Affordable three-wheeler transport for mid-sized loads and local moves.',
-    accent: 'navy' as const,
+    accent: 'navy',
     to: '/fleet/three-wheeler',
+    tag: 'Eco Friendly',
   },
   {
+    slotKey: 'fleet_tata_ace',
+    defaultImage: '/vehicles/4wheeler.svg',
     icon: Truck,
     title: 'Tata Ace & Mini Truck',
     description: 'Reliable Tata Ace and mini trucks for larger commercial shipments.',
-    accent: 'orange' as const,
+    accent: 'orange',
     to: '/fleet/tata-ace',
+    tag: 'Most Popular',
   },
   {
+    slotKey: 'fleet_pickup',
+    defaultImage: '/vehicles/4wheeler.svg',
     icon: TruckElectric,
     title: 'Pickup Vehicle Transport',
     description: 'On-demand pickup vehicles for bulkier household and business loads.',
-    accent: 'navy' as const,
+    accent: 'navy',
     to: '/fleet/pickup',
+    tag: 'Heavy Cargo',
   },
   {
+    slotKey: 'fleet_house_shifting',
+    fallbackSlotKey: 'fleet_tata_ace',
+    defaultImage: '/vehicles/4wheeler.svg',
     icon: Home,
     title: 'Household Goods Transport',
     description: 'Careful, secure transport for home shifting and personal belongings.',
-    accent: 'orange' as const,
+    accent: 'orange',
     to: '/fleet/house-shifting',
+    tag: 'Safe Shifting',
   },
   {
+    slotKey: 'fleet_commercial',
+    fallbackSlotKey: 'fleet_pickup',
+    defaultImage: '/vehicles/4wheeler.svg',
     icon: Building2,
     title: 'Business & Commercial Logistics',
     description: 'End-to-end logistics support for retailers, wholesalers and enterprises.',
-    accent: 'navy' as const,
+    accent: 'navy',
     to: '/fleet/commercial-logistics',
+    tag: 'Enterprise B2B',
   },
 ];
 
@@ -79,6 +113,8 @@ const industries = [
 ];
 
 export function Services() {
+  const { getMediaUrl } = useSiteMedia();
+
   return (
     <section id="services" className="py-24 md:py-32 bg-white text-slate-900 relative overflow-hidden">
       {/* Subtle background ambient lights */}
@@ -114,11 +150,25 @@ export function Services() {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {services.map((service, i) => (
-              <ScrollReveal key={service.title} delay={i * 0.06}>
-                <ServiceCard {...service} />
-              </ScrollReveal>
-            ))}
+            {services.map((service, i) => {
+              const imageUrl = service.fallbackSlotKey
+                ? getMediaUrl(service.slotKey, getMediaUrl(service.fallbackSlotKey, service.defaultImage))
+                : getMediaUrl(service.slotKey, service.defaultImage);
+
+              return (
+                <ScrollReveal key={service.title} delay={i * 0.06}>
+                  <ServiceCard
+                    image={imageUrl}
+                    title={service.title}
+                    description={service.description}
+                    accent={service.accent}
+                    to={service.to}
+                    icon={service.icon}
+                    tag={service.tag}
+                  />
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
 

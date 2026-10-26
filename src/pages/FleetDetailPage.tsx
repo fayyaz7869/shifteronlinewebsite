@@ -17,13 +17,13 @@ import { FLEET_DETAILS, type VehicleDetail } from '../data/fleetData';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { useSiteMedia } from '../context/useSiteMedia';
 
-const VEHICLE_SLOT_KEYS: Record<string, string> = {
-  bike: 'fleet_bike',
-  'three-wheeler': 'fleet_3wheeler',
-  'tata-ace': 'fleet_tata_ace',
-  pickup: 'fleet_pickup',
-  'house-shifting': 'fleet_tata_ace',
-  'commercial-logistics': 'fleet_pickup',
+const VEHICLE_SLOT_KEYS: Record<string, { primary: string; fallback?: string }> = {
+  bike: { primary: 'fleet_bike' },
+  'three-wheeler': { primary: 'fleet_3wheeler' },
+  'tata-ace': { primary: 'fleet_tata_ace' },
+  pickup: { primary: 'fleet_pickup' },
+  'house-shifting': { primary: 'fleet_house_shifting', fallback: 'fleet_tata_ace' },
+  'commercial-logistics': { primary: 'fleet_commercial', fallback: 'fleet_pickup' },
 };
 
 export function FleetDetailPage() {
@@ -36,10 +36,18 @@ export function FleetDetailPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [vehicleId]);
 
+  const getFleetVehicleImage = (id: string, defaultImg: string) => {
+    const slotDef = VEHICLE_SLOT_KEYS[id];
+    if (!slotDef) return defaultImg;
+    return slotDef.fallback
+      ? getMediaUrl(slotDef.primary, getMediaUrl(slotDef.fallback, defaultImg))
+      : getMediaUrl(slotDef.primary, defaultImg);
+  };
+
   // Lookup vehicle or default to tata-ace
   const currentKey = vehicleId ? vehicleId.toLowerCase().replace(/_/g, '-') : 'tata-ace';
   const vehicle: VehicleDetail = FLEET_DETAILS[currentKey] || FLEET_DETAILS['tata-ace'];
-  const vehicleImage = getMediaUrl(VEHICLE_SLOT_KEYS[vehicle.id] || '', vehicle.image);
+  const vehicleImage = getFleetVehicleImage(vehicle.id, vehicle.image);
 
   const otherVehicles = Object.values(FLEET_DETAILS).filter((v) => v.slug !== vehicle.slug);
 
@@ -373,7 +381,7 @@ export function FleetDetailPage() {
 
                   <div className="h-28 flex items-center justify-center p-2 mb-4 bg-slate-50/80 rounded-2xl">
                     <img
-                      src={getMediaUrl(VEHICLE_SLOT_KEYS[item.id] || '', item.image)}
+                      src={getFleetVehicleImage(item.id, item.image)}
                       alt={item.name}
                       className="h-20 w-auto object-contain group-hover:scale-105 transition-transform rounded-xl"
                     />
