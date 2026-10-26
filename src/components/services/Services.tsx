@@ -18,8 +18,9 @@ import { FleetShowcase } from './FleetShowcase';
 import { useSiteMedia } from '../../context/useSiteMedia';
 
 interface ServiceItem {
-  fleetKey: string;
-  defaultImage: string;
+  fleetKey?: string;
+  defaultImage?: string;
+  staticImage?: string;
   icon: LucideIcon;
   title: string;
   description: string;
@@ -65,8 +66,7 @@ const services: ServiceItem[] = [
     to: '/fleet/pickup',
   },
   {
-    fleetKey: 'fleet_house_shifting',
-    defaultImage: '/household-goods-shifting.png',
+    staticImage: '/household-goods-shifting.png',
     icon: Home,
     title: 'Household Goods Transport',
     description: 'Careful, secure transport for home shifting and personal belongings.',
@@ -74,8 +74,7 @@ const services: ServiceItem[] = [
     to: '/fleet/house-shifting',
   },
   {
-    fleetKey: 'fleet_commercial',
-    defaultImage: '/commercial-logistics.jpg',
+    staticImage: '/commercial-logistics.jpg',
     icon: Building2,
     title: 'Business & Commercial Logistics',
     description: 'End-to-end logistics support for retailers, wholesalers and enterprises.',
@@ -141,7 +140,9 @@ export function Services() {
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {services.map((service, i) => {
-              const cardImage = getMediaUrl(service.fleetKey, service.defaultImage);
+              const cardImage =
+                service.staticImage ||
+                (service.fleetKey ? getMediaUrl(service.fleetKey, service.defaultImage || '') : '');
 
               return (
                 <ScrollReveal key={service.title} delay={i * 0.06}>

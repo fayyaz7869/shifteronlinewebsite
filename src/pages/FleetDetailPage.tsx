@@ -22,8 +22,6 @@ const VEHICLE_SLOT_KEYS: Record<string, string> = {
   'three-wheeler': 'fleet_3wheeler',
   'tata-ace': 'fleet_tata_ace',
   pickup: 'fleet_pickup',
-  'house-shifting': 'fleet_house_shifting',
-  'commercial-logistics': 'fleet_commercial',
 };
 
 export function FleetDetailPage() {
