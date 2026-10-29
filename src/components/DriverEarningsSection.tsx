@@ -76,7 +76,7 @@ const PERKS = [
   },
   {
     title: 'Consistent Commercial Bookings',
-    description: 'Steady enterprise deliveries across Indore, Dewas Naka, Pithampur and MP trade hubs.',
+    description: 'Steady enterprise deliveries across major cities and industrial trade hubs nationwide.',
     icon: ShieldCheck,
     color: 'text-navy bg-navy/10',
   },
@@ -102,12 +102,12 @@ export function DriverEarningsSection() {
   const selectedImageUrl = getMediaUrl(TIER_MEDIA_KEYS[selected.id] || '', selected.image);
 
   const whatsappOnboarding = encodeURIComponent(
-    `Hello Shifter Online Team! 🚚\n\nI want to attach my vehicle (${selected.name}) as a Driver Partner in Indore/MP.\n` +
+    `Hello Shifter Online Team! 🚚\n\nI want to attach my vehicle (${selected.name}) as a Driver Partner.\n` +
       `Please guide me through the quick onboarding and 0% commission offer.`
   );
 
   return (
-    <section id="driver-partner" className="py-24 md:py-32 bg-slate-50 text-slate-900 border-y border-slate-200/80 relative overflow-hidden">
+    <section id="driver-partner" className="py-16 md:py-24 bg-slate-50 text-slate-900 border-y border-slate-200/80 relative overflow-hidden">
       {/* Background subtle light ambient effects */}
       <div className="pointer-events-none absolute -left-20 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-orange/5 blur-3xl" />
       <div className="pointer-events-none absolute -right-20 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-navy/5 blur-3xl" />

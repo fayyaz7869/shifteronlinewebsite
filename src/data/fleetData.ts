@@ -47,9 +47,9 @@ export const FLEET_DETAILS: Record<string, VehicleDetail> = {
     avgArrival: '10–12 Minutes',
     rating: 4.9,
     tripsCount: '15,000+',
-    tagline: 'Lightning-fast delivery for small packets, documents, food, and urgent retail goods across Indore.',
+    tagline: 'Lightning-fast delivery for small packets, documents, food, and urgent retail goods across top city hubs.',
     description:
-      'Ideal for urgent deliveries through crowded market streets like Sarafa, Sitlamata Bazar, and MG Road where four-wheelers cannot enter easily. Fully GPS-tracked with instant OTP delivery sign-off.',
+      'Ideal for urgent deliveries through crowded market streets and busy commercial corridors where four-wheelers face delays. Fully GPS-tracked with instant OTP delivery sign-off.',
     idealFor: [
       'Legal Documents, Cheques & Office Papers',
       'Food, Bakery & Restaurant Deliveries',
@@ -59,22 +59,22 @@ export const FLEET_DETAILS: Record<string, VehicleDetail> = {
       'Sample Swatches & Textile Samples',
     ],
     features: [
-      'Fastest navigation through central Indore traffic',
+      'Fastest navigation through dense city traffic',
       'Weather-protected thermal delivery carrier bag',
       'Live GPS map telemetry on Customer App',
       'Contactless delivery with 4-digit OTP handover',
       'Zero advance deposit needed',
     ],
     indoreRoutes: [
-      'Sarafa Bazar ⇄ Vijay Nagar',
-      'New Palasia ⇄ Bhawarkua',
-      'Chappan Dukan ⇄ Silicon City',
-      'Rajwada ⇄ Super Corridor',
+      'Connaught Place ⇄ Noida Sector 62',
+      'BKC ⇄ Andheri East',
+      'Koramangala ⇄ Whitefield',
+      'Rajwada ⇄ Vijay Nagar',
     ],
     helperAvailable: false,
     helperRate: 'N/A (Driver carries bag directly)',
     whatsappMessage:
-      'Hello Shifter Online! 🛵\n\nI want to book a 2-Wheeler Express Bike for urgent parcel delivery in Indore.\nPlease connect me with the nearest driver.',
+      'Hello Shifter Online! 🛵\n\nI want to book a 2-Wheeler Express Bike for urgent parcel delivery.\nPlease connect me with the nearest driver.',
     faqs: [
       {
         q: 'What is the maximum weight a 2-wheeler can carry?',
@@ -82,7 +82,7 @@ export const FLEET_DETAILS: Record<string, VehicleDetail> = {
       },
       {
         q: 'How fast will the bike rider reach my pickup location?',
-        a: 'On average within central Indore, a verified bike rider reaches your pickup doorstep in 10 to 12 minutes.',
+        a: 'On average within major city hubs, a verified bike rider reaches your pickup doorstep in 10 to 12 minutes.',
       },
       {
         q: 'Can I send fragile or glass items by bike?',
@@ -109,9 +109,9 @@ export const FLEET_DETAILS: Record<string, VehicleDetail> = {
     avgArrival: '12–15 Minutes',
     rating: 4.9,
     tripsCount: '28,000+',
-    tagline: 'The undisputed workhorse of Indore wholesale bazaars — economical, eco-friendly, and highly agile.',
+    tagline: 'The undisputed workhorse of Indian wholesale markets — economical, eco-friendly, and highly agile.',
     description:
-      'Perfect for moving textile rolls from Sitlamata cloth market, electrical appliances, retail inventory, and medium wholesale parcels across Central India. Equipped with heavy-duty tarpaulins for complete rain protection.',
+      'Perfect for moving textile rolls from wholesale cloth markets, electrical appliances, retail inventory, and medium cargo across city hubs. Equipped with heavy-duty tarpaulins for complete rain protection.',
     idealFor: [
       'Textile Rolls, Fabric Bales & Cloth Bundles',
       'Electrical Hardware, Cables & PVC Pipes',
@@ -128,19 +128,19 @@ export const FLEET_DETAILS: Record<string, VehicleDetail> = {
       'Optional loading helper available on request',
     ],
     indoreRoutes: [
-      'Sitlamata Bazar ⇄ Dewas Naka',
-      'Siyaganj ⇄ Pithampur Sector 1',
-      'Marothia Bazar ⇄ Vijay Nagar',
-      'Loha Mandi ⇄ Sanwer Road',
+      'Sitlamata Cloth Market ⇄ Dewas Naka',
+      'Chandni Chowk ⇄ Okhla Industrial Area',
+      'Crawford Market ⇄ Bhiwandi',
+      'SP Road ⇄ Peenya Industrial',
     ],
     helperAvailable: true,
     helperRate: '₹150 per trained helper',
     whatsappMessage:
-      'Hello Shifter Online! 🚚\n\nI need to book a 3-Wheeler / E-Loader for commercial transport in Indore.\nPlease dispatch the nearest verified vehicle.',
+      'Hello Shifter Online! 🚚\n\nI need to book a 3-Wheeler / E-Loader for commercial transport.\nPlease dispatch the nearest verified vehicle.',
     faqs: [
       {
         q: 'Can the 3-wheeler enter crowded market areas during daytime?',
-        a: 'Yes, 3-wheelers and E-Loaders have full day access in all commercial bazaars like Siyaganj, Sitlamata Bazar, and Marothia.',
+        a: 'Yes, 3-wheelers and E-Loaders have full day access in all commercial bazaars and markets.',
       },
       {
         q: 'Is rain protection provided for cloth and cardboard cartons?',
@@ -171,7 +171,7 @@ export const FLEET_DETAILS: Record<string, VehicleDetail> = {
     avgArrival: '15 Minutes',
     rating: 4.9,
     tripsCount: '45,000+',
-    tagline: 'India’s most trusted mini-truck for commercial cargo, retail goods, and 1 BHK home shifting in Indore.',
+    tagline: 'India’s most trusted mini-truck for commercial cargo, retail goods, and 1 BHK home shifting across 500+ cities.',
     description:
       'The Tata Ace Chhota Hathi is built to handle heavy commercial goods, industrial loads, and complete 1 BHK apartment relocations. Its sturdy open deck with reinforced metal side walls provides maximum safety for stacking cartons, beds, and machinery.',
     idealFor: [
@@ -190,15 +190,15 @@ export const FLEET_DETAILS: Record<string, VehicleDetail> = {
       'Fixed transparent per-km rates with zero hidden surge fees',
     ],
     indoreRoutes: [
-      'Dewas Naka Transport Hub ⇄ Pithampur Industrial Area',
-      'Vijay Nagar ⇄ Super Corridor',
-      'Navlakha ⇄ Sanwer Road Industrial Zone',
-      'Rau Bypass ⇄ Central Indore',
+      'Delhi NCR ⇄ Meerut Expressway',
+      'Mumbai ⇄ Pune Expressway Corridor',
+      'Dewas Naka ⇄ Pithampur Industrial Area',
+      'Bengaluru ⇄ Hosur Corridor',
     ],
     helperAvailable: true,
     helperRate: '₹200 per helper (up to 2 helpers)',
     whatsappMessage:
-      'Hello Shifter Online! 🚚\n\nI want to book a Tata Ace (Chhota Hathi) for goods transport / shifting in Indore.\nPlease share dispatch details.',
+      'Hello Shifter Online! 🚚\n\nI want to book a Tata Ace (Chhota Hathi) for goods transport / shifting.\nPlease share dispatch details.',
     faqs: [
       {
         q: 'Can a Tata Ace fit a complete double bed and wardrobe?',
@@ -206,7 +206,7 @@ export const FLEET_DETAILS: Record<string, VehicleDetail> = {
       },
       {
         q: 'Are toll charges included in the fare?',
-        a: 'Tolls on inter-city routes (like Indore-Dewas bypass or Pithampur toll) are paid at actuals at the toll plaza.',
+        a: 'Tolls on inter-city highway routes are paid at actuals at the toll plaza.',
       },
       {
         q: 'Can helpers assist in carrying items up the stairs?',
@@ -232,9 +232,9 @@ export const FLEET_DETAILS: Record<string, VehicleDetail> = {
     avgArrival: '15–20 Minutes',
     rating: 4.8,
     tripsCount: '22,000+',
-    tagline: 'Heavy-duty 8-foot cargo carrier engineered for heavy industrial machinery, bulk raw materials, and 2-3 BHK shifting.',
+    tagline: 'Heavy-duty 8-foot cargo carrier engineered for heavy industrial machinery, bulk raw materials, and 2-3 BHK shifting nationwide.',
     description:
-      'When you have heavy machinery from Pithampur, bulk agricultural sacks, steel pipes, or a complete 2 to 3 BHK house to relocate, the Mahindra Bolero Pickup 8ft is the ultimate solution. Unmatched torque and open bed capacity for any Central India route.',
+      'When you have heavy machinery, bulk industrial goods, steel pipes, or a complete 2 to 3 BHK house to relocate, the Mahindra Bolero Pickup 8ft is the ultimate solution. Unmatched torque and open bed capacity for any regional or national route.',
     idealFor: [
       'Complete 2 BHK & 3 BHK Home Relocations',
       'Heavy Industrial Machinery, Motors & Pumps',
@@ -246,28 +246,28 @@ export const FLEET_DETAILS: Record<string, VehicleDetail> = {
     features: [
       'Extra-long 8.5-foot flat deck with drop-down sides',
       'Heavy-duty leaf spring suspension for heavy loads',
-      'Full interstate and regional permit for Madhya Pradesh',
+      'Full regional and national permit with verified commercial credentials',
       'Heavy cargo lashing straps and tarpaulins',
       'Multi-helper support available for heavy lifting',
     ],
     indoreRoutes: [
-      'Pithampur MIDC Sector 1-3 ⇄ Dewas Industrial Area',
-      'Sanwer Road ⇄ Indore City Center',
-      'Indore ⇄ Bhopal / Ujjain Intercity Logistics',
-      'Super Corridor ⇄ Khandwa Road',
+      'Delhi NCR ⇄ Jaipur Highway',
+      'Mumbai ⇄ Nashik / Pune Freight Corridor',
+      'Indore ⇄ Bhopal / Ujjain Linehaul',
+      'Ahmedabad ⇄ Vadodara Express',
     ],
     helperAvailable: true,
     helperRate: '₹250 per helper (up to 3 helpers)',
     whatsappMessage:
-      'Hello Shifter Online! 🚚\n\nI need an 8ft Pickup / Bolero Maxi Truck for heavy cargo / home relocation in Indore/MP.\nPlease provide immediate dispatch.',
+      'Hello Shifter Online! 🚚\n\nI need an 8ft Pickup / Bolero Maxi Truck for heavy cargo / home relocation.\nPlease provide immediate dispatch.',
     faqs: [
       {
         q: 'What is the maximum payload capacity of the 8ft Pickup?',
         a: 'The 8ft Bolero Maxi handles up to 1,500 kg (1.5 Metric Tonnes) of cargo safely.',
       },
       {
-        q: 'Does it support inter-city transport to Bhopal, Dewas, or Ujjain?',
-        a: 'Yes, all our pickup vehicles carry valid MP state permits for intercity transit anytime 24/7.',
+        q: 'Does it support inter-city and highway transport?',
+        a: 'Yes, all our pickup vehicles carry valid commercial permits for intercity transit anytime 24/7.',
       },
       {
         q: 'How many helpers can I request for shifting a 2 BHK apartment?',
@@ -294,13 +294,13 @@ export const FLEET_DETAILS: Record<string, VehicleDetail> = {
     avgArrival: 'Scheduled Slot or Immediate 20 Mins',
     rating: 4.95,
     tripsCount: '12,500+ Homes',
-    tagline: 'Stress-free home shifting in Indore with polite verified drivers, trained packing helpers, and careful handling.',
+    tagline: 'Stress-free home shifting nationwide with polite verified drivers, trained packing helpers, and careful handling.',
     description:
-      'Relocating your home in Indore? Shifter Online pairs you with the right size vehicle (Tata Ace for 1 BHK, Pickup 8ft for 2-3 BHK) along with verified loading labor who handle your furniture, television, refrigerator, and delicate kitchenware with extreme care.',
+      'Relocating your home? Shifter Online pairs you with the right size vehicle (Tata Ace for 1 BHK, Pickup 8ft for 2-3 BHK) along with verified loading labor who handle your furniture, television, refrigerator, and delicate kitchenware with extreme care.',
     idealFor: [
       'Complete 1 BHK, 2 BHK and 3 BHK Apartment Shifting',
       'Student & Bachelor Room Relocation',
-      'Independent Villa & Bunglow Shifting in Indore',
+      'Independent Villa & Bungalow Shifting',
       'Fragile Glassware, Crockery & Smart TVs',
       'Double Beds, Wardrobes, Sofas & Dining Tables',
       'Washing Machines, Refrigerators & Microwave Ovens',
@@ -313,15 +313,15 @@ export const FLEET_DETAILS: Record<string, VehicleDetail> = {
       'Transparent upfront quotes with zero hidden union charges',
     ],
     indoreRoutes: [
-      'Vijay Nagar ⇄ Super Corridor',
-      'Palasia ⇄ Silicon City, Rau',
-      'Mahalaxmi Nagar ⇄ Nipania',
-      'Annapurna ⇄ Bengali Square',
+      'Intra-City Apartment Relocation',
+      'Intercity Home Shifting Corridor',
+      'Metro Hub ⇄ Suburban Transfers',
+      'North - Central - South Relocation Corridors',
     ],
     helperAvailable: true,
     helperRate: 'Customized labor package based on floor and flat size',
     whatsappMessage:
-      'Hello Shifter Online! 🏠\n\nI want to shift my house in Indore. Please provide me with vehicle and helper options.',
+      'Hello Shifter Online! 🏠\n\nI want to shift my house. Please provide me with vehicle and helper options.',
     faqs: [
       {
         q: 'Do you provide helpers for lifting items up the stairs?',
@@ -355,13 +355,13 @@ export const FLEET_DETAILS: Record<string, VehicleDetail> = {
     avgArrival: '15 Minutes Dispatch Guarantee',
     rating: 4.9,
     tripsCount: '35,000+ B2B Deliveries',
-    tagline: 'Streamlined logistics partner for Indore merchants, wholesalers, factories, and e-commerce brands.',
+    tagline: 'Streamlined logistics partner for merchants, wholesalers, factories, and e-commerce brands nationwide.',
     description:
-      'Powering Central India’s commerce. Whether you operate a textile wholesale shop in Sitlamata Bazar, an engineering plant in Pithampur, or an e-commerce fulfillment warehouse in Dewas Naka, Shifter Online delivers reliable, on-demand commercial fleet solutions with GST invoicing.',
+      'Powering commerce across India. Whether you operate a textile wholesale shop, an engineering plant, or an e-commerce fulfillment warehouse, Shifter Online delivers reliable, on-demand commercial fleet solutions with GST invoicing.',
     idealFor: [
       'Textile Merchants & Garment Manufacturers',
-      'Pithampur Automobile & Pharma Manufacturing Plants',
-      'Dewas Naka Wholesale Warehouses & FMCG Distributors',
+      'Automobile, Engineering & Pharma Manufacturing Plants',
+      'FMCG Distributors & Wholesale Warehouses',
       'Hardware, Electrical & Sanitaryware Retailers',
       'E-commerce Hub-to-Store Same-Day Delivery',
       'Printing Presses & Packaging Material Suppliers',
@@ -374,15 +374,15 @@ export const FLEET_DETAILS: Record<string, VehicleDetail> = {
       'Start-PIN & Delivery OTP security verification',
     ],
     indoreRoutes: [
-      'Pithampur MIDC ⇄ Dewas Naka Warehouses',
-      'Sitlamata Cloth Market ⇄ Retail Outlets across MP',
-      'Sanwer Road Industrial Area ⇄ City Warehouses',
-      'Indore ⇄ Bhopal / Ujjain / Gwalior Commercial Arteries',
+      'Delhi - Mumbai Industrial Corridor (DMIC)',
+      'Western Freight & Port Logistics Corridor',
+      'Central Trade & Logistics Spine',
+      'Golden Quadrilateral Intercity Routes',
     ],
     helperAvailable: true,
     helperRate: 'Trained commercial loading helpers available on demand',
     whatsappMessage:
-      'Hello Shifter Online B2B Team! 🏭\n\nI want to discuss commercial logistics / fleet partnership for our business in Indore/MP.',
+      'Hello Shifter Online B2B Team! 🏭\n\nI want to discuss commercial logistics / fleet partnership for our business.',
     faqs: [
       {
         q: 'Do you provide GST invoices for corporate tax deductions?',

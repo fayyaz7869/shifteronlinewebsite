@@ -5,7 +5,7 @@ const REVIEWS = [
   {
     name: 'Rajesh Khandelwal',
     role: 'Wholesale Textile Merchant',
-    location: 'Sitlamata Bazar, Indore',
+    location: 'Surat & Indore Textile Corridor',
     rating: 5,
     tag: 'Daily Commercial User',
     icon: Building2,
@@ -15,7 +15,7 @@ const REVIEWS = [
   {
     name: 'Priyanka Sharma',
     role: 'Home Shifting Customer',
-    location: 'Vijay Nagar, Indore',
+    location: 'Delhi NCR & Central Hubs',
     rating: 5,
     tag: '2 BHK Home Relocation',
     icon: User,
@@ -25,7 +25,7 @@ const REVIEWS = [
   {
     name: 'Sunil Parmar',
     role: 'Driver Partner (Tata Ace Gold)',
-    location: 'Dewas Naka, Indore',
+    location: 'Central Freight Zone',
     rating: 5,
     tag: 'Attached Vehicle: MP 09 AB 1234',
     icon: Truck,
@@ -35,18 +35,18 @@ const REVIEWS = [
   {
     name: 'Deepak Patidar',
     role: 'Industrial Hardware & Spare Parts',
-    location: 'Pithampur Industrial Sector 1',
+    location: 'Mumbai - Central Industrial Corridor',
     rating: 5,
     tag: 'B2B Logistics Partner',
     icon: Factory,
     comment:
-      'Pithampur routes used to be unpredictable with local transport brokers. With Shifter Online, we schedule e-loaders and 8ft pickups with fixed transparent rates and verified drivers. Saved our business over 20% in freight costs.',
+      'Industrial routes used to be unpredictable with traditional transport brokers. With Shifter Online, we schedule e-loaders and 8ft pickups with fixed transparent rates and verified drivers. Saved our business over 20% in freight costs.',
   },
 ];
 
 export function CustomerReviews() {
   return (
-    <section className="py-24 md:py-32 bg-white text-slate-900 border-b border-slate-200/80 relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-white text-slate-900 border-b border-slate-200/80 relative overflow-hidden">
       {/* Background ambient radial lights */}
       <div className="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-navy/5 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 bottom-20 h-96 w-96 rounded-full bg-orange/5 blur-3xl" />
@@ -61,7 +61,7 @@ export function CustomerReviews() {
             What People Say About Shifter
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
-            From local merchants and manufacturers to families shifting homes and driver partners — see why Central India trusts Shifter Online.
+            From local merchants and manufacturers to families shifting homes and driver partners — see why businesses and families nationwide trust Shifter Online.
           </p>
 
           {/* Aggregate Rating Banner */}
@@ -73,7 +73,7 @@ export function CustomerReviews() {
             </div>
             <span>4.9 / 5 Overall Rating</span>
             <span className="text-slate-300">|</span>
-            <span className="text-slate-600 font-medium">Over 2,500+ Trips in Central India</span>
+            <span className="text-slate-600 font-medium">Over 50,000+ Completed Trips Nationwide</span>
           </div>
         </ScrollReveal>
 

@@ -9,7 +9,7 @@ const WHATSAPP_URL = 'https://wa.me/919644423533?text=Hello%20Shifter%20Online,%
 
 export function CTA({ onGetStartedClick: _onGetStartedClick }: CTAProps) {
   return (
-    <section id="cta" className="relative bg-slate-50 py-20 md:py-28 overflow-hidden">
+    <section id="cta" className="relative bg-slate-50 py-14 md:py-20 overflow-hidden">
       <div className="container-shifter relative z-10">
         <ScrollReveal>
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-navy via-[#0C2D6B] to-[#06183B] p-8 sm:p-14 md:p-16 text-white shadow-lift border border-navy/20">
@@ -23,7 +23,7 @@ export function CTA({ onGetStartedClick: _onGetStartedClick }: CTAProps) {
               </span>
 
               <h2 className="text-3xl font-black leading-tight text-white sm:text-[44px]">
-                Ready to Move Smarter in Central India?
+                Ready to Move Smarter Across India?
               </h2>
               <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl mx-auto">
                 Experience faster, safer, and smarter goods transport with verified driver partners, transparent pricing, and live GPS telemetry.

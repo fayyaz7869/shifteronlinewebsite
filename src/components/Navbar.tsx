@@ -31,8 +31,8 @@ const WHATSAPP_URL = 'https://wa.me/919644423533?text=Hello%20Shifter%20Online,%
 const desktopNavLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Services & Fleet', href: '#services', hasDropdown: true },
-  { label: 'Smart Logistics', href: '#tracking' },
-  { label: 'Hubs', href: '#coverage' },
+  { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Pan-India Hubs', href: '#coverage' },
   { label: 'Driver Partner', href: '#driver-partner' },
   { label: 'Why Us', href: '#why-us' },
   { label: 'Contact', href: '#cta' },
@@ -41,11 +41,10 @@ const desktopNavLinks = [
 const mobileNavLinks = [
   { label: 'Home', href: '#home', icon: Home, desc: 'Moving Your World Forward' },
   { label: 'Services & Fleet', href: '#services', icon: Truck, desc: 'Bike, 3-Wheeler, Tata Ace, Pickup' },
-  { label: 'Smart Logistics Solutions', href: '#tracking', icon: Truck, desc: 'Commercial, Shifting & Industrial transport' },
-  { label: 'Indore Operating Hubs', href: '#coverage', icon: MapPin, desc: 'Central Indore, Vijay Nagar, Transport Nagar & Palasia' },
-  { label: 'Driver Partner (Earn ₹35k+)', href: '#driver-partner', icon: Users, desc: '0% Commission month 1, daily payouts' },
+  { label: 'How It Works', href: '#how-it-works', icon: CheckCircle2, desc: '4 simple steps to booking & delivery' },
+  { label: 'Pan-India Operating Hubs', href: '#coverage', icon: MapPin, desc: 'North, West, South, Central & Freight Corridors' },
+  { label: 'Driver Partner (Earn ₹45k+)', href: '#driver-partner', icon: Users, desc: '0% Commission month 1, daily payouts' },
   { label: 'Why Choose Us', href: '#why-us', icon: ShieldCheck, desc: 'Verified partners & transparent pricing' },
-  { label: 'How It Works', href: '#how-it-works', icon: CheckCircle2, desc: '4 simple steps to delivery' },
   { label: 'Mobile Apps', href: '#app', icon: Smartphone, desc: 'Customer & Driver apps' },
   { label: 'Contact & Support', href: '#cta', icon: Headphones, desc: '24/7 Helpline & Support' },
 ];
@@ -140,7 +139,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
               15-Min Guaranteed Pickup Dispatch
             </span>
-            <span className="text-slate-500">· 100% Indore City Coverage: Vijay Nagar, Palasia, Rajwada, Transport Nagar</span>
+            <span className="text-slate-500">· Pan-India Logistics &amp; Fleet Network Across 500+ Cities</span>
           </div>
           <div className="flex items-center gap-4 text-slate-600">
             <a href="tel:9109114515" className="hover:text-orange transition-colors flex items-center gap-1 font-bold">
@@ -338,7 +337,7 @@ export function Navbar({ onLoginClick, onGetStartedClick }: NavbarProps) {
                 <div className="flex items-center gap-2">
                   <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-bold text-emerald-700 border border-emerald-200">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    Central India Hub
+                    Pan-India Network
                   </span>
                   <button
                     type="button"

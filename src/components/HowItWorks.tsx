@@ -35,7 +35,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-24 md:py-32 bg-white text-slate-900 relative overflow-hidden">
+    <section id="how-it-works" className="py-16 md:py-24 bg-white text-slate-900 relative overflow-hidden">
       {/* Background ambient accents */}
       <div className="pointer-events-none absolute left-1/2 top-10 -translate-x-1/2 h-96 w-3/4 rounded-full bg-royal/5 blur-3xl" />
       <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-40" />

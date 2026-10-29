@@ -222,9 +222,9 @@ export function FleetDetailPage() {
               </div>
             </div>
 
-            {/* Popular Indore Routes */}
+            {/* Popular Routes */}
             <div className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-soft">
-              <h3 className="text-lg font-black text-navy mb-2">Popular Central India Corridors</h3>
+              <h3 className="text-lg font-black text-navy mb-2">High-Demand Freight &amp; City Corridors</h3>
               <p className="text-xs text-slate-500 mb-5">High-frequency routes serviced daily</p>
 
               <div className="flex flex-wrap gap-2.5">
@@ -250,7 +250,7 @@ export function FleetDetailPage() {
               </div>
               <h3 className="text-2xl font-black text-navy">Book {vehicle.name}</h3>
               <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Connect with our Indore operations dispatch team directly on WhatsApp. We match the nearest verified driver in under 15 minutes with 100% upfront transparent pricing.
+                Connect with our operations dispatch team directly on WhatsApp. We match the nearest verified driver in under 15 minutes with 100% upfront transparent pricing.
               </p>
 
               {/* Helper option info */}

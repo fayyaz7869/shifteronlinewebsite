@@ -3,24 +3,27 @@ import { Smartphone, ShieldCheck, Zap, Star, MapPin, Truck, ChevronRight, Activi
 import { Button } from '../ui/Button';
 import { useSiteMedia } from '../../context/useSiteMedia';
 
-const INDORE_HUBS = [
-  'Rajwada',
-  'Sarafa',
-  '56 Dukan',
-  'Dewas Naka',
-  'Pithampur MIDC',
-  'Vijay Nagar',
-  'Khajrana',
+const PAN_INDIA_HUBS = [
+  'Delhi NCR',
+  'Mumbai',
+  'Bengaluru',
+  'Indore',
+  'Ahmedabad',
+  'Pune',
+  'Hyderabad',
+  'Kolkata',
+  'Jaipur',
+  'Bhopal',
 ];
 
 const WHATSAPP_BOOKING_URL =
-  'https://wa.me/919644423533?text=Hello%20Shifter%20Online%20Indore!%20%F0%9F%9A%9A%0A%0AI%20need%20to%20book%20a%20vehicle%20for%20delivery%20in%20Indore%2FCentral%20India.%0APlease%20assist%20me%20with%20instant%20dispatch.';
+  'https://wa.me/919644423533?text=Hello%20Shifter%20Online!%20%F0%9F%9A%9A%0A%0AI%20need%20to%20book%20a%20vehicle%20for%20goods%20delivery.%0APlease%20assist%20me%20with%20instant%20dispatch.';
 
 export function Hero() {
   const { getMediaUrl } = useSiteMedia();
   const rajwadaBannerImg = getMediaUrl('rajwada_banner', '/rajwada-shifter-banner.jpg');
   return (
-    <section id="home" className="relative overflow-hidden bg-gradient-to-b from-[#F2F6FD] via-white to-slate-50/60 text-slate-900 pt-32 pb-20 md:pt-40 md:pb-28">
+    <section id="home" className="relative overflow-hidden bg-gradient-to-b from-[#F2F6FD] via-white to-slate-50/60 text-slate-900 pt-28 pb-16 md:pt-36 md:pb-20">
       {/* Background ambient lighting and subtle city pattern */}
       <div className="absolute inset-0 bg-grid-light opacity-50 pointer-events-none" />
       <div className="pointer-events-none absolute -top-40 left-1/4 h-[500px] w-[500px] rounded-full bg-orange/10 blur-[130px]" />
@@ -37,10 +40,10 @@ export function Hero() {
             className="mb-5 inline-flex flex-wrap items-center gap-2 rounded-full border border-orange/30 bg-white/90 px-4 py-2 text-xs font-black tracking-wide text-orange shadow-soft backdrop-blur-md"
           >
             <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="tracking-wider uppercase text-slate-900 font-extrabold">BORN IN INDORE</span>
+            <span className="tracking-wider uppercase text-slate-900 font-extrabold">PAN-INDIA LOGISTICS NETWORK</span>
             <span className="text-slate-300">|</span>
             <span className="text-orange font-black flex items-center gap-1">
-              CENTRAL LOGISTICS NETWORK <ChevronRight size={12} />
+              500+ CITIES CONNECTED <ChevronRight size={12} />
             </span>
           </motion.div>
 
@@ -62,7 +65,7 @@ export function Hero() {
             transition={{ duration: 0.65, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
             className="mt-5 max-w-xl text-base sm:text-lg text-slate-600 leading-relaxed font-medium"
           >
-            Indore&apos;s trusted technology logistics platform. From historic Rajwada &amp; Sarafa to Pithampur industrial corridors — connect with verified mini-trucks, pickups, and 3-wheelers in under 15 minutes.
+            India&apos;s trusted technology-driven logistics platform. From local city parcel deliveries to inter-city full truckload freight — connect with verified mini-trucks, pickups, and 3-wheelers in under 15 minutes across 500+ cities.
           </motion.p>
 
           {/* 4 Clean Value Pills */}
@@ -108,7 +111,7 @@ export function Hero() {
               </span>
               <div>
                 <span className="block font-black text-navy text-xs sm:text-sm">4.9 / 5</span>
-                <span className="block text-[10px] text-slate-500">Indore Rating</span>
+                <span className="block text-[10px] text-slate-500">Pan-India Rating</span>
               </div>
             </div>
           </motion.div>
@@ -163,7 +166,7 @@ export function Hero() {
             </a>
           </motion.div>
 
-          {/* Active Indore Hubs Pill Ticker */}
+          {/* Active Pan-India Hubs Pill Ticker */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -172,9 +175,9 @@ export function Hero() {
           >
             <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-emerald-700 font-bold border border-emerald-200">
               <Activity size={12} className="animate-pulse text-emerald-600" />
-              Active in Indore:
+              Active Across Hubs:
             </span>
-            {INDORE_HUBS.map((hub) => (
+            {PAN_INDIA_HUBS.map((hub) => (
               <span
                 key={hub}
                 className="rounded-lg bg-white px-2.5 py-1 font-semibold text-slate-700 border border-slate-200/80 shadow-2xs"
@@ -185,7 +188,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Right Column: Indore Rajwada Shifter Online Masterpiece Showcase (5 Cols) */}
+        {/* Right Column: Pan-India Shifter Online Masterpiece Showcase (5 Cols) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -194,15 +197,15 @@ export function Hero() {
         >
           {/* Framed Artwork Card */}
           <div className="relative overflow-hidden rounded-3xl bg-white p-3 sm:p-4 shadow-card border border-slate-200/90 group">
-            {/* Top Bar with Indore Header */}
+            {/* Top Bar with National Header */}
             <div className="flex items-center justify-between pb-3 px-2 border-b border-slate-100 mb-2">
               <div className="flex items-center gap-2">
                 <span className="grid h-7 w-7 place-items-center rounded-lg bg-orange/10 text-orange font-black text-xs">
-                  🏛️
+                  🇮🇳
                 </span>
                 <div>
-                  <h3 className="text-xs font-black text-navy leading-none">Rajwada Palace, Indore</h3>
-                  <span className="text-[10px] text-slate-400 font-medium">Headquartered in Central India</span>
+                  <h3 className="text-xs font-black text-navy leading-none">Pan-India Logistics Network</h3>
+                  <span className="text-[10px] text-slate-400 font-medium">Connecting 500+ Cities Nationwide</span>
                 </div>
               </div>
               <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700 border border-emerald-200">
@@ -211,11 +214,11 @@ export function Hero() {
               </span>
             </div>
 
-            {/* Rajwada Poster Image Container */}
+            {/* Rajwada / Flag Banner Poster Image Container */}
             <div className="relative overflow-hidden rounded-2xl aspect-[4/3] bg-slate-100 border border-slate-200">
               <img
                 src={rajwadaBannerImg}
-                alt="Shifter Online at Rajwada Palace Indore"
+                alt="Shifter Online Fleet"
                 className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 loading="eager"
               />
@@ -226,7 +229,7 @@ export function Hero() {
               {/* Top Floating Badge */}
               <div className="absolute top-3 left-3 flex items-center gap-1.5 rounded-xl bg-navy/90 backdrop-blur-md px-3 py-1.5 text-[11px] font-bold text-white shadow-soft border border-white/20">
                 <MapPin size={13} className="text-orange" />
-                <span>Indore Commercial Dispatch</span>
+                <span>National Freight Dispatch</span>
               </div>
 
               {/* Bottom Floating Banner */}
@@ -256,7 +259,7 @@ export function Hero() {
 
             {/* Quick Driver Partner Bar at Bottom */}
             <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between px-2 text-xs">
-              <span className="text-slate-600 font-medium">Own a commercial vehicle in Indore?</span>
+              <span className="text-slate-600 font-medium">Own a commercial vehicle anywhere in India?</span>
               <a
                 href="#driver-partner"
                 className="font-bold text-orange hover:text-orange-dark inline-flex items-center gap-1"

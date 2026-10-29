@@ -14,7 +14,7 @@ const FAQS = [
   },
   {
     q: 'How fast will a driver partner arrive at my location?',
-    a: 'On average, our smart dispatch algorithm matches and dispatches the nearest verified driver partner within 10 to 15 minutes across all areas and commercial hubs of Indore.',
+    a: 'On average, our smart dispatch algorithm matches and dispatches the nearest verified driver partner within 10 to 15 minutes across major cities and industrial hubs nationwide.',
   },
   {
     q: 'How do I attach my vehicle as a Driver Partner?',
@@ -42,7 +42,7 @@ export function FAQSection() {
   };
 
   return (
-    <section id="faq" className="py-24 md:py-32 bg-white text-slate-900 border-b border-slate-200/80 relative overflow-hidden">
+    <section id="faq" className="py-16 md:py-24 bg-white text-slate-900 border-b border-slate-200/80 relative overflow-hidden">
       {/* Background ambient radial lights */}
       <div className="pointer-events-none absolute -left-32 top-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-navy/5 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 top-1/3 h-80 w-80 rounded-full bg-orange/5 blur-3xl" />
@@ -117,7 +117,7 @@ export function FAQSection() {
             <div className="text-center sm:text-left">
               <h3 className="text-lg font-black text-navy">Still have questions?</h3>
               <p className="mt-1 text-xs text-slate-500">
-                Our local logistics operations desk in Indore is active 24/7.
+                Our national logistics support &amp; operations desk is active 24/7.
               </p>
             </div>
 

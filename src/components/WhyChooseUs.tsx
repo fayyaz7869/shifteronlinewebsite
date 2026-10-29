@@ -51,7 +51,7 @@ const values = [
 
 export function WhyChooseUs() {
   return (
-    <section id="why-us" className="bg-slate-50/60 py-24 md:py-32 relative overflow-hidden text-slate-900 border-y border-slate-200/80">
+    <section id="why-us" className="bg-slate-50/60 py-16 md:py-24 relative overflow-hidden text-slate-900 border-y border-slate-200/80">
       {/* Background ambient accents */}
       <div className="pointer-events-none absolute -left-32 top-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-orange/5 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 top-1/3 h-80 w-80 rounded-full bg-royal/5 blur-3xl" />
@@ -67,7 +67,7 @@ export function WhyChooseUs() {
             Built for Businesses &amp; Families That Can&apos;t Afford Delays
           </h2>
           <p className="mt-5 max-w-md text-[15px] leading-relaxed text-slate-600 font-medium">
-            Shifter Online, by Movigo Logistics Aggregator Pvt. Ltd., combines intelligent dispatch algorithms with 100% verified local driver partners to ensure your cargo arrives safely and on time.
+            Shifter Online, by Movigo Logistics Aggregator Pvt. Ltd., combines intelligent dispatch algorithms with 100% verified driver partners to ensure your cargo arrives safely and on time.
           </p>
 
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -100,7 +100,7 @@ export function WhyChooseUs() {
                 <span className="text-xs font-bold text-emerald-300">100% Verified Driver Partners</span>
               </div>
               <p className="mt-4 text-xs sm:text-sm text-slate-200 max-w-sm leading-relaxed">
-                The core principles that guide every dispatch, every customer delivery, and every partner relationship across Central India.
+                The core principles that guide every dispatch, every customer delivery, and every partner relationship across India.
               </p>
 
               <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-6">
@@ -116,7 +116,7 @@ export function WhyChooseUs() {
 
               <div className="mt-10 border-t border-white/15 pt-5 flex items-center justify-between text-xs text-slate-300">
                 <span>Movigo Logistics Aggregator Pvt. Ltd.</span>
-                <span className="text-orange font-bold">Indore, India</span>
+                <span className="text-orange font-bold">Pan-India Operations</span>
               </div>
             </div>
           </div>

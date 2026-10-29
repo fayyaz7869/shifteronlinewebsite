@@ -4,7 +4,6 @@ import { BenefitsBar } from '../components/BenefitsBar';
 import { Services } from '../components/services/Services';
 import { WhyChooseUs } from '../components/WhyChooseUs';
 import { HowItWorks } from '../components/HowItWorks';
-import { TrackingPreview } from '../components/TrackingPreview';
 import { CoverageSection } from '../components/CoverageSection';
 import { DriverEarningsSection } from '../components/DriverEarningsSection';
 import { CustomerReviews } from '../components/CustomerReviews';
@@ -23,7 +22,6 @@ export function Home() {
       <Services />
       <WhyChooseUs />
       <HowItWorks />
-      <TrackingPreview />
       <CoverageSection />
       <DriverEarningsSection />
       <CustomerReviews />

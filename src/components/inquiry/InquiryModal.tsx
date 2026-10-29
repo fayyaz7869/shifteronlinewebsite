@@ -82,11 +82,11 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
 
     if (inquiryType === 'customer') {
       if (!pickupLocation.trim()) {
-        setErrorMessage('Please enter your pickup area in Indore.');
+        setErrorMessage('Please enter your pickup location.');
         return;
       }
       if (!dropLocation.trim()) {
-        setErrorMessage('Please enter your delivery/drop area in Indore.');
+        setErrorMessage('Please enter your delivery / drop location.');
         return;
       }
     }
@@ -139,8 +139,8 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
   // WhatsApp formatted inquiry message
   const whatsappText = encodeURIComponent(
     inquiryType === 'customer'
-      ? `Hello Shifter Online! 🚚\n\nI want to inquire about Goods Transport in Indore.\n*Name:* ${name || 'N/A'}\n*Mobile:* ${mobile || 'N/A'}\n*Vehicle:* ${vehicleType}\n*Pickup:* ${pickupLocation || 'Indore'}\n*Drop:* ${dropLocation || 'Indore'}\n*Cargo:* ${cargoType}\n*Helper Needed:* ${needHelper ? 'Yes' : 'No'}\n${notes ? `*Notes:* ${notes}` : ''}\n\nPlease share availability and quote.`
-      : `Hello Shifter Online! 🚚\n\nI want to attach my vehicle as a Driver Partner in Indore.\n*Name:* ${name || 'N/A'}\n*Mobile:* ${mobile || 'N/A'}\n*Vehicle Owned:* ${vehicleType}\n${vehicleNumber ? `*Vehicle No:* ${vehicleNumber}\n` : ''}*Preferred Hub:* ${preferredHub}\n*DL & RC Available:* ${hasDocuments ? 'Yes' : 'No'}\n${notes ? `*Notes:* ${notes}` : ''}\n\nPlease guide me with onboarding.`
+      ? `Hello Shifter Online! 🚚\n\nI want to inquire about Goods Transport Services.\n*Name:* ${name || 'N/A'}\n*Mobile:* ${mobile || 'N/A'}\n*Vehicle:* ${vehicleType}\n*Pickup:* ${pickupLocation || 'N/A'}\n*Drop:* ${dropLocation || 'N/A'}\n*Cargo:* ${cargoType}\n*Helper Needed:* ${needHelper ? 'Yes' : 'No'}\n${notes ? `*Notes:* ${notes}` : ''}\n\nPlease share availability and quote.`
+      : `Hello Shifter Online! 🚚\n\nI want to attach my vehicle as a Driver Partner.\n*Name:* ${name || 'N/A'}\n*Mobile:* ${mobile || 'N/A'}\n*Vehicle Owned:* ${vehicleType}\n${vehicleNumber ? `*Vehicle No:* ${vehicleNumber}\n` : ''}*Preferred Hub:* ${preferredHub}\n*DL & RC Available:* ${hasDocuments ? 'Yes' : 'No'}\n${notes ? `*Notes:* ${notes}` : ''}\n\nPlease guide me with onboarding.`
   );
 
   return (
@@ -182,7 +182,7 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                         Shifter Online Inquiry Desk
                       </h3>
                       <span className="rounded-full bg-orange/20 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-orange border border-orange/30">
-                        Indore
+                        Pan-India
                       </span>
                     </div>
                     <p className="text-xs text-slate-300 font-medium">
@@ -218,7 +218,7 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                     </span>
                     <h4 className="text-2xl font-black text-navy">Thank You, {name}!</h4>
                     <p className="mt-2 text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                      Our Indore operations dispatch coordinator has received your request and will call you on{' '}
+                      Our operations dispatch coordinator has received your request and will call you on{' '}
                       <strong className="text-navy font-bold">+91 {mobile}</strong> within 10 minutes.
                     </p>
                   </div>
@@ -354,18 +354,18 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                           </div>
                         </div>
 
-                        {/* Pickup & Drop Corridors in Indore */}
+                        {/* Pickup & Drop Locations */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                           <div>
                             <label className="block text-xs font-bold text-navy mb-1.5">
-                              Pickup Location (Indore) <span className="text-red-500">*</span>
+                              Pickup Location (City / Area) <span className="text-red-500">*</span>
                             </label>
                             <div className="relative">
                               <MapPin size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-emerald-600" />
                               <input
                                 type="text"
                                 required
-                                placeholder="e.g. Vijay Nagar, Siya Ganj"
+                                placeholder="e.g. Gurugram, Vijay Nagar, Andheri"
                                 value={pickupLocation}
                                 onChange={(e) => setPickupLocation(e.target.value)}
                                 className="w-full rounded-xl border border-slate-300 bg-white py-2.5 pl-10 pr-3 text-xs sm:text-sm font-semibold text-slate-800 placeholder:text-slate-400 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all"
@@ -375,14 +375,14 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
 
                           <div>
                             <label className="block text-xs font-bold text-navy mb-1.5">
-                              Drop Location (Indore) <span className="text-red-500">*</span>
+                              Drop Location (City / Area) <span className="text-red-500">*</span>
                             </label>
                             <div className="relative">
                               <MapPin size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-orange" />
                               <input
                                 type="text"
                                 required
-                                placeholder="e.g. Palasia, Super Corridor"
+                                placeholder="e.g. Noida, Dewas Naka, Thane"
                                 value={dropLocation}
                                 onChange={(e) => setDropLocation(e.target.value)}
                                 className="w-full rounded-xl border border-slate-300 bg-white py-2.5 pl-10 pr-3 text-xs sm:text-sm font-semibold text-slate-800 placeholder:text-slate-400 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all"
@@ -480,19 +480,19 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
 
                           <div>
                             <label className="block text-xs font-bold text-navy mb-1.5">
-                              Preferred Indore Hub <span className="text-red-500">*</span>
+                              Preferred Operating Region / Hub <span className="text-red-500">*</span>
                             </label>
                             <select
                               value={preferredHub}
                               onChange={(e) => setPreferredHub(e.target.value)}
                               className="w-full rounded-xl border border-slate-300 bg-white py-2.5 px-3 text-xs sm:text-sm font-semibold text-slate-800 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all cursor-pointer"
                             >
-                              <option value="Central Indore (Rajwada / Sarafa)">Central Indore (Rajwada / Sarafa)</option>
-                              <option value="Vijay Nagar & Super Corridor">Vijay Nagar &amp; Super Corridor</option>
-                              <option value="Dewas Naka & Transport Nagar">Dewas Naka &amp; Transport Nagar</option>
-                              <option value="Palasia & AB Road">Palasia &amp; AB Road</option>
-                              <option value="Bhanwarkuan & Rau">Bhanwarkuan &amp; Rau</option>
-                              <option value="Anywhere in Indore">Any Area in Indore</option>
+                              <option value="North Zone (Delhi NCR, UP, Punjab, Haryana)">North Zone (Delhi NCR, UP, Punjab, Haryana)</option>
+                              <option value="West Zone (Mumbai, Pune, Gujarat, Rajasthan)">West Zone (Mumbai, Pune, Gujarat, Rajasthan)</option>
+                              <option value="Central India (Indore, Bhopal, MP)">Central India (Indore, Bhopal, MP)</option>
+                              <option value="South Zone (Bengaluru, Hyderabad, Chennai)">South Zone (Bengaluru, Hyderabad, Chennai)</option>
+                              <option value="East Zone (Kolkata, Bihar, Odisha)">East Zone (Kolkata, Bihar, Odisha)</option>
+                              <option value="All India / Intercity Corridors">All India / Intercity Corridors</option>
                             </select>
                           </div>
                         </div>

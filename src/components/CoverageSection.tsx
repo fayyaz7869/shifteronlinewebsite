@@ -14,49 +14,49 @@ interface CityHub {
 
 const HUBS: CityHub[] = [
   {
-    name: 'Central Indore (Rajwada & Sarafa)',
-    tag: 'Heritage Wholesale & Retail Core',
-    dispatchTime: '8–12 mins',
-    activeDrivers: '180+ Active',
-    vehicleAvailability: 'Bike Express, 3W E-Loader, Tata Ace',
-    status: 'Active Hub',
-    popularAreas: ['Rajwada Chowk', 'Sarafa Bazaar', 'Siya Ganj', 'Cloth Market', 'Maharani Road', 'Malharganj'],
-  },
-  {
-    name: 'Vijay Nagar & Super Corridor',
-    tag: 'IT Hub & Prime Relocation Sector',
+    name: 'Delhi NCR & North Zone',
+    tag: 'Industrial, FMCG & Commercial Corridor',
     dispatchTime: '10–14 mins',
-    activeDrivers: '210+ Active',
-    vehicleAvailability: 'Tata Ace, Pickup 8ft, 3-Wheeler',
-    status: 'Rapid Dispatch',
-    popularAreas: ['Scheme 54', 'Scheme 78', 'Super Corridor', 'Bapat Square', 'MR 10', 'Meghdoot Garden'],
-  },
-  {
-    name: 'Dewas Naka & Transport Nagar',
-    tag: 'Central Logistics & Warehousing Hub',
-    dispatchTime: '10–15 mins',
-    activeDrivers: '260+ Active',
-    vehicleAvailability: 'Pickup 8ft, Tata Ace, 1.7T Heavy',
-    status: 'Industrial Hub',
-    popularAreas: ['Transport Nagar', 'Dewas Naka Square', 'Manglia Warehouse Zone', 'Lasudia Mori', 'Nipania'],
-  },
-  {
-    name: 'Palasia & 56 Dukan',
-    tag: 'FMCG, Food & Corporate Hub',
-    dispatchTime: '10–12 mins',
-    activeDrivers: '150+ Active',
-    vehicleAvailability: '2-Wheeler Parcel, 3-Wheeler, Tata Ace',
+    activeDrivers: '850+ Active',
+    vehicleAvailability: 'Tata Ace, Pickup 8ft, 3W Loader, Heavy Trucks',
     status: 'Active Hub',
-    popularAreas: ['New Palasia', '56 Dukan', 'Old Palasia', 'Geeta Bhawan', 'Janjeerwala Square', 'Tilak Nagar'],
+    popularAreas: ['Gurugram', 'Noida & Greater Noida', 'Okhla Industrial Area', 'Faridabad', 'Kundli Sonipat', 'Ghaziabad'],
   },
   {
-    name: 'Bhanwarkuan & Rau Corridor',
-    tag: 'Student Sector & Home Shifting',
-    dispatchTime: '12–15 mins',
-    activeDrivers: '140+ Active',
-    vehicleAvailability: 'Tata Ace, 3W Loader, House Shifting',
+    name: 'Mumbai & West Coast Corridor',
+    tag: 'Port Logistics, Retail & Financial Capital',
+    dispatchTime: '10–12 mins',
+    activeDrivers: '920+ Active',
+    vehicleAvailability: 'Pickups, Tata Ace, E-Loaders, Express Bikes',
     status: 'Rapid Dispatch',
-    popularAreas: ['Bhanwarkuan Square', 'Tower Chauraha', 'Sapna Sangeeta', 'Silicon City', 'Rau Circle', 'CAT Road'],
+    popularAreas: ['Bhiwandi Warehousing Hub', 'Navi Mumbai', 'Andheri East MIDC', 'Thane', 'JNPT Port Corridor', 'Pune Express'],
+  },
+  {
+    name: 'Central India (Indore & MP Hub)',
+    tag: 'Original Commercial & Trade Gateway',
+    dispatchTime: '8–12 mins',
+    activeDrivers: '750+ Active',
+    vehicleAvailability: 'Bike Express, 3W Loader, Tata Ace, Bolero Pickup',
+    status: 'Active Hub',
+    popularAreas: ['Dewas Naka Transport Hub', 'Pithampur MIDC', 'Rajwada Wholesale', 'Vijay Nagar', 'Transport Nagar', 'Bhopal Bypass'],
+  },
+  {
+    name: 'Bengaluru & South Hubs',
+    tag: 'Tech Parks, E-Commerce & Distribution Centers',
+    dispatchTime: '10–15 mins',
+    activeDrivers: '680+ Active',
+    vehicleAvailability: 'Tata Ace, 3W E-Loader, Pickups, House Shifting',
+    status: 'Rapid Dispatch',
+    popularAreas: ['Peenya Industrial Area', 'Electronic City', 'Whitefield', 'Hosur Road', 'Bommasandra', 'Yeshwanthpur'],
+  },
+  {
+    name: 'National Express Freight Corridors',
+    tag: 'Intercity Linehaul & Enterprise Supply Chain',
+    dispatchTime: '15–30 mins',
+    activeDrivers: '1,200+ Active',
+    vehicleAvailability: 'Full Truckload (FTL), Heavy Pickups, Container Fleet',
+    status: 'Industrial Hub',
+    popularAreas: ['Delhi - Mumbai Expressway', 'Indore - Ahmedabad Corridor', 'Golden Quadrilateral', 'Chennai - Bengaluru', 'Kolkata Trunk Route'],
   },
 ];
 
@@ -64,7 +64,7 @@ export function CoverageSection() {
   const [activeCity, setActiveCity] = useState(HUBS[0]);
 
   return (
-    <section id="coverage" className="py-24 md:py-32 bg-white text-slate-900 relative overflow-hidden">
+    <section id="coverage" className="py-16 md:py-24 bg-white text-slate-900 relative overflow-hidden">
       {/* Background ambient accents */}
       <div className="pointer-events-none absolute -right-32 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-royal/5 blur-3xl" />
       <div className="pointer-events-none absolute -left-32 bottom-10 h-80 w-80 rounded-full bg-orange/5 blur-3xl" />
@@ -74,13 +74,13 @@ export function CoverageSection() {
         <ScrollReveal className="text-center max-w-2xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-orange/30 bg-orange/10 px-3.5 py-1 text-xs font-bold text-orange">
             <span className="h-1.5 w-1.5 rounded-full bg-orange animate-pulse" />
-            <span>INDORE OPERATING NETWORK &amp; HUBS</span>
+            <span>PAN-INDIA OPERATIONAL NETWORK</span>
           </div>
           <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-[42px] leading-tight">
-            100% Citywide Coverage Across Indore
+            Nationwide Fleet Network Across 500+ Cities
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-slate-600 font-medium">
-            From Indore&apos;s busiest wholesale markets in Rajwada and Siya Ganj to IT corridors in Vijay Nagar and logistics parks at Dewas Naka — our smart driver network ensures fast on-demand transport across all Indore sectors.
+            From intra-city micro-deliveries to intercity linehaul supply chain, Shifter Online&apos;s tech-enabled logistics grid connects major commercial centers, industrial zones, and residential hubs across India.
           </p>
         </ScrollReveal>
 
@@ -173,7 +173,7 @@ export function CoverageSection() {
               <div className="pointer-events-none absolute -right-8 -top-8 h-36 w-36 rounded-full bg-orange/20 blur-2xl" />
 
               <span className="text-[11px] font-bold uppercase tracking-wider text-orange block">
-                Instant Local Dispatch
+                Instant Regional Dispatch
               </span>
               <h4 className="mt-1 text-xl font-black text-white">Need a vehicle in {activeCity.name}?</h4>
               <p className="mt-2 text-xs text-slate-300 leading-relaxed">

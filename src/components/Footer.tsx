@@ -8,8 +8,8 @@ const columns = [
     links: [
       { label: 'About Us', href: '#why-us' },
       { label: 'Services & Fleet', href: '#services' },
-      { label: 'Smart Logistics', href: '#tracking' },
-      { label: 'Operating Hubs', href: '#coverage' },
+      { label: 'How It Works', href: '#how-it-works' },
+      { label: 'Pan-India Hubs', href: '#coverage' },
       { label: 'Contact & Support', href: '#cta' },
     ],
   },
@@ -73,7 +73,7 @@ export function Footer() {
           <p className="mt-4 max-w-xs text-xs sm:text-sm leading-relaxed text-slate-400">
             Shifter Online, by Movigo Logistics Aggregator Pvt. Ltd., is India&apos;s
             technology-driven logistics platform — connecting customers with verified driver
-            partners for fast, affordable and transparent goods transportation in Central India.
+            partners for fast, affordable and transparent goods transportation across India.
           </p>
           <div className="mt-6 flex gap-3">
             {socials.map(({ icon: Icon, href, label }) => (
@@ -120,7 +120,7 @@ export function Footer() {
               Terms &amp; Conditions
             </SmartLink>
             <span className="text-white/20">|</span>
-            <span className="text-slate-400">Made with ❤️ in Indore</span>
+            <span className="text-slate-400">Proudly Made in India 🇮🇳</span>
           </div>
         </div>
       </div>
