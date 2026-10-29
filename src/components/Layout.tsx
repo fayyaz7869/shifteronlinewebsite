@@ -20,10 +20,28 @@ export function Layout() {
   };
 
   return (
-    <div className="overflow-x-hidden pb-16 sm:pb-0">
-      <Navbar onLoginClick={context.openLogin} onGetStartedClick={context.openSignup} />
-      <Outlet context={context} />
-      <Footer />
+    <div className="relative min-h-screen overflow-x-hidden bg-[#FAFCFE] pb-16 sm:pb-0 text-slate-900">
+      {/* Global Attractive Light Themed Logistics Background Artwork */}
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-multiply"
+          style={{ backgroundImage: `url('/website-bg-light.jpg')` }}
+        />
+        {/* Crisp vector logistics network grid overlay */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-35"
+          style={{ backgroundImage: `url('/website-bg-network.svg')` }}
+        />
+        {/* Soft radial vignettes to preserve perfect typography readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/55 to-white/80" />
+      </div>
+
+      {/* Foreground Interactive Page Content */}
+      <div className="relative z-10">
+        <Navbar onLoginClick={context.openLogin} onGetStartedClick={context.openSignup} />
+        <Outlet context={context} />
+        <Footer />
+      </div>
 
       {/* Floating 1-tap mobile action bar for Call, WhatsApp and Booking */}
       <MobileQuickBar />

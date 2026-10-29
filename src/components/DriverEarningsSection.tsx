@@ -107,7 +107,7 @@ export function DriverEarningsSection() {
   );
 
   return (
-    <section id="driver-partner" className="py-16 md:py-24 bg-slate-50 text-slate-900 border-y border-slate-200/80 relative overflow-hidden">
+    <section id="driver-partner" className="py-16 md:py-24 bg-slate-50/70 backdrop-blur-xs text-slate-900 border-y border-slate-200/80 relative overflow-hidden">
       {/* Background subtle light ambient effects */}
       <div className="pointer-events-none absolute -left-20 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-orange/5 blur-3xl" />
       <div className="pointer-events-none absolute -right-20 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-navy/5 blur-3xl" />

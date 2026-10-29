@@ -21,9 +21,9 @@ const WHATSAPP_BOOKING_URL =
 
 export function Hero() {
   const { getMediaUrl } = useSiteMedia();
-  const rajwadaBannerImg = getMediaUrl('rajwada_banner', '/rajwada-shifter-banner.jpg');
+  const indiaMapBannerImg = getMediaUrl('hero_showcase_banner', getMediaUrl('rajwada_banner', '/india-logistics-map.jpg'));
   return (
-    <section id="home" className="relative overflow-hidden bg-gradient-to-b from-[#F2F6FD] via-white to-slate-50/60 text-slate-900 pt-28 pb-16 md:pt-36 md:pb-20">
+    <section id="home" className="relative overflow-hidden bg-gradient-to-b from-[#F2F6FD]/90 via-white/80 to-slate-50/70 text-slate-900 pt-28 pb-16 md:pt-36 md:pb-20">
       {/* Background ambient lighting and subtle city pattern */}
       <div className="absolute inset-0 bg-grid-light opacity-50 pointer-events-none" />
       <div className="pointer-events-none absolute -top-40 left-1/4 h-[500px] w-[500px] rounded-full bg-orange/10 blur-[130px]" />
@@ -196,7 +196,7 @@ export function Hero() {
           className="relative lg:col-span-5 w-full"
         >
           {/* Framed Artwork Card */}
-          <div className="relative overflow-hidden rounded-3xl bg-white p-3 sm:p-4 shadow-card border border-slate-200/90 group">
+          <div className="relative overflow-hidden rounded-3xl bg-white/95 backdrop-blur-md p-3 sm:p-4 shadow-card border border-slate-200/90 group">
             {/* Top Bar with National Header */}
             <div className="flex items-center justify-between pb-3 px-2 border-b border-slate-100 mb-2">
               <div className="flex items-center gap-2">
@@ -204,32 +204,32 @@ export function Hero() {
                   🇮🇳
                 </span>
                 <div>
-                  <h3 className="text-xs font-black text-navy leading-none">Pan-India Logistics Network</h3>
-                  <span className="text-[10px] text-slate-400 font-medium">Connecting 500+ Cities Nationwide</span>
+                  <h3 className="text-xs font-black text-navy leading-none">India Logistics &amp; Freight Grid</h3>
+                  <span className="text-[10px] text-slate-400 font-medium">500+ Connected Cities Nationwide</span>
                 </div>
               </div>
               <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700 border border-emerald-200">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                Fleet Active
+                Live Dispatch Network
               </span>
             </div>
 
-            {/* Rajwada / Flag Banner Poster Image Container */}
-            <div className="relative overflow-hidden rounded-2xl aspect-[4/3] bg-slate-100 border border-slate-200">
+            {/* India Logistics Map Showcase Container */}
+            <div className="relative overflow-hidden rounded-2xl aspect-[4/3] bg-slate-900/5 border border-slate-200">
               <img
-                src={rajwadaBannerImg}
-                alt="Shifter Online Fleet"
+                src={indiaMapBannerImg}
+                alt="Shifter Online Pan-India Logistics Network Map"
                 className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 loading="eager"
               />
 
               {/* Gradient Scrim for readable badges */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/20" />
 
               {/* Top Floating Badge */}
               <div className="absolute top-3 left-3 flex items-center gap-1.5 rounded-xl bg-navy/90 backdrop-blur-md px-3 py-1.5 text-[11px] font-bold text-white shadow-soft border border-white/20">
                 <MapPin size={13} className="text-orange" />
-                <span>National Freight Dispatch</span>
+                <span>Delhi • Mumbai • Indore • Blr • Kolkata</span>
               </div>
 
               {/* Bottom Floating Banner */}
@@ -240,7 +240,7 @@ export function Hero() {
                       <Truck size={18} />
                     </div>
                     <div>
-                      <p className="text-xs font-black text-navy leading-tight">Shifter Online Fleet</p>
+                      <p className="text-xs font-black text-navy leading-tight">Nationwide Verified Fleet</p>
                       <p className="text-[10px] text-slate-500">Tata Ace · Pickups · 3-Wheelers · Bikes</p>
                     </div>
                   </div>

@@ -46,7 +46,7 @@ const REVIEWS = [
 
 export function CustomerReviews() {
   return (
-    <section className="py-16 md:py-24 bg-white text-slate-900 border-b border-slate-200/80 relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-white/85 backdrop-blur-xs text-slate-900 border-b border-slate-200/80 relative overflow-hidden">
       {/* Background ambient radial lights */}
       <div className="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-navy/5 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 bottom-20 h-96 w-96 rounded-full bg-orange/5 blur-3xl" />

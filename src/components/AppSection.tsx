@@ -4,7 +4,7 @@ import { AppMockup } from './illustrations/AppMockup';
 
 export function AppSection() {
   return (
-    <section id="app" className="overflow-hidden bg-slate-50 text-slate-900 py-16 md:py-24 border-b border-slate-200/80 relative">
+    <section id="app" className="overflow-hidden bg-slate-50/70 backdrop-blur-xs text-slate-900 py-16 md:py-24 border-b border-slate-200/80 relative">
       {/* Background ambient radial lights */}
       <div className="pointer-events-none absolute -left-32 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-orange/5 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-navy/5 blur-3xl" />

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" preserveAspectRatio="none">
+  <defs>
+    <!-- Soft Ambient Light Gradients -->
+    <radialGradient id="grad-orange" cx="15%" cy="15%" r="45%">
+      <stop offset="0%" stop-color="#FF5A1F" stop-opacity="0.07" />
+      <stop offset="60%" stop-color="#FF783E" stop-opacity="0.02" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="grad-blue" cx="85%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#124ECF" stop-opacity="0.06" />
+      <stop offset="50%" stop-color="#0284C7" stop-opacity="0.02" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="grad-center" cx="50%" cy="65%" r="40%">
+      <stop offset="0%" stop-color="#124ECF" stop-opacity="0.03" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Pattern: Subtle Logistics Grid Dots -->
+    <pattern id="grid-dots" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#0B2559" fill-opacity="0.04" />
+      <circle cx="22" cy="22" r="0.8" fill="#FF5A1F" fill-opacity="0.035" />
+    </pattern>
+
+    <!-- Faint Line Gradients -->
+    <linearGradient id="line-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF5A1F" stop-opacity="0" />
+      <stop offset="40%" stop-color="#FF5A1F" stop-opacity="0.12" />
+      <stop offset="70%" stop-color="#FF9E0B" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#FF5A1F" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="line-blue" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#124ECF" stop-opacity="0" />
+      <stop offset="35%" stop-color="#124ECF" stop-opacity="0.10" />
+      <stop offset="75%" stop-color="#0284C7" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#124ECF" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Clean Off-White Base -->
+  <rect width="100%" height="100%" fill="#FCFDFF" />
+
+  <!-- Ambient Color Lighting -->
+  <rect width="100%" height="100%" fill="url(#grad-orange)" />
+  <rect width="100%" height="100%" fill="url(#grad-blue)" />
+  <rect width="100%" height="100%" fill="url(#grad-center)" />
+
+  <!-- Micro Dot Grid Overlay -->
+  <rect width="100%" height="100%" fill="url(#grid-dots)" />
+
+  <!-- Flowing Logistics Wave Contours -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M-100,280 C320,160 580,420 980,310 C1380,200 1620,380 2020,260" stroke="url(#line-orange)" stroke-width="1.8" stroke-dasharray="6,8" />
+    <path d="M-100,340 C340,220 620,470 1020,360 C1420,250 1680,440 2050,320" stroke="url(#line-blue)" stroke-width="1.5" />
+    <path d="M-80,720 C280,600 540,840 940,730 C1340,620 1600,810 2000,690" stroke="url(#line-blue)" stroke-width="1.6" stroke-dasharray="8,10" />
+    <path d="M-50,780 C310,660 590,900 990,790 C1390,680 1660,870 2030,750" stroke="url(#line-orange)" stroke-width="1.4" />
+
+    <!-- Soft Diagonal Arterial Route Lines -->
+    <path d="M120,-40 L680,1120" stroke="#0B2559" stroke-opacity="0.035" stroke-width="1.2" />
+    <path d="M420,-40 L980,1120" stroke="#FF5A1F" stroke-opacity="0.04" stroke-width="1.2" stroke-dasharray="12,12" />
+    <path d="M1120,-40 L1680,1120" stroke="#124ECF" stroke-opacity="0.04" stroke-width="1.2" />
+    <path d="M1420,-40 L1980,1120" stroke="#0B2559" stroke-opacity="0.03" stroke-width="1.2" stroke-dasharray="10,14" />
+  </g>
+
+  <!-- Faint Regional Network Node Constellations -->
+  <g fill="#124ECF">
+    <!-- North Hub -->
+    <circle cx="580" cy="220" r="4.5" fill="#FF5A1F" fill-opacity="0.35" />
+    <circle cx="580" cy="220" r="12" fill="none" stroke="#FF5A1F" stroke-opacity="0.15" stroke-width="1" />
+    <!-- West Hub -->
+    <circle cx="440" cy="540" r="4.5" fill="#124ECF" fill-opacity="0.3" />
+    <circle cx="440" cy="540" r="14" fill="none" stroke="#124ECF" stroke-opacity="0.12" stroke-width="1" />
+    <!-- Central Hub (Indore) -->
+    <circle cx="780" cy="480" r="5.5" fill="#FF5A1F" fill-opacity="0.45" />
+    <circle cx="780" cy="480" r="18" fill="none" stroke="#FF5A1F" stroke-opacity="0.22" stroke-width="1.2" stroke-dasharray="4,4" />
+    <!-- South Hub -->
+    <circle cx="680" cy="820" r="4.5" fill="#124ECF" fill-opacity="0.3" />
+    <circle cx="680" cy="820" r="13" fill="none" stroke="#124ECF" stroke-opacity="0.12" stroke-width="1" />
+    <!-- East Hub -->
+    <circle cx="1220" cy="440" r="4.5" fill="#0284C7" fill-opacity="0.3" />
+    <circle cx="1220" cy="440" r="13" fill="none" stroke="#0284C7" stroke-opacity="0.12" stroke-width="1" />
+
+    <!-- Connecting Arteries between hubs -->
+    <line x1="580" y1="220" x2="780" y2="480" stroke="#FF5A1F" stroke-opacity="0.14" stroke-width="1.4" stroke-dasharray="5,6" />
+    <line x1="440" y1="540" x2="780" y2="480" stroke="#124ECF" stroke-opacity="0.14" stroke-width="1.4" />
+    <line x1="780" y1="480" x2="680" y2="820" stroke="#124ECF" stroke-opacity="0.14" stroke-width="1.4" stroke-dasharray="5,6" />
+    <line x1="780" y1="480" x2="1220" y2="440" stroke="#0284C7" stroke-opacity="0.12" stroke-width="1.4" />
+    <line x1="580" y1="220" x2="1220" y2="440" stroke="#0B2559" stroke-opacity="0.08" stroke-width="1.2" stroke-dasharray="4,8" />
+    <line x1="440" y1="540" x2="680" y2="820" stroke="#0B2559" stroke-opacity="0.08" stroke-width="1.2" />
+  </g>
+</svg>

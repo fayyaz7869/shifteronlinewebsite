@@ -105,7 +105,7 @@ export function Services() {
   const { getMediaUrl } = useSiteMedia();
 
   return (
-    <section id="services" className="py-16 md:py-24 bg-white text-slate-900 relative overflow-hidden">
+    <section id="services" className="py-16 md:py-24 bg-white/85 backdrop-blur-xs text-slate-900 relative overflow-hidden">
       {/* Subtle background ambient lights */}
       <div className="pointer-events-none absolute -left-40 top-40 h-96 w-96 rounded-full bg-orange/5 blur-3xl" />
       <div className="pointer-events-none absolute -right-40 bottom-40 h-96 w-96 rounded-full bg-royal/5 blur-3xl" />

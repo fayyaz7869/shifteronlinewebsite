@@ -53,9 +53,9 @@ interface MediaSlotDef {
 const MEDIA_SLOTS: MediaSlotDef[] = [
   {
     key: 'rajwada_banner',
-    title: 'Hero Rajwada Palace Banner',
-    description: 'The main hero artwork showing Rajwada Palace with the Shifter Online banner & Indian flag',
-    defaultImage: '/rajwada-shifter-banner.jpg',
+    title: 'Hero India Logistics Map Banner',
+    description: 'The main hero artwork showing 3D India Logistics Map with illuminated freight corridors & dispatch hubs',
+    defaultImage: '/india-logistics-map.jpg',
     category: 'Hero & Branding',
   },
   {
