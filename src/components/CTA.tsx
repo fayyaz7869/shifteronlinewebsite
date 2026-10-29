@@ -9,7 +9,7 @@ const WHATSAPP_URL = 'https://wa.me/919644423533?text=Hello%20Shifter%20Online,%
 
 export function CTA({ onGetStartedClick: _onGetStartedClick }: CTAProps) {
   return (
-    <section id="cta" className="relative bg-slate-50 py-14 md:py-20 overflow-hidden">
+    <section id="cta" className="relative bg-transparent py-14 md:py-20 overflow-hidden">
       <div className="container-shifter relative z-10">
         <ScrollReveal>
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-navy via-[#0C2D6B] to-[#06183B] p-8 sm:p-14 md:p-16 text-white shadow-lift border border-navy/20">

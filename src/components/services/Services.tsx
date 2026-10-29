@@ -14,7 +14,6 @@ import {
 import { ScrollReveal } from '../ui/ScrollReveal';
 import { ServiceCard } from './ServiceCard';
 import { VehicleLineupIllustration } from '../illustrations/VehicleLineupIllustration';
-import { FleetShowcase } from './FleetShowcase';
 import { useSiteMedia } from '../../context/useSiteMedia';
 
 interface ServiceItem {
@@ -105,7 +104,7 @@ export function Services() {
   const { getMediaUrl } = useSiteMedia();
 
   return (
-    <section id="services" className="py-16 md:py-24 bg-white/85 backdrop-blur-xs text-slate-900 relative overflow-hidden">
+    <section id="services" className="py-16 md:py-24 bg-transparent text-slate-900 relative overflow-hidden">
       {/* Subtle background ambient lights */}
       <div className="pointer-events-none absolute -left-40 top-40 h-96 w-96 rounded-full bg-orange/5 blur-3xl" />
       <div className="pointer-events-none absolute -right-40 bottom-40 h-96 w-96 rounded-full bg-royal/5 blur-3xl" />
@@ -159,11 +158,6 @@ export function Services() {
             })}
           </div>
         </div>
-
-        {/* Interactive Fleet Showcase */}
-        <ScrollReveal delay={0.08}>
-          <FleetShowcase />
-        </ScrollReveal>
 
         <ScrollReveal delay={0.1} className="mt-16 rounded-3xl border border-slate-200/80 bg-slate-50/80 px-6 py-10 shadow-soft backdrop-blur-md sm:px-10">
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">

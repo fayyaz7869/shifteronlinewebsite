@@ -51,7 +51,7 @@ const values = [
 
 export function WhyChooseUs() {
   return (
-    <section id="why-us" className="bg-slate-50/60 py-16 md:py-24 relative overflow-hidden text-slate-900 border-y border-slate-200/80">
+    <section id="why-us" className="bg-transparent py-16 md:py-24 relative overflow-hidden text-slate-900 border-y border-slate-200/60">
       {/* Background ambient accents */}
       <div className="pointer-events-none absolute -left-32 top-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-orange/5 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 top-1/3 h-80 w-80 rounded-full bg-royal/5 blur-3xl" />

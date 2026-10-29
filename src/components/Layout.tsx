@@ -20,20 +20,30 @@ export function Layout() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[#FAFCFE] pb-16 sm:pb-0 text-slate-900">
-      {/* Global Attractive Light Themed Logistics Background Artwork */}
+    <div className="relative min-h-screen overflow-x-hidden bg-[#F7FAFD] pb-16 sm:pb-0 text-slate-900">
+      {/* Global Attractive Shifter Branded Light Themed Background */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        {/* Shifter Branded Logistics Banner Background Artwork */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-multiply"
-          style={{ backgroundImage: `url('/website-bg-light.jpg')` }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
+          style={{ backgroundImage: `url('/shifter-banner-bg.jpg')` }}
         />
-        {/* Crisp vector logistics network grid overlay */}
+        {/* Crisp vector logistics highway grid overlay */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-35"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25"
           style={{ backgroundImage: `url('/website-bg-network.svg')` }}
         />
-        {/* Soft radial vignettes to preserve perfect typography readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/55 to-white/80" />
+        {/* Ambient Shifter Brand Logo Watermarks */}
+        <div
+          className="absolute -left-16 top-1/4 h-[520px] w-[520px] rounded-full opacity-[0.05] bg-contain bg-no-repeat bg-center pointer-events-none"
+          style={{ backgroundImage: `url('/shifter-online-icon.png')` }}
+        />
+        <div
+          className="absolute -right-16 top-2/3 h-[580px] w-[580px] rounded-full opacity-[0.05] bg-contain bg-no-repeat bg-center pointer-events-none"
+          style={{ backgroundImage: `url('/shifter-online-icon.png')` }}
+        />
+        {/* Soft ambient translucent veil for maximum foreground contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/35 via-white/15 to-white/45" />
       </div>
 
       {/* Foreground Interactive Page Content */}

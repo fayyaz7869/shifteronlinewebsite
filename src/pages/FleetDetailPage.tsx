@@ -49,7 +49,7 @@ export function FleetDetailPage() {
   const whatsappUrl = `https://wa.me/919644423533?text=${encodeURIComponent(vehicle.whatsappMessage)}`;
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 pt-28 pb-20">
+    <div className="min-h-screen bg-transparent text-slate-900 pt-28 pb-20">
       {/* Breadcrumb Navigation */}
       <div className="bg-white border-b border-slate-200/80 py-3.5 mb-8">
         <div className="container-shifter flex items-center gap-2 text-xs font-semibold text-slate-500">

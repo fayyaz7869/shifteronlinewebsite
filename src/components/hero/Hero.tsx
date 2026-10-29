@@ -23,7 +23,7 @@ export function Hero() {
   const { getMediaUrl } = useSiteMedia();
   const indiaMapBannerImg = getMediaUrl('hero_showcase_banner', getMediaUrl('rajwada_banner', '/india-logistics-map.jpg'));
   return (
-    <section id="home" className="relative overflow-hidden bg-gradient-to-b from-[#F2F6FD]/90 via-white/80 to-slate-50/70 text-slate-900 pt-28 pb-16 md:pt-36 md:pb-20">
+    <section id="home" className="relative overflow-hidden bg-transparent text-slate-900 pt-28 pb-16 md:pt-36 md:pb-20">
       {/* Background ambient lighting and subtle city pattern */}
       <div className="absolute inset-0 bg-grid-light opacity-50 pointer-events-none" />
       <div className="pointer-events-none absolute -top-40 left-1/4 h-[500px] w-[500px] rounded-full bg-orange/10 blur-[130px]" />
